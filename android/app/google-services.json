@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "912458352386",
+    "project_id": "petplanet-d7aa8",
+    "storage_bucket": "petplanet-d7aa8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:912458352386:android:8971a7179a251cb156e41b",
+        "android_client_info": {
+          "package_name": "com.example.pet_planet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "912458352386-of6a0r6d2encrqrse3klhpdn34eup9h0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNQiJ0suyFa0efumCaS4Vl8r6GQrKkT1U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "912458352386-of6a0r6d2encrqrse3klhpdn34eup9h0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
