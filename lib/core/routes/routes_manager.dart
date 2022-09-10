@@ -1,22 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:pet_planet/core/routes/routes_names.dart';
+import 'package:pet_planet/presentation/resources/strings_manager.dart';
+import 'package:pet_planet/presentation/screens/auth/auth_layout_screen.dart';
 
-import '../../presentation/resources/strings_manager.dart';
 
-class Routes {
-  static const String authRoute = "authRoute";
-  static const String layoutRoute = "layoutRoute";
-  static const String deliveryLocationRoute = "deliveryLocationRoute";
-  static const String cartRoute = "cartRoute";
-}
+
 
 class RouteGenerator {
   static Route<dynamic> getRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
       case Routes.authRoute:
         return MaterialPageRoute(
-            builder: (_) => const Scaffold(
-                  body: Center(child: Text('Hello EVERYONE')),
-                ));
+            builder: (_) =>const AuthLayoutScreen());
       // case Routes.layoutRoute:
       //   return MaterialPageRoute(builder: (_) => const LayoutView());
       // case Routes.cartRoute:
@@ -38,6 +33,6 @@ class RouteGenerator {
               body: const Center(
                 child: Text(AppStrings.noRouteFound),
               ),
-            ));
+            ),);
   }
 }

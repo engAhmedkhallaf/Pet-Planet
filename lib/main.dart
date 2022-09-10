@@ -14,7 +14,7 @@ void main() async {
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
   // firebase initalize
-  await Firebase.initializeApp();
+  // await Firebase.initializeApp();
 
   // bloc observer
   Bloc.observer = MyBlocObserver();

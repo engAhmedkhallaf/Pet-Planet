@@ -16,18 +16,18 @@ dependencies:
     sdk: flutter
   flutter_bloc: ^8.1.1
   flutter_native_splash: ^2.2.9
+  flutter_screenutil: ^5.5.4
   shared_preferences: ^2.0.15
 
 dev_dependencies:
+  flutter_launcher_icons: ^0.10.0
   flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
-  flutter_launcher_icons: ^0.10.0
 
 flutter_native_splash:
   color: "#000000"
   image: assets/images/pet-planet.png
-
 
 flutter_icons:
   android: true
@@ -35,7 +35,6 @@ flutter_icons:
   image_path: "assets/icons/logo.png"
   adaptive_icon_background: "#000000"
   adaptive_icon_foreground: "assets/icons/logo_foreground.png"
-
 
 flutter:
 
@@ -46,6 +45,8 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/pet-planet.png
+    - assets/images/pet.png
+    - assets/images/auth-background.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

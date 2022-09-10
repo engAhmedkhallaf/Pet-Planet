@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 
-class FontConstants
-{
+class FontConstants {
   static const String fontFamily = 'Cairo';
 }
 
-class FontWeightManager{
-  static const FontWeight bold =FontWeight.w700;
-  static const FontWeight medium =FontWeight.w600;
-  static const FontWeight regular =FontWeight.w500;
-  static const FontWeight light =FontWeight.w400;
-  static const FontWeight thin =FontWeight.w300;
+class FontWeightManager {
+  static const FontWeight bold = FontWeight.w700;
+  static const FontWeight medium = FontWeight.w600;
+  static const FontWeight regular = FontWeight.w500;
+  static const FontWeight light = FontWeight.w400;
+  static const FontWeight thin = FontWeight.w300;
 }
 
-class FontSizeManager{
+class FontSizeManager {
   static const double s10 = 10.0;
   static const double s11 = 11.0;
   static const double s12 = 12.0;
@@ -31,6 +30,7 @@ class FontSizeManager{
   static const double s24 = 24.0;
   static const double s25 = 25.0;
   static const double s30 = 30.0;
+  static const double s34 = 34.0;
   static const double s50 = 50.0;
   static const double s70 = 70.0;
   static const double s100 = 100.0;
