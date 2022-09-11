@@ -8,6 +8,7 @@ import 'package:pet_planet/presentation/resources/strings_manager.dart';
 import 'package:pet_planet/presentation/resources/theme/theme_manager.dart';
 import 'package:pet_planet/presentation/resources/values_manager.dart';
 import 'package:pet_planet/presentation/screens/auth/widgets/custom_text_form_field.dart';
+import 'package:pet_planet/presentation/screens/auth/widgets/login_signup_forgot_header.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -36,16 +37,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    AppStrings.login,
-                    style: getApplicationTheme().textTheme.displayLarge,
-                  ),
-                  Text(
-                    AppStrings.addYourDetailsToLogin,
-                    style: getApplicationTheme().textTheme.headlineSmall,
-                  ),
-                  SizedBox(
-                    height: AppSize.s30.h,
+                  const LoginSignupForgotHeader(
+                    title: AppStrings.login,
+                    desc: AppStrings.addYourDetailsToLogin,
+                    titleTextStyle: null,
+                    descTextStyle: null,
                   ),
                   CustomTextFormField(
                     onEditingComplete: () =>

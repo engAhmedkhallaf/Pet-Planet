@@ -22,8 +22,14 @@ class AppStrings {
   static const String email = 'Email';
   static const String mobileNumber = 'Mobile No';
   static const String address = 'Address';
-    static const String alreadyHavaAnAccount = 'Already hava an account?';
+  static const String alreadyHavaAnAccount = 'Already hava an account?';
 
+  // Forgot Password Screen
+  static const String resetPassword = 'Reset Password';
+  static const String
+      pleaseEnterYourEmailToReciveALinkToCreateANewPasswordViaEmail =
+      'Please enter your email to recive a \n link to create a new password via email';
+  static const String send = 'Send';
 
   static const String skip = 'Skip';
   static const String loading = 'Loading..';
