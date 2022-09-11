@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:pet_planet/presentation/resources/assets/assets_manager.dart';
+import 'package:pet_planet/core/routes/routes_names.dart';
 import 'package:pet_planet/presentation/resources/colors/color_manager.dart';
-import 'package:pet_planet/presentation/resources/fonts/font_manager.dart';
+import 'package:pet_planet/presentation/resources/navigation/navigation.dart';
 import 'package:pet_planet/presentation/resources/strings_manager.dart';
-import 'package:pet_planet/presentation/resources/styles/style_manager.dart';
 import 'package:pet_planet/presentation/resources/theme/theme_manager.dart';
 import 'package:pet_planet/presentation/resources/values_manager.dart';
 import 'package:pet_planet/presentation/screens/auth/widgets/auth_painter.dart';
@@ -16,7 +15,7 @@ class AuthLayoutScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorManager.background,
+      backgroundColor: ColorManager.backgroundColor,
       body: Stack(
         fit: StackFit.expand,
         children: [
@@ -39,7 +38,12 @@ class AuthLayoutScreen extends StatelessWidget {
                   height: AppSize.s25.h,
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    navigatorTo(
+                      context,
+                      Routes.loginRoute,
+                    );
+                  },
                   child: const Text(
                     AppStrings.login,
                   ),

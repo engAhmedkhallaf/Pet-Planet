@@ -68,7 +68,12 @@ class _AuthCustomPainter extends CustomPainter {
     path.relativeLineTo(AppSize.s0, -maxHeight);
     path.close();
 
-    canvas.drawShadow(path, ColorManager.secondaryColor, AppSize.s8, false);
+    canvas.drawShadow(
+      path,
+      ColorManager.mainColorSwatch.shade100,
+      AppSize.s8,
+      false,
+    );
     canvas.drawPath(path, paint);
   }
 

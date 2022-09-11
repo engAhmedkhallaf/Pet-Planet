@@ -1,16 +1,4 @@
 class AppStrings {
-  static const String noRouteFound = 'No route found';
-
-  static const String title1 = '';
-  static const String title2 = '';
-  static const String title3 = '';
-  static const String title4 = '';
-
-  static const String subTitle1 = '';
-  static const String subTitle2 = '';
-  static const String subTitle3 = '';
-  static const String subTitle4 = '';
-
   // Auth Strings
   static const String pets = 'Pets';
   static const String planet = 'Planet';
@@ -18,7 +6,15 @@ class AppStrings {
   static const String desc =
       'lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem ';
   static const String login = 'Login';
+  static const String signUp = 'Sign Up';
   static const String createAnAccount = 'Create An Account';
+
+  // Login Screen
+  static const String addYourDetailsToLogin = 'Add your details to login';
+  static const String yourEmail = 'Your Email';
+  static const String password = 'Password';
+  static const String forgotYourPassword = 'Forgot Your Password?';
+  static const String doNotHavaAnAccount = 'Don\'t hava an account?';
 
   static const String skip = 'Skip';
   static const String loading = 'Loading..';
@@ -27,4 +23,14 @@ class AppStrings {
   static const String profile = 'Profile';
   static const String home = 'Home';
   static const String logout = 'Logout';
+
+  // Validate Expressions
+  static const String emailAddressCanNotBeEmpty =
+      'Email Address Can\'t be Empty!';
+  static const String enterCorrectEmailAddress = 'Enter Correct Email Address';
+  static const String passwordCanNotBeEmpty = 'Password Can\'t Be Empty!';
+  static const String passwordCanNotBeLessThan_8Characters =
+      'Password Can\'t Be Less Than 8 Characters!';
+  static const String emailAddressRegularExpression =
+      r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$';
 }

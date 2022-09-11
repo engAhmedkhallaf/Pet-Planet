@@ -50,7 +50,7 @@ class MyApp extends StatelessWidget {
               navigatorKey: Constants.navigatorKey,
               theme: getApplicationTheme(),
               onGenerateRoute: RouteGenerator.getRoute,
-              initialRoute: Routes.authRoute,
+              initialRoute: Routes.authLayoutRoute,
               debugShowCheckedModeBanner: false,
             )),
       ),

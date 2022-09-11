@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../colors/color_manager.dart';
 import '../fonts/font_manager.dart';
 import '../styles/style_manager.dart';
@@ -77,65 +78,135 @@ ThemeData getApplicationTheme() {
       ),
     ),
 
+    textButtonTheme: TextButtonThemeData(
+      style: ButtonStyle(
+        foregroundColor: const MaterialStatePropertyAll(ColorManager.grey),
+        textStyle: MaterialStatePropertyAll(
+          TextStyle(
+            fontSize: AppSize.s16.sp,
+            color: ColorManager.white,
+            fontWeight: FontWeightManager.bold,
+            fontFamily: FontConstants.fontFamily,
+          ),
+        ),
+      ),
+    ),
     // text theme
     textTheme: TextTheme(
-      headline1: getMediumStyle(
-          color: ColorManager.white, fontSize: FontSizeManager.s24),
-      headline2: getRegularStyle(
-          color: ColorManager.white, fontSize: FontSizeManager.s20),
-      headline3: getRegularStyle(
-          color: ColorManager.white, fontSize: FontSizeManager.s18),
-      headline4: getBoldStyle(
-          color: ColorManager.white, fontSize: FontSizeManager.s34),
-      headline5: getRegularStyle(
-          color: ColorManager.white, fontSize: FontSizeManager.s18),
-      subtitle1: getRegularStyle(
-          color: ColorManager.lightGrey, fontSize: FontSizeManager.s18),
-      subtitle2: getRegularStyle(
-          color: ColorManager.primaryColor, fontSize: FontSizeManager.s14),
-      caption: getRegularStyle(color: ColorManager.grey),
-      bodyText1: getRegularStyle(
-          color: ColorManager.grey, fontSize: FontSizeManager.s16),
+      // DISPLAY REGULAR
+
+      displayLarge: getBoldStyle(
+          color: ColorManager.white, fontSize: FontSizeManager.s50.sp),
+      displayMedium: getRegularStyle(
+          color: ColorManager.white, fontSize: FontSizeManager.s45.sp),
+      displaySmall: getRegularStyle(
+          color: ColorManager.white, fontSize: FontSizeManager.s36.sp),
+
+      // HEADLINE REGULAR
+      headlineLarge: getRegularStyle(
+          color: ColorManager.white, fontSize: FontSizeManager.s32.sp),
+      headlineMedium: getRegularStyle(
+          color: ColorManager.white, fontSize: FontSizeManager.s28.sp),
+      headlineSmall: getRegularStyle(
+          color: ColorManager.grey, fontSize: FontSizeManager.s20.sp),
+
+      // TITLE MEDIUM
+      titleLarge: getMediumStyle(
+          color: ColorManager.lightGrey, fontSize: FontSizeManager.s22.sp),
+      titleMedium: getMediumStyle(
+          color: ColorManager.lightGrey, fontSize: FontSizeManager.s16.sp),
+      titleSmall: getMediumStyle(
+          color: ColorManager.lightGrey, fontSize: FontSizeManager.s14.sp),
+
+      // LABEL MEDIUM
+      labelLarge: getMediumStyle(
+          color: ColorManager.lightGrey, fontSize: FontSizeManager.s14.sp),
+      labelMedium: getMediumStyle(
+          color: ColorManager.lightGrey, fontSize: FontSizeManager.s12.sp),
+      labelSmall: getMediumStyle(
+          color: ColorManager.lightGrey, fontSize: FontSizeManager.s11.sp),
+
+      // BODY MEDIUM
+      bodyLarge: getMediumStyle(
+          color: ColorManager.grey, fontSize: FontSizeManager.s16.sp),
+      bodyMedium: getRegularStyle(
+          color: ColorManager.grey, fontSize: FontSizeManager.s14.sp),
+      bodySmall: getRegularStyle(
+          color: ColorManager.grey, fontSize: FontSizeManager.s12.sp),
     ),
 
     // input decoration theme
     inputDecorationTheme: InputDecorationTheme(
-      contentPadding: const EdgeInsets.all(AppPadding.p8),
+      filled: true,
+      fillColor: ColorManager.lightGreyWithOpacity_10,
+
+      // Content padding
+      contentPadding: const EdgeInsets.symmetric(
+        horizontal: AppPadding.p28,
+        vertical: AppPadding.p12,
+      ),
+
+      // Floating Label Style
+      // floatingLabelStyle: const TextStyle(color: ColorManager.grey),
 
       // hint style
       hintStyle: getRegularStyle(color: ColorManager.grey),
 
       // label style
-      labelStyle: getRegularStyle(color: ColorManager.white),
+      labelStyle: getRegularStyle(color: ColorManager.grey).copyWith(
+        fontSize: FontSizeManager.s16,
+      ),
 
       // error style
-      errorStyle: getRegularStyle(color: ColorManager.primaryColor),
+      errorStyle: getRegularStyle(color: ColorManager.errorColor),
+
+      // Suffix
+      suffixIconColor: ColorManager.primaryColor,
+      suffixStyle: TextStyle(fontSize: AppSize.s10.w),
 
       // enabled border
-      enabledBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: ColorManager.grey, width: AppSize.s1_5),
-        borderRadius: const BorderRadius.all(Radius.circular(AppSize.s8)),
+      enabledBorder: const OutlineInputBorder(
+        borderRadius: BorderRadius.all(Radius.circular(AppSize.s50)),
+        borderSide: BorderSide(
+          color: ColorManager.transparent,
+          width: AppSize.s1_5,
+        ),
+      ),
+
+      // disabled border
+      disabledBorder: const OutlineInputBorder(
+        borderRadius: BorderRadius.all(Radius.circular(AppSize.s50)),
+        borderSide: BorderSide(
+          color: ColorManager.transparent,
+          width: AppSize.s1_5,
+        ),
       ),
 
       // focused border
-      focusedBorder: OutlineInputBorder(
-        borderSide:
-            BorderSide(color: ColorManager.primaryColor, width: AppSize.s1_5),
-        borderRadius: const BorderRadius.all(Radius.circular(AppSize.s8)),
+      focusedBorder: const OutlineInputBorder(
+        borderRadius: BorderRadius.all(Radius.circular(AppSize.s50)),
+        borderSide: BorderSide(
+          color: ColorManager.white,
+          width: AppSize.s1,
+        ),
       ),
 
       // error border
-      errorBorder: OutlineInputBorder(
-        borderSide:
-            BorderSide(color: ColorManager.primaryColor, width: AppSize.s1_5),
-        borderRadius: const BorderRadius.all(Radius.circular(AppSize.s8)),
+      errorBorder: const OutlineInputBorder(
+        borderRadius: BorderRadius.all(Radius.circular(AppSize.s50)),
+        borderSide: BorderSide(
+          color: ColorManager.errorColor,
+          width: AppSize.s1,
+        ),
       ),
 
       // focused error border
-      focusedErrorBorder: OutlineInputBorder(
-        borderSide:
-            BorderSide(color: ColorManager.primaryColor, width: AppSize.s1_5),
-        borderRadius: const BorderRadius.all(Radius.circular(AppSize.s8)),
+      focusedErrorBorder: const OutlineInputBorder(
+        borderSide: BorderSide(
+          color: ColorManager.white,
+          width: AppSize.s1,
+        ),
+        borderRadius: BorderRadius.all(Radius.circular(AppSize.s50)),
       ),
     ),
   );

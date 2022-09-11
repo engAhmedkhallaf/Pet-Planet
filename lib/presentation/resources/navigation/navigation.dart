@@ -6,6 +6,7 @@ void navigatorAndRemove(context, String routeName) {
     routeName,
     (route) => false,
   );
+  print('REMOVE ALL ROUTES & MOVING TO: $routeName');
 }
 
 void navigatorTo(context, String routeName) {
@@ -13,4 +14,12 @@ void navigatorTo(context, String routeName) {
     context,
     routeName,
   );
+  print('MOVING TO: $routeName');
+}
+
+void navigateBack(context) {
+  Navigator.pop(
+    context,
+  );
+  print('CLOSE: $context');
 }
