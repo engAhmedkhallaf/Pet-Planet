@@ -13,6 +13,7 @@ class CustomTextFormField extends StatelessWidget {
   FocusNode focusNode;
   TextInputAction textInputAction;
   IconData? suffixIcon;
+  Iterable<String>? autofillHints;
   CustomTextFormField({
     super.key,
     required this.labelText,
@@ -26,11 +27,13 @@ class CustomTextFormField extends StatelessWidget {
     this.onEditingComplete,
     this.suffixIcon,
     this.onSuffixIconButtonPressed,
+    this.autofillHints,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      autofillHints: autofillHints,
       onEditingComplete: onEditingComplete,
       textInputAction: textInputAction,
       focusNode: focusNode,

@@ -56,6 +56,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     keyboardType: TextInputType.name,
                     controller: _nameController,
                     validator: _nameValidator,
+                    autofillHints: const [AutofillHints.name],
                   ),
                   SizedBox(
                     height: AppSize.s20.h,
@@ -69,6 +70,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     keyboardType: TextInputType.emailAddress,
                     controller: _emailController,
                     validator: _emailValidator,
+                    autofillHints: const [AutofillHints.email],
                   ),
                   SizedBox(
                     height: AppSize.s20.h,
@@ -82,6 +84,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     keyboardType: TextInputType.phone,
                     controller: _mobileNumberController,
                     validator: _mobileNumberValidator,
+                    autofillHints: const [
+                      AutofillHints.telephoneNumberNational
+                    ],
                   ),
                   SizedBox(
                     height: AppSize.s20.h,
@@ -95,6 +100,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     keyboardType: TextInputType.streetAddress,
                     controller: _addressController,
                     validator: _addressValidator,
+                    autofillHints: const [AutofillHints.addressCity],
                   ),
                   SizedBox(
                     height: AppSize.s20.h,
@@ -112,6 +118,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ? Icons.visibility_off_outlined
                         : Icons.visibility_outlined,
                     onSuffixIconButtonPressed: _showPassword,
+                    autofillHints: const [AutofillHints.password],
                   ),
                   SizedBox(
                     height: AppSize.s30.h,

@@ -56,6 +56,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     keyboardType: TextInputType.emailAddress,
                     controller: _emailController,
                     validator: _emailValidator,
+                    autofillHints: const [AutofillHints.email],
                   ),
                   SizedBox(
                     height: AppSize.s20.h,
@@ -73,6 +74,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ? Icons.visibility_off_outlined
                         : Icons.visibility_outlined,
                     onSuffixIconButtonPressed: _showPassword,
+                    autofillHints: const [AutofillHints.password],
                   ),
                   SizedBox(
                     height: AppSize.s30.h,
