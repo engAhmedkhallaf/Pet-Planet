@@ -52,7 +52,12 @@ class AuthLayoutScreen extends StatelessWidget {
                   height: AppSize.s16.h,
                 ),
                 OutlinedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    navigatorTo(
+                      context,
+                      Routes.signUpRoute,
+                    );
+                  },
                   child: const Text(
                     AppStrings.createAnAccount,
                   ),

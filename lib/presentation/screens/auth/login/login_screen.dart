@@ -22,6 +22,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       backgroundColor: ColorManager.backgroundColor,
       body: SingleChildScrollView(
+        keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
         child: Container(
           padding: const EdgeInsets.only(
             top: AppPadding.p100,
@@ -54,19 +55,19 @@ class _LoginScreenState extends State<LoginScreen> {
                     labelText: AppStrings.yourEmail,
                     keyboardType: TextInputType.emailAddress,
                     controller: _emailController,
-                    validator: emailValidator,
+                    validator: _emailValidator,
                   ),
                   SizedBox(
                     height: AppSize.s20.h,
                   ),
                   CustomTextFormField(
-                    onEditingComplete: formValidate,
+                    onEditingComplete: _formValidate,
                     textInputAction: TextInputAction.done,
                     focusNode: _passwordFocusNode,
                     labelText: AppStrings.password,
                     keyboardType: TextInputType.visiblePassword,
                     controller: _passwordController,
-                    validator: passwordValidator,
+                    validator: _passwordValidator,
                     obscureText: _passwordVisible,
                     suffixIcon: _passwordVisible
                         ? Icons.visibility_off_outlined
@@ -77,7 +78,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: AppSize.s30.h,
                   ),
                   ElevatedButton(
-                    onPressed: formValidate,
+                    onPressed: _formValidate,
                     child: const Text(
                       AppStrings.login,
                     ),
@@ -143,17 +144,17 @@ class _LoginScreenState extends State<LoginScreen> {
     super.dispose();
   }
 
-  void formValidate() async {
+  void _formValidate() async {
     FocusScope.of(context).unfocus();
     if (_formKey.currentState!.validate()) {
       print(_emailController.text);
       print(_passwordController.text);
     }
-    
+
     //TODO: ADD Function of Login
   }
 
-  String? emailValidator(value) {
+  String? _emailValidator(value) {
     if (value!.isEmpty) {
       return AppStrings.emailAddressCanNotBeEmpty;
     } else if (!RegExp(AppStrings.emailAddressRegularExpression)
@@ -164,7 +165,7 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
 
-  String? passwordValidator(value) {
+  String? _passwordValidator(value) {
     if (value!.isEmpty) {
       return AppStrings.passwordCanNotBeEmpty;
     } else if (value.length < 8) {
