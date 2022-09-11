@@ -1,13 +1,11 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:pet_planet/core/routes/routes_names.dart';
 import 'package:pet_planet/presentation/resources/colors/color_manager.dart';
 import 'package:pet_planet/presentation/resources/navigation/navigation.dart';
 import 'package:pet_planet/presentation/resources/strings_manager.dart';
-import 'package:pet_planet/presentation/resources/theme/theme_manager.dart';
 import 'package:pet_planet/presentation/resources/values_manager.dart';
 import 'package:pet_planet/presentation/screens/auth/widgets/custom_text_form_field.dart';
+import 'package:pet_planet/presentation/screens/auth/widgets/login_signup_footer.dart';
 import 'package:pet_planet/presentation/screens/auth/widgets/login_signup_forgot_header.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -39,9 +37,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 children: [
                   const LoginSignupForgotHeader(
                     title: AppStrings.signUp,
-                    desc: AppStrings.addYourDetailsToSignUP,
+                    subTitle: AppStrings.addYourDetailsToSignUP,
                     titleTextStyle: null,
-                    descTextStyle: null,
+                    subTitleTextStyle: null,
                   ),
                   CustomTextFormField(
                     onEditingComplete: () =>
@@ -128,24 +126,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   SizedBox(
                     height: AppSize.s18.h,
                   ),
-                  Text.rich(
-                    TextSpan(
-                      text: AppStrings.alreadyHavaAnAccount,
-                      style: getApplicationTheme().textTheme.bodyLarge,
-                      children: [
-                        TextSpan(
-                          text: ' ${AppStrings.login}',
-                          style: TextStyle(
-                            color: ColorManager.primaryColor,
-                            fontSize: AppSize.s18.sp,
-                          ),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              navigateBack(context);
-                            },
-                        ),
-                      ],
-                    ),
+                  LoginSignupFooter(
+                    question: AppStrings.alreadyHavaAnAccount,
+                    actionText: AppStrings.login,
+                    onTap: () {
+                      navigateBack(context);
+                    },
                   ),
                   SizedBox(
                     height: AppSize.s10.h,

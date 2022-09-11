@@ -43,13 +43,13 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                 children: [
                   LoginSignupForgotHeader(
                     title: AppStrings.resetPassword,
-                    desc: AppStrings
+                    subTitle: AppStrings
                         .pleaseEnterYourEmailToReciveALinkToCreateANewPasswordViaEmail,
                     titleTextStyle: getApplicationTheme()
                         .textTheme
                         .displayLarge!
                         .copyWith(fontSize: FontSizeManager.s42.sp),
-                    descTextStyle: getApplicationTheme()
+                    subTitleTextStyle: getApplicationTheme()
                         .textTheme
                         .headlineSmall!
                         .copyWith(fontSize: FontSizeManager.s18.sp),

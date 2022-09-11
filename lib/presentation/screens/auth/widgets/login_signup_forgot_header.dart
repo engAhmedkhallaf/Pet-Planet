@@ -4,12 +4,18 @@ import 'package:pet_planet/presentation/resources/theme/theme_manager.dart';
 import 'package:pet_planet/presentation/resources/values_manager.dart';
 
 class LoginSignupForgotHeader extends StatelessWidget {
-  const LoginSignupForgotHeader({super.key, required this.title, required this.desc, required this.titleTextStyle, required this.descTextStyle,});
+  const LoginSignupForgotHeader({
+    super.key,
+    required this.title,
+    required this.subTitle,
+    required this.titleTextStyle,
+    required this.subTitleTextStyle,
+  });
 
   final String title;
-  final String desc;
+  final String subTitle;
   final TextStyle? titleTextStyle;
-  final TextStyle? descTextStyle;
+  final TextStyle? subTitleTextStyle;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -18,12 +24,13 @@ class LoginSignupForgotHeader extends StatelessWidget {
       children: [
         Text(
           title,
-          style:titleTextStyle ?? getApplicationTheme().textTheme.displayLarge,
+          style: titleTextStyle ?? getApplicationTheme().textTheme.displayLarge,
           textAlign: TextAlign.center,
         ),
         Text(
-          desc,
-          style:descTextStyle?? getApplicationTheme().textTheme.headlineSmall,
+          subTitle,
+          style: subTitleTextStyle ??
+              getApplicationTheme().textTheme.headlineSmall,
           textAlign: TextAlign.center,
         ),
         SizedBox(
