@@ -21,15 +21,15 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorManager.backgroundColor,
-      body: SingleChildScrollView(
-        keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-        child: Container(
-          padding: const EdgeInsets.only(
-            top: AppPadding.p100,
-            left: AppPadding.p20,
-            right: AppPadding.p20,
-          ),
-          height: MediaQuery.of(context).size.height,
+      body: Container(
+        padding: const EdgeInsets.only(
+          top: AppPadding.p100,
+          left: AppPadding.p20,
+          right: AppPadding.p20,
+        ),
+        height: MediaQuery.of(context).size.height,
+        child: SingleChildScrollView(
+          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
           child: Form(
             key: _formKey,
             child: Column(
@@ -88,12 +88,17 @@ class _LoginScreenState extends State<LoginScreen> {
                       AppStrings.forgotYourPassword,
                     ),
                   ),
-                  const Expanded(child: SizedBox.shrink()),
+                  SizedBox(
+                    height: 0.25.sh,
+                  ),
                   LoginSignupFooter(
                     question: AppStrings.doNotHavaAnAccount,
                     actionText: AppStrings.signUp,
                     onTap: () {
-                      navigateBack(context);
+                      navigatorTo(
+                        context,
+                        Routes.signUpRoute,
+                      );
                     },
                   ),
                   SizedBox(

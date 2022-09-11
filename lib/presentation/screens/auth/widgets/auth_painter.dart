@@ -26,11 +26,12 @@ class _AuthCustomPainter extends CustomPainter {
     final Paint paint = Paint()..color = ColorManager.primaryColor;
     Path path = Path();
 
-    double maxHeight = AppSize.s330.h;
-    double maxWidth = size.width.abs().w;
-    double radius = AppSize.s160.w;
-    double borderRadius = 15.r;
-    double sideOffset = (maxWidth - radius - (AppSize.s4 * borderRadius)) / 2;
+    double maxHeight = 0.48.sh;
+    double maxWidth = (size.width.abs() / 360).sw;
+    double radius = 0.44.sw;
+    double borderRadius = 0.04.sw;
+    double sideOffset =
+        (((maxWidth - radius - (AppSize.s4 * borderRadius)) / 2) / 360).sw;
 
     path.moveTo(AppSize.s0, AppSize.s0);
     path.relativeLineTo(AppSize.s0, maxHeight - borderRadius);

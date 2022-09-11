@@ -3,18 +3,18 @@ import 'package:pet_planet/presentation/resources/colors/color_manager.dart';
 
 class CustomTextFormField extends StatelessWidget {
   final String labelText;
-  bool obscureText;
-  TextEditingController? controller;
-  TextInputType keyboardType;
-  void Function()? onEditingComplete;
-  void Function()? onTap;
-  void Function()? onSuffixIconButtonPressed;
-  String? Function(String?)? validator;
-  FocusNode focusNode;
-  TextInputAction textInputAction;
-  IconData? suffixIcon;
-  Iterable<String>? autofillHints;
-  CustomTextFormField({
+ final bool obscureText;
+ final TextEditingController? controller;
+ final TextInputType keyboardType;
+ final void Function()? onEditingComplete;
+ final void Function()? onTap;
+ final void Function()? onSuffixIconButtonPressed;
+ final String? Function(String?)? validator;
+ final FocusNode focusNode;
+ final TextInputAction textInputAction;
+ final IconData? suffixIcon;
+ final Iterable<String>? autofillHints;
+ const CustomTextFormField({
     super.key,
     required this.labelText,
     this.controller,

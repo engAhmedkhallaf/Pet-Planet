@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pet_planet/core/routes/routes_manager.dart';
 import 'package:pet_planet/core/routes/routes_names.dart';
 import 'package:pet_planet/presentation/bussiness_logic/app_cubit/app_cubit.dart';
+import 'package:pet_planet/presentation/bussiness_logic/cubit/internet_cubit.dart';
 import 'package:pet_planet/presentation/resources/theme/theme_manager.dart';
 
 import 'constants.dart';
@@ -15,6 +16,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider(
+          create: (context) => InternetCubit()..checkConnection(),
+          lazy: false,
+        ),
         BlocProvider(
           create: (context) => AppCubit(),
           lazy: false,
@@ -44,15 +49,24 @@ class MyApp extends StatelessWidget {
         //   lazy: false,
         // ),
       ],
-      child: ScreenUtilInit(
-        designSize: const Size(360, 690),
-        builder: ((context, child) => MaterialApp(
-              navigatorKey: Constants.navigatorKey,
-              theme: getApplicationTheme(),
-              onGenerateRoute: RouteGenerator.getRoute,
-              initialRoute: Routes.authLayoutRoute,
-              debugShowCheckedModeBanner: false,
-            )),
+      child: BlocListener<InternetCubit, InternetState>(
+        listener: (context, state) {
+          if (state is InternetConnectedState) {
+            print('Yes');
+          } else {
+            print('Nooooooo');
+          }
+        },
+        child: ScreenUtilInit(
+          designSize: const Size(360, 690),
+          builder: ((context, child) => MaterialApp(
+                navigatorKey: Constants.navigatorKey,
+                theme: getApplicationTheme(),
+                onGenerateRoute: RouteGenerator.getRoute,
+                initialRoute: Routes.authLayoutRoute,
+                debugShowCheckedModeBanner: false,
+              )),
+        ),
       ),
     );
   }

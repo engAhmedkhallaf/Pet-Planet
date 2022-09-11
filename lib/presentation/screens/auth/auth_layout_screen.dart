@@ -15,58 +15,62 @@ class AuthLayoutScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorManager.backgroundColor,
-      body: Stack(
-        fit: StackFit.expand,
-        children: [
-          const AuthPainter(),
-          const AuthLogoWithName(),
-          Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: AppSize.s16.w,
-              vertical: AppSize.s20.w,
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
+        backgroundColor: ColorManager.backgroundColor,
+        body: SingleChildScrollView(
+          child: SizedBox(
+            height: MediaQuery.of(context).size.height,
+            child: Stack(
+              fit: StackFit.expand,
               children: [
-                Text(
-                  AppStrings.desc,
-                  style: getApplicationTheme().textTheme.bodyText1,
-                  textAlign: TextAlign.center,
-                ),
-                SizedBox(
-                  height: AppSize.s25.h,
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    navigatorTo(
-                      context,
-                      Routes.loginRoute,
-                    );
-                  },
-                  child: const Text(
-                    AppStrings.login,
+                const AuthPainter(),
+                const AuthLogoWithName(),
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: AppSize.s16.w,
+                    vertical: AppSize.s20.w,
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text(
+                        AppStrings.desc,
+                        style: getApplicationTheme().textTheme.bodyLarge,
+                        textAlign: TextAlign.center,
+                      ),
+                      SizedBox(
+                        height: AppSize.s25.h,
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          navigatorTo(
+                            context,
+                            Routes.loginRoute,
+                          );
+                        },
+                        child: const Text(
+                          AppStrings.login,
+                        ),
+                      ),
+                      SizedBox(
+                        height: AppSize.s16.h,
+                      ),
+                      OutlinedButton(
+                        onPressed: () {
+                          navigatorTo(
+                            context,
+                            Routes.signUpRoute,
+                          );
+                        },
+                        child: const Text(
+                          AppStrings.createAnAccount,
+                        ),
+                      )
+                    ],
                   ),
                 ),
-                SizedBox(
-                  height: AppSize.s16.h,
-                ),
-                OutlinedButton(
-                  onPressed: () {
-                    navigatorTo(
-                      context,
-                      Routes.signUpRoute,
-                    );
-                  },
-                  child: const Text(
-                    AppStrings.createAnAccount,
-                  ),
-                )
               ],
             ),
           ),
-        ],
-      ),
-    );
+        ));
   }
 }

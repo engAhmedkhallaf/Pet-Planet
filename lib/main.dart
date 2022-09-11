@@ -19,7 +19,7 @@ void main() async {
   // bloc observer
   Bloc.observer = MyBlocObserver();
 
-  runApp(const MyApp());
+  runApp( const MyApp());
 
   // Remove Splash  
   FlutterNativeSplash.remove();

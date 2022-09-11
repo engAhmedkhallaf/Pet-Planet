@@ -20,7 +20,7 @@ class AuthLogoWithName extends StatelessWidget {
         Image.asset(
           AssetsManager.petLogo,
           fit: BoxFit.fill,
-          width: 90.w,
+          width: 0.25.sw,
           // height: 90.w,
         ),
         SizedBox(
@@ -29,7 +29,7 @@ class AuthLogoWithName extends StatelessWidget {
         Text.rich(
           TextSpan(
             text: AppStrings.pets,
-            style: getApplicationTheme().textTheme.headline4!.copyWith(
+            style: getApplicationTheme().textTheme.headlineLarge!.copyWith(
                   // fontWeight: FontWeightManager.bold,
                   color: ColorManager.primaryColor,
                 ),
@@ -45,7 +45,7 @@ class AuthLogoWithName extends StatelessWidget {
         ),
         Text(
           AppStrings.foodDelivery,
-          style: getApplicationTheme().textTheme.bodyText1!.copyWith(
+          style: getApplicationTheme().textTheme.bodySmall!.copyWith(
                 color: ColorManager.white,
                 letterSpacing: 4.w,
                 fontSize: AppSize.s10.sp,
