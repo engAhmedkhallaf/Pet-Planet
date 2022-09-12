@@ -4,6 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:pet_planet/bloc_observer.dart';
 import 'package:pet_planet/core/app/app.dart';
+import 'package:pet_planet/core/network/local/cache_helper.dart';
 
 void main() async {
   // ensure initialized
@@ -13,14 +14,17 @@ void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
+  // Cache Helper initalize
+  await CacheHelper.init();
+
   // firebase initalize
-  // await Firebase.initializeApp();
+  await Firebase.initializeApp();
 
   // bloc observer
   Bloc.observer = MyBlocObserver();
 
-  runApp( const MyApp());
+  runApp(const MyApp());
 
-  // Remove Splash  
+  // Remove Splash
   FlutterNativeSplash.remove();
 }

@@ -5,12 +5,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 part 'internet_state.dart';
 
 class InternetCubit extends Cubit<InternetState> {
+  static InternetCubit get(context) => BlocProvider.of(context);
+
   StreamSubscription? _connectivityStreamSubscription;
 
   InternetCubit() : super(InternetLoadingState());
 
   void connected() {
-    emit(const InternetConnectedState(message: 'Your internet connection was restored'));
+    emit(const InternetConnectedState(
+        message: 'Your internet connection was restored'));
   }
 
   void notConnected() {

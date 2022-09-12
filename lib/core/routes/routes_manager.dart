@@ -4,6 +4,7 @@ import 'package:pet_planet/presentation/screens/auth/auth_layout_screen.dart';
 import 'package:pet_planet/presentation/screens/auth/forget_password/forgot_password_screen.dart';
 import 'package:pet_planet/presentation/screens/auth/login/login_screen.dart';
 import 'package:pet_planet/presentation/screens/auth/signup/signup_screen.dart';
+import 'package:pet_planet/presentation/screens/home/home.dart';
 
 class RouteGenerator {
   static Route<dynamic> getRoute(RouteSettings routeSettings) {
@@ -16,6 +17,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) =>const SignUpScreen());
       case Routes.forgotPasswordRoute:
         return MaterialPageRoute(builder: (_) =>const ForgotPasswordScreen());
+      case Routes.homeRoute:
+        return MaterialPageRoute(builder: (_) =>const HomeScreen());
       // case Routes.cartRoute:
       //   return MaterialPageRoute(builder: (_) => const CartView());
       // case Routes.deliveryLocationRoute:

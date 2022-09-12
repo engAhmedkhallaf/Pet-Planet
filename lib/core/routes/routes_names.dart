@@ -5,6 +5,7 @@ class Routes {
   static const String signUpRoute = "signUpRoute";
   static const String forgotPasswordRoute = "forgotPasswordRoute";
   static const String newPasswordRoute = "newPasswordRoute";
+  static const String homeRoute = "homeRoute";
 
   static const String layoutRoute = "layoutRoute";
   static const String deliveryLocationRoute = "deliveryLocationRoute";

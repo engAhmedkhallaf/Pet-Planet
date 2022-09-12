@@ -7,6 +7,7 @@ import 'package:pet_planet/presentation/resources/theme/theme_manager.dart';
 import 'package:pet_planet/presentation/resources/values_manager.dart';
 import 'package:pet_planet/presentation/screens/auth/widgets/custom_text_form_field.dart';
 import 'package:pet_planet/presentation/screens/auth/widgets/login_signup_forgot_header.dart';
+import 'package:pet_planet/presentation/screens/auth/widgets/text_form_field_validators.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
   const ForgotPasswordScreen({super.key});
@@ -60,7 +61,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                     labelText: AppStrings.email,
                     keyboardType: TextInputType.emailAddress,
                     controller: _emailController,
-                    validator: _emailValidator,
+                    validator: emailValidator,
                     autofillHints: const [AutofillHints.email],
                   ),
                   SizedBox(
@@ -99,16 +100,5 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
     }
 
     //TODO: ADD Function of forget Password
-  }
-
-  String? _emailValidator(value) {
-    if (value!.isEmpty) {
-      return AppStrings.emailAddressCanNotBeEmpty;
-    } else if (!RegExp(AppStrings.emailAddressRegularExpression)
-        .hasMatch(value)) {
-      return AppStrings.enterCorrectEmailAddress;
-    } else {
-      return null;
-    }
   }
 }

@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pet_planet/core/network/local/cache_helper.dart';
 import 'package:pet_planet/core/routes/routes_manager.dart';
 import 'package:pet_planet/core/routes/routes_names.dart';
 import 'package:pet_planet/presentation/bussiness_logic/app_cubit/app_cubit.dart';
-import 'package:pet_planet/presentation/bussiness_logic/cubit/internet_cubit.dart';
+import 'package:pet_planet/presentation/bussiness_logic/internet_cubit/internet_cubit.dart';
+import 'package:pet_planet/presentation/bussiness_logic/signup_cubit/signup_cubit.dart';
+import 'package:pet_planet/presentation/common/widgets/show_alert_dialog.dart';
 import 'package:pet_planet/presentation/resources/theme/theme_manager.dart';
+import 'package:pet_planet/presentation/screens/auth/auth_layout_screen.dart';
+import 'package:pet_planet/presentation/screens/home/home.dart';
 
-import 'constants.dart';
+import 'app_constants.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -24,49 +29,40 @@ class MyApp extends StatelessWidget {
           create: (context) => AppCubit(),
           lazy: false,
         ),
-        // BlocProvider(
-        //   create: (context) => di.instance<AuthCubit>(),
-        //   lazy: false,
-        // ),
-        // BlocProvider(
-        //   create: (context) => di.instance<CartCubit>(),
-        //   lazy: false,
-        // ),
-        // BlocProvider(
-        //   create: (context) => di.instance<HomeCubit>(),
-        //   lazy: false,
-        // ),
-        // BlocProvider(
-        //   create: (context) => di.instance<UserCubit>(),
-        //   lazy: false,
-        // ),
-        // BlocProvider(
-        //   create: (context) => di.instance<CategoriesCubit>(),
-        //   lazy: false,
-        // ),
-        // BlocProvider(
-        //   create: (context) => di.instance<NotificationCubit>(),
-        //   lazy: false,
-        // ),
-      ],
-      child: BlocListener<InternetCubit, InternetState>(
-        listener: (context, state) {
-          if (state is InternetConnectedState) {
-            print('Yes');
-          } else {
-            print('Nooooooo');
-          }
-        },
-        child: ScreenUtilInit(
-          designSize: const Size(360, 690),
-          builder: ((context, child) => MaterialApp(
-                navigatorKey: Constants.navigatorKey,
-                theme: getApplicationTheme(),
-                onGenerateRoute: RouteGenerator.getRoute,
-                initialRoute: Routes.authLayoutRoute,
-                debugShowCheckedModeBanner: false,
-              )),
+        BlocProvider(
+          create: (context) => SignupCubit(),
+          lazy: false,
         ),
+      ],
+      child: ScreenUtilInit(
+        designSize: const Size(360, 690),
+        builder: ((context, child) {
+          return MaterialApp(
+            navigatorKey: AppConstants.navigatorKey,
+            theme: getApplicationTheme(),
+            onGenerateRoute: RouteGenerator.getRoute,
+            // initialRoute: CacheHelper.get(key: AppConstants.uidKey) == null
+            //     ? Routes.authLayoutRoute
+            //     : Routes.homeRoute,
+
+            // Use Home to make you able to show Alert to the whole tree of Material App
+            home: BlocListener<InternetCubit, InternetState>(
+              listener: (context, state) {
+                if (state is InternetDisConnectedState) {
+                  showAlertDialog(
+                    context,
+                    state.message,
+                    'Please check your internet',
+                  );
+                } else {}
+              },
+              child: CacheHelper.get(key: AppConstants.uidKey) == null
+                  ? const AuthLayoutScreen()
+                  : const HomeScreen(),
+            ),
+            debugShowCheckedModeBanner: false,
+          );
+        }),
       ),
     );
   }

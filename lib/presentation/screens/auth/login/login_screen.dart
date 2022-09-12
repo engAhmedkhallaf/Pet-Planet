@@ -8,6 +8,7 @@ import 'package:pet_planet/presentation/resources/values_manager.dart';
 import 'package:pet_planet/presentation/screens/auth/widgets/custom_text_form_field.dart';
 import 'package:pet_planet/presentation/screens/auth/widgets/login_signup_footer.dart';
 import 'package:pet_planet/presentation/screens/auth/widgets/login_signup_forgot_header.dart';
+import 'package:pet_planet/presentation/screens/auth/widgets/text_form_field_validators.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -50,7 +51,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     labelText: AppStrings.yourEmail,
                     keyboardType: TextInputType.emailAddress,
                     controller: _emailController,
-                    validator: _emailValidator,
+                    validator: emailValidator,
                     autofillHints: const [AutofillHints.email],
                   ),
                   SizedBox(
@@ -63,7 +64,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     labelText: AppStrings.password,
                     keyboardType: TextInputType.visiblePassword,
                     controller: _passwordController,
-                    validator: _passwordValidator,
+                    validator: passwordValidator,
                     obscureText: _passwordVisible,
                     suffixIcon: _passwordVisible
                         ? Icons.visibility_off_outlined
@@ -95,6 +96,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     question: AppStrings.doNotHavaAnAccount,
                     actionText: AppStrings.signUp,
                     onTap: () {
+                      navigateBack(context);
                       navigatorTo(
                         context,
                         Routes.signUpRoute,
@@ -142,27 +144,6 @@ class _LoginScreenState extends State<LoginScreen> {
     }
 
     //TODO: ADD Function of Login
-  }
-
-  String? _emailValidator(value) {
-    if (value!.isEmpty) {
-      return AppStrings.emailAddressCanNotBeEmpty;
-    } else if (!RegExp(AppStrings.emailAddressRegularExpression)
-        .hasMatch(value)) {
-      return AppStrings.enterCorrectEmailAddress;
-    } else {
-      return null;
-    }
-  }
-
-  String? _passwordValidator(value) {
-    if (value!.isEmpty) {
-      return AppStrings.passwordCanNotBeEmpty;
-    } else if (value.length < 8) {
-      return AppStrings.passwordCanNotBeLessThan_8Characters;
-    } else {
-      return null;
-    }
   }
 
   void _showPassword() {
