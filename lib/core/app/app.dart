@@ -3,9 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pet_planet/core/network/local/cache_helper.dart';
 import 'package:pet_planet/core/routes/routes_manager.dart';
-import 'package:pet_planet/core/routes/routes_names.dart';
-import 'package:pet_planet/presentation/bussiness_logic/app_cubit/app_cubit.dart';
+import 'package:pet_planet/presentation/bussiness_logic/forgot_password_cubit/forgot_password_cubit.dart';
 import 'package:pet_planet/presentation/bussiness_logic/internet_cubit/internet_cubit.dart';
+import 'package:pet_planet/presentation/bussiness_logic/login_cubit/login_cubit.dart';
 import 'package:pet_planet/presentation/bussiness_logic/signup_cubit/signup_cubit.dart';
 import 'package:pet_planet/presentation/common/widgets/show_alert_dialog.dart';
 import 'package:pet_planet/presentation/resources/theme/theme_manager.dart';
@@ -25,12 +25,17 @@ class MyApp extends StatelessWidget {
           create: (context) => InternetCubit()..checkConnection(),
           lazy: false,
         ),
+        
         BlocProvider(
-          create: (context) => AppCubit(),
+          create: (context) => SignupCubit(),
           lazy: false,
         ),
         BlocProvider(
-          create: (context) => SignupCubit(),
+          create: (context) => LoginCubit(),
+          lazy: false,
+        ),
+        BlocProvider(
+          create: (context) => ForgotPasswordCubit(),
           lazy: false,
         ),
       ],

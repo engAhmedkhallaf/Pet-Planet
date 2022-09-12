@@ -9,6 +9,7 @@ class UserModel extends Equatable {
   final String? address;
   final String? photoUrl;
   final DateTime? createdAt;
+  final bool ? isEmailVerified;
 
   const UserModel({
     this.id,
@@ -18,6 +19,7 @@ class UserModel extends Equatable {
     required this.address,
     required this.photoUrl,
     required this.createdAt,
+    required this.isEmailVerified,
   });
 
   UserModel copyWith({
@@ -27,7 +29,7 @@ class UserModel extends Equatable {
     String? phoneNumber,
     String? address,
     String? photoUrl,
-    DateTime? createdAt,
+    DateTime? createdAt,bool ? isEmailVerified,
   }) {
     return UserModel(
       id: id ?? this.id,
@@ -37,6 +39,7 @@ class UserModel extends Equatable {
       address: address ?? this.address,
       photoUrl: photoUrl ?? this.photoUrl,
       createdAt: createdAt ?? this.createdAt,
+      isEmailVerified: isEmailVerified ?? this.isEmailVerified,
     );
   }
 
@@ -49,17 +52,20 @@ class UserModel extends Equatable {
       address: snapshot['address'],
       photoUrl: snapshot['photoUrl'],
       createdAt: snapshot['createdAt'],
+      isEmailVerified: snapshot['isEmailVerified'],
     );
   }
 
   Map<String, Object> toDocument() {
     return {
+      'id':id!,
       'displayName': displayName!,
       'email': email!,
       'phoneNumber': phoneNumber!,
       'address': address!,
       'imageUrl': photoUrl!,
       'createdAt': createdAt!,
+      'isEmailVerified': isEmailVerified!,
     };
   }
 
@@ -71,6 +77,6 @@ class UserModel extends Equatable {
         phoneNumber,
         address,
         photoUrl,
-        createdAt,
+        createdAt,isEmailVerified,
       ];
 }

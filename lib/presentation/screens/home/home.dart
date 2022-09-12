@@ -17,6 +17,8 @@ class HomeScreen extends StatelessWidget {
             onPressed: () async {
               await FirebaseAuth.instance.signOut();
               await CacheHelper.removeData(key: 'uid');
+
+              // ignore: use_build_context_synchronously
               navigatorAndRemove(context, Routes.authLayoutRoute);
             },
             child: const Text('SIGN OUT'),

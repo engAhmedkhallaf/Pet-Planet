@@ -6,11 +6,9 @@ import 'package:pet_planet/core/app/app_constants.dart';
 import 'package:pet_planet/core/network/local/cache_helper.dart';
 import 'package:pet_planet/core/routes/routes_names.dart';
 import 'package:pet_planet/data/models/user_model.dart';
-import 'package:pet_planet/presentation/bussiness_logic/internet_cubit/internet_cubit.dart';
 import 'package:pet_planet/presentation/bussiness_logic/signup_cubit/signup_cubit.dart';
 import 'package:pet_planet/presentation/common/widgets/custom_loading_indicator.dart';
-import 'package:pet_planet/presentation/common/widgets/my_snack_bar.dart';
-import 'package:pet_planet/presentation/common/widgets/show_alert_dialog.dart';
+import 'package:pet_planet/presentation/common/widgets/custom_snack_bar.dart';
 import 'package:pet_planet/presentation/resources/colors/color_manager.dart';
 import 'package:pet_planet/presentation/resources/navigation/navigation.dart';
 import 'package:pet_planet/presentation/resources/strings_manager.dart';
@@ -53,7 +51,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         } else if (state is SignupFailureState) {
           _isLoading = false;
 
-          mySnackBar(
+          errorSnackBar(
             context: context,
             message: state.errorMessage,
           );
@@ -246,6 +244,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           address: _addressController.text,
           photoUrl: AppConstants.noPhotoUrl,
           createdAt: DateTime.now(),
+          isEmailVerified: false,
         ),
       );
     }
