@@ -3,13 +3,13 @@ import 'package:equatable/equatable.dart';
 
 class UserModel extends Equatable {
   final String? id;
-  final String? displayName;
-  final String? email;
-  final String? phoneNumber;
-  final String? address;
-  final String? photoUrl;
+  final String displayName;
+  final String email;
+  final String phoneNumber;
+  final String address;
+  final String photoUrl;
   final DateTime? createdAt;
-  final bool ? isEmailVerified;
+  final bool? isEmailVerified;
 
   const UserModel({
     this.id,
@@ -19,7 +19,7 @@ class UserModel extends Equatable {
     required this.address,
     required this.photoUrl,
     required this.createdAt,
-    required this.isEmailVerified,
+    this.isEmailVerified = false,
   });
 
   UserModel copyWith({
@@ -29,7 +29,8 @@ class UserModel extends Equatable {
     String? phoneNumber,
     String? address,
     String? photoUrl,
-    DateTime? createdAt,bool ? isEmailVerified,
+    DateTime? createdAt,
+    bool? isEmailVerified,
   }) {
     return UserModel(
       id: id ?? this.id,
@@ -58,14 +59,13 @@ class UserModel extends Equatable {
 
   Map<String, Object> toDocument() {
     return {
-      'id':id!,
-      'displayName': displayName!,
-      'email': email!,
-      'phoneNumber': phoneNumber!,
-      'address': address!,
-      'imageUrl': photoUrl!,
-      'createdAt': createdAt!,
-      'isEmailVerified': isEmailVerified!,
+      'displayName': displayName,
+      'email': email,
+      'phoneNumber': phoneNumber,
+      'address': address,
+      'imageUrl': photoUrl,
+      'createdAt': createdAt as Object,
+      'isEmailVerified': isEmailVerified as Object,
     };
   }
 
@@ -77,6 +77,7 @@ class UserModel extends Equatable {
         phoneNumber,
         address,
         photoUrl,
-        createdAt,isEmailVerified,
+        createdAt,
+        isEmailVerified,
       ];
 }
