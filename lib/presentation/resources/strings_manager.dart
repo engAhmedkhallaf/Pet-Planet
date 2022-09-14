@@ -38,6 +38,10 @@ class AppStrings {
   static const String profile = 'Profile';
   static const String home = 'Home';
   static const String logout = 'Logout';
+  static const String cart = 'Cart';
+
+  // Home Screen
+  static const String search = 'Search';
 
   // Validation Phrases
   static const String emailAddressCanNotBeEmpty =

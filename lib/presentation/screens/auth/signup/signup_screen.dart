@@ -44,7 +44,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
           _isLoading = false;
 
-          navigatorAndRemove(
+          navigateAndRemove(
             context,
             Routes.homeRoute,
           );
@@ -173,7 +173,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           actionText: AppStrings.login,
                           onTap: () {
                             navigateBack(context);
-                            navigatorTo(context, Routes.loginRoute);
+                            navigateTo(context, Routes.loginRoute);
                           },
                         ),
                         SizedBox(

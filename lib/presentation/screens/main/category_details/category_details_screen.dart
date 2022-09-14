@@ -1,9 +1,7 @@
-
-
 import 'package:flutter/material.dart';
 
-class CartView extends StatelessWidget {
-  const CartView({super.key});
+class CategoryDetailsScreen extends StatelessWidget {
+  const CategoryDetailsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

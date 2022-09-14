@@ -43,7 +43,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
           _isLoading = false;
 
-          navigatorAndRemove(
+          navigateAndRemove(
             context,
             Routes.homeRoute,
           );
@@ -124,7 +124,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         TextButton(
                           onPressed: () {
-                            navigatorTo(context, Routes.forgotPasswordRoute);
+                            navigateTo(context, Routes.forgotPasswordRoute);
                           },
                           child: const Text(
                             AppStrings.forgotYourPassword,
@@ -138,7 +138,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           actionText: AppStrings.signUp,
                           onTap: () {
                             navigateBack(context);
-                            navigatorTo(
+                            navigateTo(
                               context,
                               Routes.signUpRoute,
                             );
@@ -195,6 +195,5 @@ class _LoginScreenState extends State<LoginScreen> {
     setState(() {
       _passwordVisiblityOff = !_passwordVisiblityOff;
     });
-    print(_passwordVisiblityOff);
   }
 }

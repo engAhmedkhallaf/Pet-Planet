@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-void navigatorAndRemove(context, String routeName) {
+void navigateAndRemove(context, String routeName) {
   Navigator.pushNamedAndRemoveUntil(
     context,
     routeName,
@@ -9,13 +9,28 @@ void navigatorAndRemove(context, String routeName) {
   print('REMOVE ALL ROUTES & MOVING TO: $routeName');
 }
 
-void navigatorTo(context, String routeName) {
+void navigateTo(context, String routeName) {
   Navigator.pushNamed(
     context,
     routeName,
   );
   print('MOVING TO: $routeName');
 }
+
+
+void navigateToWithArguments(
+  context,
+  String routeName,
+  Object? arguments,
+) {
+  Navigator.pushNamed(
+    context,
+    routeName,
+    arguments: arguments,
+  );
+  print('MOVING TO: $routeName');
+}
+
 
 void navigateBack(context) {
   Navigator.pop(

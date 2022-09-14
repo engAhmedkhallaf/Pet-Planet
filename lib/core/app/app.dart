@@ -3,14 +3,18 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pet_planet/core/network/local/cache_helper.dart';
 import 'package:pet_planet/core/routes/routes_manager.dart';
+import 'package:pet_planet/presentation/bussiness_logic/cart_cubit/cart_cubit.dart';
 import 'package:pet_planet/presentation/bussiness_logic/forgot_password_cubit/forgot_password_cubit.dart';
+import 'package:pet_planet/presentation/bussiness_logic/home_cubit/home_cubit.dart';
 import 'package:pet_planet/presentation/bussiness_logic/internet_cubit/internet_cubit.dart';
 import 'package:pet_planet/presentation/bussiness_logic/login_cubit/login_cubit.dart';
+import 'package:pet_planet/presentation/bussiness_logic/main_cubit/main_cubit.dart';
 import 'package:pet_planet/presentation/bussiness_logic/signup_cubit/signup_cubit.dart';
+import 'package:pet_planet/presentation/bussiness_logic/user_cubit/user_cubit.dart';
 import 'package:pet_planet/presentation/common/widgets/show_alert_dialog.dart';
 import 'package:pet_planet/presentation/resources/theme/theme_manager.dart';
 import 'package:pet_planet/presentation/screens/auth/auth_layout_screen.dart';
-import 'package:pet_planet/presentation/screens/home/home.dart';
+import 'package:pet_planet/presentation/screens/main/main_layout.dart';
 
 import 'app_constants.dart';
 
@@ -25,7 +29,6 @@ class MyApp extends StatelessWidget {
           create: (context) => InternetCubit()..checkConnection(),
           lazy: false,
         ),
-        
         BlocProvider(
           create: (context) => SignupCubit(),
           lazy: false,
@@ -38,6 +41,22 @@ class MyApp extends StatelessWidget {
           create: (context) => ForgotPasswordCubit(),
           lazy: false,
         ),
+        BlocProvider(
+          create: (context) => MainCubit(),
+          lazy: false,
+        ),
+        BlocProvider(
+          create: (context) => UserCubit(),
+          lazy: false,
+        ),
+        BlocProvider(
+          create: (context) => HomeCubit(),
+          lazy: false,
+        ),
+        BlocProvider(
+          create: (context) => CartCubit(),
+          lazy: false,
+        ),
       ],
       child: ScreenUtilInit(
         designSize: const Size(360, 690),
@@ -46,9 +65,6 @@ class MyApp extends StatelessWidget {
             navigatorKey: AppConstants.navigatorKey,
             theme: getApplicationTheme(),
             onGenerateRoute: RouteGenerator.getRoute,
-            // initialRoute: CacheHelper.get(key: AppConstants.uidKey) == null
-            //     ? Routes.authLayoutRoute
-            //     : Routes.homeRoute,
 
             // Use Home to make you able to show Alert to the whole tree of Material App
             home: BlocListener<InternetCubit, InternetState>(
@@ -59,11 +75,13 @@ class MyApp extends StatelessWidget {
                     state.message,
                     'Please check your internet',
                   );
-                } else {}
+                } else {
+                  // navigateBack(context);
+                }
               },
               child: CacheHelper.get(key: AppConstants.uidKey) == null
                   ? const AuthLayoutScreen()
-                  : const HomeScreen(),
+                  : const MainLayout(),
             ),
             debugShowCheckedModeBanner: false,
           );

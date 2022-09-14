@@ -42,7 +42,7 @@ class AuthLayoutScreen extends StatelessWidget {
                       ),
                       ElevatedButton(
                         onPressed: () {
-                          navigatorTo(
+                          navigateTo(
                             context,
                             Routes.loginRoute,
                           );
@@ -56,7 +56,7 @@ class AuthLayoutScreen extends StatelessWidget {
                       ),
                       OutlinedButton(
                         onPressed: () {
-                          navigatorTo(
+                          navigateTo(
                             context,
                             Routes.signUpRoute,
                           );

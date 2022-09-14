@@ -11,8 +11,17 @@ ThemeData getApplicationTheme() {
     primaryColor: ColorManager.primaryColor,
     disabledColor: ColorManager.grey,
     primarySwatch: ColorManager.mainColorSwatch,
+    scaffoldBackgroundColor: ColorManager.transparent,
     colorScheme:
         ColorScheme.fromSwatch().copyWith(secondary: ColorManager.grey),
+
+    iconTheme: const IconThemeData(size: FontSizeManager.s15),
+
+    // Progress Indicator Theme
+    progressIndicatorTheme: const ProgressIndicatorThemeData(
+      color: ColorManager.primaryColor,
+      circularTrackColor: ColorManager.lightGrey,
+    ),
 
     // card view theme
     cardTheme: const CardTheme(
@@ -27,10 +36,23 @@ ThemeData getApplicationTheme() {
       color: ColorManager.primaryColor,
       elevation: AppSize.s4,
       shadowColor: ColorManager.primaryColor,
-
-      ///TODO:
       titleTextStyle: getRegularStyle(
           color: ColorManager.white, fontSize: FontSizeManager.s16),
+    ),
+
+    // bottom navigation bar theme
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      type: BottomNavigationBarType.fixed,
+      selectedItemColor: ColorManager.primaryColor,
+      unselectedItemColor: ColorManager.grey,
+      backgroundColor: ColorManager.black,
+      elevation: AppSize.s20,
+      selectedIconTheme: IconThemeData(
+        size: AppSize.s25.w,
+      ),
+      unselectedIconTheme: IconThemeData(
+        size: AppSize.s20.w,
+      ),
     ),
 
     // button theme
@@ -78,6 +100,7 @@ ThemeData getApplicationTheme() {
       ),
     ),
 
+    // Text button theme
     textButtonTheme: TextButtonThemeData(
       style: ButtonStyle(
         foregroundColor: const MaterialStatePropertyAll(ColorManager.grey),
@@ -91,6 +114,7 @@ ThemeData getApplicationTheme() {
         ),
       ),
     ),
+
     // text theme
     textTheme: TextTheme(
       // DISPLAY REGULAR
@@ -141,9 +165,9 @@ ThemeData getApplicationTheme() {
       fillColor: ColorManager.lightGreyWithOpacity_10,
 
       // Content padding
-      contentPadding: const EdgeInsets.symmetric(
-        horizontal: AppPadding.p28,
-        vertical: AppPadding.p12,
+      contentPadding: EdgeInsets.symmetric(
+        horizontal: AppPadding.p28.w,
+        vertical: AppPadding.p12.h,
       ),
 
       // Floating Label Style
@@ -163,6 +187,10 @@ ThemeData getApplicationTheme() {
       // Suffix
       suffixIconColor: ColorManager.primaryColor,
       suffixStyle: TextStyle(fontSize: AppSize.s10.w),
+
+      // Prefix
+      prefixIconColor: ColorManager.mainColorSwatch.shade800,
+      prefixStyle: TextStyle(fontSize: AppSize.s10.w),
 
       // enabled border
       enabledBorder: const OutlineInputBorder(

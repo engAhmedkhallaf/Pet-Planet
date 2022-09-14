@@ -14,10 +14,10 @@ void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
-  // Cache Helper initalize
+  // Cache Helper initialize
   await CacheHelper.init();
 
-  // firebase initalize
+  // firebase initialize
   await Firebase.initializeApp();
 
   // bloc observer

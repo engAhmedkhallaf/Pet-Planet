@@ -1,0 +1,151 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pet_planet/presentation/resources/assets/assets_manager.dart';
+import 'package:pet_planet/presentation/resources/colors/color_manager.dart';
+import 'package:pet_planet/presentation/resources/fonts/font_manager.dart';
+import 'package:pet_planet/presentation/resources/theme/theme_manager.dart';
+import 'package:pet_planet/presentation/resources/values_manager.dart';
+import 'package:pet_planet/presentation/screens/main/home/widgets/dummy_data.dart';
+
+class HomeCategoryItem extends StatelessWidget {
+  const HomeCategoryItem({super.key, required this.itemModel});
+  final ItemModel itemModel;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: AppSize.s90.w,
+      width: double.infinity,
+      padding: EdgeInsets.symmetric(
+        horizontal: AppPadding.p20.w,
+        vertical: AppPadding.p8.h,
+      ),
+      child: Stack(
+        fit: StackFit.expand,
+        children: [
+          Container(
+            padding: EdgeInsets.symmetric(
+              horizontal: AppPadding.p55.w,
+            ),
+            margin: EdgeInsets.symmetric(horizontal: AppPadding.p20.w),
+            decoration: BoxDecoration(
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(AppSize.s50),
+                bottomLeft: Radius.circular(AppSize.s50),
+                topRight: Radius.circular(AppSize.s8),
+                bottomRight: Radius.circular(AppSize.s8),
+              ),
+              color: ColorManager.backgroundColor.withOpacity(0.85),
+              boxShadow: [
+                BoxShadow(
+                  color: ColorManager.grey,
+                  spreadRadius: AppSize.s2.r,
+                  blurRadius: AppSize.s1.r,
+                ),
+              ],
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  itemModel.label!,
+                  /* TODO:Add name of category */
+                  style: getApplicationTheme().textTheme.displayLarge!.copyWith(
+                        fontSize: FontSizeManager.s22.sp,
+                        height: AppSize.s1.w,
+                        color: ColorManager.lightGrey,
+                      ),
+                ),
+                Text(
+                  '${itemModel.items!} Items',
+                  /* TODO:Add length of category's items */
+                  style:
+                      getApplicationTheme().textTheme.headlineSmall!.copyWith(
+                            fontSize: FontSizeManager.s12.sp,
+                            height: AppSize.s1.w,
+                          ),
+                ),
+              ],
+            ),
+          ),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Container(
+              width: AppSize.s65.w,
+              height: AppSize.s65.w,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: (itemModel.imagePath == null ||
+                          itemModel.imagePath!.isEmpty)
+                      ? const AssetImage(AssetsManager.noImage)
+                      : CachedNetworkImageProvider(
+                          itemModel.imagePath!,
+                          /* TODO:Add imageUrl of category */
+                        ) as ImageProvider,
+                  fit: BoxFit.cover,
+                ),
+                shape: BoxShape.circle,
+                boxShadow: [
+                  BoxShadow(
+                    color: ColorManager.grey,
+                    blurRadius: AppSize.s6.r,
+                    spreadRadius: AppSize.s1.r,
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Align(
+            alignment: Alignment.centerRight,
+            child: Container(
+              width: AppSize.s30.w,
+              height: AppSize.s30.w,
+              decoration: BoxDecoration(
+                color: ColorManager.lightGrey,
+                shape: BoxShape.circle,
+                boxShadow: [
+                  BoxShadow(
+                    color: ColorManager.grey,
+                    blurRadius: AppSize.s6.w,
+                  ),
+                ],
+              ),
+              child: Center(
+                child: Icon(
+                  // IconBroken.Arrow___Right_2,
+                  Icons.arrow_forward_ios_outlined,
+                  color: ColorManager.primaryColor,
+                  size: AppSize.s18.w,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+/*child: CircleAvatar(
+                radius: (AppSize.s65 / 2).w,
+                child: (itemModel.imagePath == null ||
+                        itemModel.imagePath!.isEmpty)
+                    ? Image.asset(
+                        AssetsManager.noImage,
+                        fit: BoxFit.cover,
+                        // width: AppSize.s65.w,
+                        // height: AppSize.s65.w,
+                      )
+                    : CachedNetworkImage(
+                        imageUrl: itemModel.imagePath!,
+                        placeholder: (context, url) =>
+                            const CircularProgressIndicator.adaptive(),
+                        errorWidget: (context, url, error) =>
+                            Image.asset(AssetsManager.noImage),
+                        fit: BoxFit.cover,
+                        // width: AppSize.s65.w,
+                        // height: AppSize.s65.w,
+                      ),
+              ),
+            */

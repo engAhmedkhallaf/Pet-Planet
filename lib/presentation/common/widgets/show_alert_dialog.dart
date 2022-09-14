@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pet_planet/presentation/resources/colors/color_manager.dart';
 import 'package:pet_planet/presentation/resources/fonts/font_manager.dart';
+import 'package:pet_planet/presentation/resources/navigation/navigation.dart';
 import 'package:pet_planet/presentation/resources/theme/theme_manager.dart';
 import 'package:pet_planet/presentation/resources/values_manager.dart';
 
@@ -48,7 +49,7 @@ showAlertDialog(
                         ColorManager.primaryColor),
                   ),
               onPressed: () {
-                Navigator.of(context).pop();
+                navigateBack(context);
               },
               child: const Text("OK"),
             ),

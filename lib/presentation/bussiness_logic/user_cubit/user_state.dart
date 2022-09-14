@@ -1,18 +1,18 @@
 part of 'user_cubit.dart';
 
 abstract class UserState extends Equatable {
+  const UserState();
   @override
   List<Object?> get props => [];
 }
 
-class UserInitial extends UserState {}
+class UserInitialState extends UserState {}
 
-class UserDataLoadingState extends UserState {}
+class GetUserDataLoadingState extends UserState {}
 
-class UserDataSuccessState extends UserState {
-  
+class GetUserDataSuccessState extends UserState {}
+
+class GetUserDataFailureState extends UserState {
+  final String errorMessage;
+  const GetUserDataFailureState(this.errorMessage);
 }
-
-class UserDataFailureState extends UserState {}
-
-
