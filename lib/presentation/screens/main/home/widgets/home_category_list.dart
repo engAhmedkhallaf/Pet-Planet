@@ -4,7 +4,7 @@ import 'package:pet_planet/core/routes/routes_names.dart';
 import 'package:pet_planet/presentation/resources/colors/color_manager.dart';
 import 'package:pet_planet/presentation/resources/navigation/navigation.dart';
 import 'package:pet_planet/presentation/resources/values_manager.dart';
-import 'package:pet_planet/presentation/screens/main/home/widgets/dummy_data.dart';
+import 'package:pet_planet/data/models/category_model.dart';
 import 'package:pet_planet/presentation/screens/main/home/widgets/home_category_item.dart';
 
 class HomeCategoryList extends StatelessWidget {
@@ -32,12 +32,17 @@ class HomeCategoryList extends StatelessWidget {
             itemBuilder: ((context, index) {
               return InkWell(
                 onTap: () {
-                  navigateTo(context, Routes.categoryDetailsRoute);
+                  navigateToWithArguments(
+                    context,
+                    Routes.categoryDetailsRoute,
+                    Category.categoriesList[index],
+                  );
                 },
-                child: HomeCategoryItem(itemModel: ItemModel.list[index]),
+                child:
+                    HomeCategoryItem(categoryModel: Category.categoriesList[index]),
               );
             }),
-            itemCount: ItemModel.list.length,
+            itemCount: Category.categoriesList.length,
           ),
         ),
       ],

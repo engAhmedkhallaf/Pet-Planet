@@ -1,16 +1,17 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pet_planet/data/models/product_model.dart';
 import 'package:pet_planet/presentation/resources/assets/assets_manager.dart';
 import 'package:pet_planet/presentation/resources/colors/color_manager.dart';
 import 'package:pet_planet/presentation/resources/fonts/font_manager.dart';
 import 'package:pet_planet/presentation/resources/theme/theme_manager.dart';
 import 'package:pet_planet/presentation/resources/values_manager.dart';
-import 'package:pet_planet/presentation/screens/main/home/widgets/dummy_data.dart';
+import 'package:pet_planet/data/models/category_model.dart';
 
 class HomeCategoryItem extends StatelessWidget {
-  const HomeCategoryItem({super.key, required this.itemModel});
-  final ItemModel itemModel;
+  const HomeCategoryItem({super.key, required this.categoryModel});
+  final Category categoryModel;
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +51,7 @@ class HomeCategoryItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  itemModel.label!,
+                  categoryModel.name,
                   /* TODO:Add name of category */
                   style: getApplicationTheme().textTheme.displayLarge!.copyWith(
                         fontSize: FontSizeManager.s22.sp,
@@ -59,7 +60,7 @@ class HomeCategoryItem extends StatelessWidget {
                       ),
                 ),
                 Text(
-                  '${itemModel.items!} Items',
+                  '${Product.productList.where((element) => (element.category == categoryModel.name)).toList().length} Items',
                   /* TODO:Add length of category's items */
                   style:
                       getApplicationTheme().textTheme.headlineSmall!.copyWith(
@@ -77,11 +78,10 @@ class HomeCategoryItem extends StatelessWidget {
               height: AppSize.s65.w,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: (itemModel.imagePath == null ||
-                          itemModel.imagePath!.isEmpty)
+                  image: (categoryModel.imageUrl.isEmpty)
                       ? const AssetImage(AssetsManager.noImage)
                       : CachedNetworkImageProvider(
-                          itemModel.imagePath!,
+                          categoryModel.imageUrl,
                           /* TODO:Add imageUrl of category */
                         ) as ImageProvider,
                   fit: BoxFit.cover,

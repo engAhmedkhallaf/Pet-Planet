@@ -8,6 +8,7 @@ class AssetsManager{
   static const String petLogo = "$imagePath/pet.png";
   static const String authBackground = "$imagePath/auth-background.png";
   static const String noImage = "$imagePath/no-photo.png";
+  static const String plus = "$iconPath/plus.png";
 
 
 
