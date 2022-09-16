@@ -39,9 +39,15 @@ class AppStrings {
   static const String home = 'Home';
   static const String logout = 'Logout';
   static const String cart = 'Cart';
+  static const String wishlist = 'Wishlist';
+  static const String someThingWentWrong = 'Some Thing Went Wrong';
 
   // Home Screen
   static const String search = 'Search';
+  static const String addToCart = 'Add To Cart';
+  static const String addToWishlist = 'Add To Wishlist';
+  static const String openWishlist = 'Open Wishlist';
+  static const String back = 'Back';
 
   // Validation Phrases
   static const String emailAddressCanNotBeEmpty =

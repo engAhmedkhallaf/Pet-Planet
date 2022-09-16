@@ -11,6 +11,7 @@ import 'package:pet_planet/presentation/bussiness_logic/login_cubit/login_cubit.
 import 'package:pet_planet/presentation/bussiness_logic/main_cubit/main_cubit.dart';
 import 'package:pet_planet/presentation/bussiness_logic/signup_cubit/signup_cubit.dart';
 import 'package:pet_planet/presentation/bussiness_logic/user_cubit/user_cubit.dart';
+import 'package:pet_planet/presentation/bussiness_logic/wishlist_bloc/wishlist_bloc.dart';
 import 'package:pet_planet/presentation/common/widgets/show_alert_dialog.dart';
 import 'package:pet_planet/presentation/resources/theme/theme_manager.dart';
 import 'package:pet_planet/presentation/screens/auth/auth_layout_screen.dart';
@@ -55,6 +56,10 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => CartCubit(),
+          lazy: false,
+        ),
+        BlocProvider(
+          create: (context) => WishlistBloc()..add(LoadWishlist()),
           lazy: false,
         ),
       ],

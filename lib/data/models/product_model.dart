@@ -30,7 +30,8 @@ class Product extends Equatable {
     Product(
       id: '2',
       name: 'Drink #2',
-      description: 'description',
+      description:
+          'Lorem description Lorem description Lorem description Lorem description Lorem description Lorem description Lorem description Lorem description Lorem description Lorem description Lorem description ',
       category: 'Food',
       imageUrl:
           'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8HF9WbEG8AH5wFdNDjNKemyMWfZT-sEC6Ht-sMqvystVw8_6uxqEwtFJIWbXm11J5VkQ&usqp=CAU',
@@ -52,7 +53,7 @@ class Product extends Equatable {
       category: 'Food',
       imageUrl:
           'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8HF9WbEG8AH5wFdNDjNKemyMWfZT-sEC6Ht-sMqvystVw8_6uxqEwtFJIWbXm11J5VkQ&usqp=CAU',
-      price:165.5,
+      price: 165.5,
     ),
     Product(
       id: '5',

@@ -7,6 +7,7 @@ import 'package:pet_planet/presentation/resources/assets/assets_manager.dart';
 import 'package:pet_planet/presentation/resources/colors/color_manager.dart';
 import 'package:pet_planet/presentation/resources/fonts/font_manager.dart';
 import 'package:pet_planet/presentation/resources/navigation/navigation.dart';
+import 'package:pet_planet/presentation/resources/strings_manager.dart';
 import 'package:pet_planet/presentation/resources/styles/style_manager.dart';
 import 'package:pet_planet/presentation/resources/values_manager.dart';
 
@@ -26,7 +27,8 @@ class CustomAppBarWithWishlist extends StatelessWidget
         onPressed: () {
           navigateBack(context);
         },
-        tooltip: 'Back',
+        splashColor: ColorManager.primaryColor,
+        tooltip: AppStrings.back,
         icon: Icon(
           IconBroken.Arrow___Left_2,
           color: ColorManager.grey,
@@ -42,16 +44,19 @@ class CustomAppBarWithWishlist extends StatelessWidget
         ).copyWith(letterSpacing: FontSizeManager.s1.w),
       ),
       actions: [
-        IconButton(
-          onPressed: () {
-            navigateTo(context, Routes.wishlistRoute);
-          },
-          splashColor: ColorManager.primaryColor,
-          tooltip: 'Open Wishlist',
-          icon: Icon(
-            IconBroken.Heart,
-            color: ColorManager.grey,
-            size: AppSize.s25.w,
+        Container(
+          padding: EdgeInsets.only(right: AppPadding.p5.w),
+          child: IconButton(
+            onPressed: () {
+              navigateTo(context, Routes.wishlistRoute);
+            },
+            splashColor: ColorManager.primaryColor,
+            tooltip: AppStrings.openWishlist,
+            icon: Icon(
+              IconBroken.Heart,
+              color: ColorManager.grey,
+              size: AppSize.s25.w,
+            ),
           ),
         ),
       ],

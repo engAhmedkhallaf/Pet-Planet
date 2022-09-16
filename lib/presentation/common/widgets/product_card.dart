@@ -6,6 +6,7 @@ import 'package:pet_planet/data/models/product_model.dart';
 import 'package:pet_planet/presentation/resources/assets/assets_manager.dart';
 import 'package:pet_planet/presentation/resources/colors/color_manager.dart';
 import 'package:pet_planet/presentation/resources/navigation/navigation.dart';
+import 'package:pet_planet/presentation/resources/strings_manager.dart';
 import 'package:pet_planet/presentation/resources/theme/theme_manager.dart';
 import 'package:pet_planet/presentation/resources/values_manager.dart';
 
@@ -18,7 +19,11 @@ class ProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        navigateToWithArguments(context, Routes.productRoute, product,);
+        navigateToWithArguments(
+          context,
+          Routes.productRoute,
+          product,
+        );
       },
       child: Container(
         margin: EdgeInsets.only(bottom: AppMargin.m12.w),
@@ -33,21 +38,22 @@ class ProductCard extends StatelessWidget {
             Column(
               children: [
                 Expanded(
-                  child: Container(
-                    child: (product.imageUrl.isEmpty)
-                        ? Image.asset(
-                            AssetsManager.noImage,
-                            fit: BoxFit.cover,
-                          )
-                        : CachedNetworkImage(
-                            imageUrl: product.imageUrl,
-                            fit: BoxFit.cover,
-                          ),
+                  child: CachedNetworkImage(
+                    imageUrl: product.imageUrl,
+                    placeholder: (context, url) =>
+                        const CircularProgressIndicator(),
+                    errorWidget: (context, url, error) => Image.asset(
+                      AssetsManager.noImage,
+                      fit: BoxFit.cover,
+                    ),
+                    fit: BoxFit.cover,
                   ),
                 ),
                 Text(
                   product.name,
                   style: getApplicationTheme().textTheme.titleLarge,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                 ),
                 Text(
                   '\$${product.price}',
@@ -61,14 +67,15 @@ class ProductCard extends StatelessWidget {
             Positioned(
               right: AppPadding.p8.w,
               top: AppPadding.p8.w,
-              child: InkWell(
-                onTap: () {
-                  //TODO: Add to CART
-                },
-                child: CircleAvatar(
-                  backgroundColor: ColorManager.primaryColor,
-                  radius: AppSize.s15.r,
-                  child: Image.asset(
+              child: CircleAvatar(
+                backgroundColor: ColorManager.primaryColor,
+                radius: AppSize.s15.r,
+                child: IconButton(
+                  onPressed: () {
+                    //TODO: Add to CART
+                  },
+                  tooltip: AppStrings.addToCart,
+                  icon: Image.asset(
                     AssetsManager.plus,
                     color: ColorManager.white,
                     height: AppSize.s15.w,
