@@ -55,6 +55,27 @@ class AppStrings {
   static const String deliveryFee = 'DELIVERY FEE';
   static const String total = 'TOTAL';
   static const String goToWishlist = 'GO TO CHECKOUT';
+  static const String yourCartIsEmpty = 'Your Cart is Empty!';
+  static const String addedToYourCart = 'Added To Your Cart';
+  static const String removedFromYourCart = 'Removed From Your Cart';
+  static const String yourProductIsIncreasedByOne = 'Your Product Is Increased By One';
+  static const String yourProductIsDecreasedByOne = 'Your Product Is Decreased By One';
+
+  // Wishlist Screen
+  static const String yourWishlistIsEmpty = 'Your Wishlist is Empty!';
+  static const String aboutProduct = 'About Product';
+  static const String addedToYourWishlist = 'Added To Your Wishlist';
+  static const String removedFromYourWishlist = 'Removed From Your Wishlist';
+
+
+
+
+
+
+
+
+
+
 
   // Validation Phrases
   static const String emailAddressCanNotBeEmpty =

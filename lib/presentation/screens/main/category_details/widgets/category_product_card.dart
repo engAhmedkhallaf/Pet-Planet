@@ -1,8 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pet_planet/core/routes/routes_names.dart';
 import 'package:pet_planet/data/models/product_model.dart';
+import 'package:pet_planet/presentation/bussiness_logic/cart_bloc/cart_bloc.dart';
 import 'package:pet_planet/presentation/resources/assets/assets_manager.dart';
 import 'package:pet_planet/presentation/resources/colors/color_manager.dart';
 import 'package:pet_planet/presentation/resources/navigation/navigation.dart';
@@ -10,11 +12,10 @@ import 'package:pet_planet/presentation/resources/strings_manager.dart';
 import 'package:pet_planet/presentation/resources/theme/theme_manager.dart';
 import 'package:pet_planet/presentation/resources/values_manager.dart';
 
-class ProductCard extends StatelessWidget {
-  const ProductCard({super.key, required this.product});
+class CategoryProductCard extends StatelessWidget {
+  const CategoryProductCard({super.key, required this.product});
   final Product product;
 
-//TODO: ظبط ال colors
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -70,16 +71,29 @@ class ProductCard extends StatelessWidget {
               child: CircleAvatar(
                 backgroundColor: ColorManager.primaryColor,
                 radius: AppSize.s15.r,
-                child: IconButton(
-                  onPressed: () {
-                    //TODO: Add to CART
+                child: BlocBuilder<CartBloc, CartState>(
+                  builder: (context, state) {
+                    return IconButton(
+                      onPressed: () {
+                        if (state is CartSuccessState) {
+                          context
+                              .read<CartBloc>()
+                              .add(AddProductToCartEvent(product));
+                          const snackBar = SnackBar(
+                            content: Text(AppStrings.addedToYourCart),
+                            duration: AppDuration.d500,
+                          );
+                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                        }
+                      },
+                      tooltip: AppStrings.addToCart,
+                      icon: Image.asset(
+                        AssetsManager.plus,
+                        color: ColorManager.white,
+                        height: AppSize.s15.w,
+                      ),
+                    );
                   },
-                  tooltip: AppStrings.addToCart,
-                  icon: Image.asset(
-                    AssetsManager.plus,
-                    color: ColorManager.white,
-                    height: AppSize.s15.w,
-                  ),
                 ),
               ),
             ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pet_planet/presentation/screens/main/cart/cart.dart';
+import 'package:pet_planet/presentation/screens/main/cart/cart_screen.dart';
 import 'package:pet_planet/presentation/screens/main/home/home.dart';
 import 'package:pet_planet/presentation/screens/main/profile/profile.dart';
 

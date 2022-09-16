@@ -5,7 +5,7 @@ import 'package:pet_planet/presentation/screens/auth/auth_layout_screen.dart';
 import 'package:pet_planet/presentation/screens/auth/forget_password/forgot_password_screen.dart';
 import 'package:pet_planet/presentation/screens/auth/login/login_screen.dart';
 import 'package:pet_planet/presentation/screens/auth/signup/signup_screen.dart';
-import 'package:pet_planet/presentation/screens/main/cart/cart.dart';
+import 'package:pet_planet/presentation/screens/main/cart/cart_screen.dart';
 import 'package:pet_planet/presentation/screens/main/category_details/category_details_screen.dart';
 import 'package:pet_planet/presentation/screens/main/checkout/checkout_screen.dart';
 import 'package:pet_planet/presentation/screens/main/home/home.dart';

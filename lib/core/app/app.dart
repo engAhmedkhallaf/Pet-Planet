@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pet_planet/core/network/local/cache_helper.dart';
 import 'package:pet_planet/core/routes/routes_manager.dart';
-import 'package:pet_planet/presentation/bussiness_logic/cart_cubit/cart_cubit.dart';
+import 'package:pet_planet/presentation/bussiness_logic/cart_bloc/cart_bloc.dart';
 import 'package:pet_planet/presentation/bussiness_logic/forgot_password_cubit/forgot_password_cubit.dart';
 import 'package:pet_planet/presentation/bussiness_logic/home_cubit/home_cubit.dart';
 import 'package:pet_planet/presentation/bussiness_logic/internet_cubit/internet_cubit.dart';
@@ -55,11 +55,11 @@ class MyApp extends StatelessWidget {
           lazy: false,
         ),
         BlocProvider(
-          create: (context) => CartCubit(),
+          create: (context) => CartBloc()..add(CartStartedEvent()),
           lazy: false,
         ),
         BlocProvider(
-          create: (context) => WishlistBloc()..add(LoadWishlist()),
+          create: (context) => WishlistBloc()..add(WishlistStartedEvent()),
           lazy: false,
         ),
       ],

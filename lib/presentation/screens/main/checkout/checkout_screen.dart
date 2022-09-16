@@ -9,6 +9,9 @@ class CheckoutScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBarWithWishlist(title: AppStrings.checkout),
-       body:const Center(child: Text('YOUR CHECKOUT'),),);
+      body: const Center(
+        child: Text('YOUR CHECKOUT'),
+      ),
+    );
   }
 }

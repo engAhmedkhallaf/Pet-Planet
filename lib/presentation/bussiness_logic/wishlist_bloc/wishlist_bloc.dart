@@ -9,9 +9,9 @@ part 'wishlist_state.dart';
 
 class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
   WishlistBloc() : super(WishlistLoadingState()) {
-    on<LoadWishlist>(_onStartWishlist);
-    on<AddProductToWishlist>(_onAddWishlistProduct);
-    on<RemoveProductFromWishlist>(_onRemoveWishlistProduct);
+    on<WishlistStartedEvent>(_onStartWishlist);
+    on<AddProductToWishlistEvent>(_onAddWishlistProduct);
+    on<RemoveProductFromWishlistEvent>(_onRemoveWishlistProduct);
   }
 
   void _onStartWishlist(event, Emitter<WishlistState> emit) async {
