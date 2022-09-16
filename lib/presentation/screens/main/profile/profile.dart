@@ -11,3 +11,20 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 }
+/*
+Padding(
+            padding: const EdgeInsets.all(50.0),
+            child: Center(
+              child: ElevatedButton(
+                onPressed: () async {
+                  await FirebaseAuth.instance.signOut();
+                  await CacheHelper.removeData(key: 'uid');
+
+                  // ignore: use_build_context_synchronously
+                  navigateAndRemove(context, Routes.authLayoutRoute);
+                },
+                child: const Text('SIGN OUT'),
+              ),
+            ),
+          ),
+   */

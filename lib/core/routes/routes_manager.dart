@@ -7,6 +7,7 @@ import 'package:pet_planet/presentation/screens/auth/login/login_screen.dart';
 import 'package:pet_planet/presentation/screens/auth/signup/signup_screen.dart';
 import 'package:pet_planet/presentation/screens/main/cart/cart.dart';
 import 'package:pet_planet/presentation/screens/main/category_details/category_details_screen.dart';
+import 'package:pet_planet/presentation/screens/main/checkout/checkout_screen.dart';
 import 'package:pet_planet/presentation/screens/main/home/home.dart';
 import 'package:pet_planet/data/models/category_model.dart';
 import 'package:pet_planet/presentation/screens/main/main_layout.dart';
@@ -50,6 +51,8 @@ class RouteGenerator {
         );
       case Routes.wishlistRoute:
         return MaterialPageRoute(builder: (_) => const WishlistScreen());
+      case Routes.checkRoute:
+        return MaterialPageRoute(builder: (_) => const CheckoutScreen());
 
       default:
         return unDefinedRoute();

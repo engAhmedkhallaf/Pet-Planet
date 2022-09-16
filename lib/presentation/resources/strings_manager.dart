@@ -40,6 +40,7 @@ class AppStrings {
   static const String logout = 'Logout';
   static const String cart = 'Cart';
   static const String wishlist = 'Wishlist';
+  static const String checkout = 'Checkout';
   static const String someThingWentWrong = 'Some Thing Went Wrong';
 
   // Home Screen
@@ -48,6 +49,12 @@ class AppStrings {
   static const String addToWishlist = 'Add To Wishlist';
   static const String openWishlist = 'Open Wishlist';
   static const String back = 'Back';
+
+  // Cart Screen
+  static const String subTotal = 'SUBTOTAL';
+  static const String deliveryFee = 'DELIVERY FEE';
+  static const String total = 'TOTAL';
+  static const String goToWishlist = 'GO TO CHECKOUT';
 
   // Validation Phrases
   static const String emailAddressCanNotBeEmpty =

@@ -2,8 +2,10 @@ import 'dart:ui';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pet_planet/data/models/product_model.dart';
+import 'package:pet_planet/presentation/bussiness_logic/wishlist_bloc/wishlist_bloc.dart';
 import 'package:pet_planet/presentation/common/widgets/custom_appbar_with_wishlist.dart';
 import 'package:pet_planet/presentation/resources/assets/assets_manager.dart';
 import 'package:pet_planet/presentation/resources/colors/color_manager.dart';
@@ -69,17 +71,24 @@ class ProductScreen extends StatelessWidget {
                           CircleAvatar(
                             radius: AppSize.s20.w.r,
                             backgroundColor: ColorManager.primaryColor,
-                            child: IconButton(
-                              onPressed: () {
-                                //TODO: add to wishlist
+                            child: BlocBuilder<WishlistBloc, WishlistState>(
+                              builder: (context, state) {
+                                return IconButton(
+                                  onPressed: () {
+                                    //TODO: add to wishlist
+                                    context
+                                        .read<WishlistBloc>()
+                                        .add(AddProductToWishlist(product));
+                                  },
+                                  tooltip: AppStrings.addToWishlist,
+                                  splashColor: ColorManager.primaryColor,
+                                  icon: Icon(
+                                    IconBroken.Heart,
+                                    color: ColorManager.white,
+                                    size: AppSize.s25.w.r,
+                                  ),
+                                );
                               },
-                              tooltip: AppStrings.addToWishlist,
-                              splashColor: ColorManager.primaryColor,
-                              icon: Icon(
-                                IconBroken.Heart,
-                                color: ColorManager.white,
-                                size: AppSize.s25.w.r,
-                              ),
                             ),
                           ),
                         ],
@@ -101,7 +110,7 @@ class ProductScreen extends StatelessWidget {
       ),
       bottomNavigationBar: BottomAppBar(
         color: ColorManager.lightGrey,
-        child: Container(
+        child: SizedBox(
           height: AppSize.s70,
           child: Row(
             children: [
