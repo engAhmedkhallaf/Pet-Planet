@@ -13,6 +13,7 @@ class WishlistSuccessState extends WishlistState {
   final Wishlist wishlist;
 
   const WishlistSuccessState({this.wishlist = const Wishlist()});
+
   @override
   List<Object> get props => [wishlist];
 }

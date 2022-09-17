@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pet_planet/presentation/bussiness_logic/main_cubit/main_cubit.dart';
+import 'package:pet_planet/presentation/business_logic/main_cubit/main_cubit.dart';
 import 'package:pet_planet/presentation/resources/assets/assets_manager.dart';
 import 'package:pet_planet/presentation/resources/strings_manager.dart';
 

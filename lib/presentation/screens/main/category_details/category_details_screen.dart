@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pet_planet/data/models/product_model.dart';
-import 'package:pet_planet/presentation/bussiness_logic/product_bloc/product_bloc.dart';
+import 'package:pet_planet/presentation/business_logic/product_bloc/product_bloc.dart';
 import 'package:pet_planet/presentation/common/widgets/custom_appbar_with_wishlist.dart';
 import 'package:pet_planet/presentation/resources/strings_manager.dart';
 import 'package:pet_planet/presentation/screens/main/category_details/widgets/category_product_card.dart';

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:pet_planet/presentation/bussiness_logic/wishlist_bloc/wishlist_bloc.dart';
-import 'package:pet_planet/presentation/common/widgets/custom_appbar_with_wishlist.dart';
+import 'package:pet_planet/presentation/business_logic/wishlist_bloc/wishlist_bloc.dart';
 import 'package:pet_planet/presentation/resources/assets/assets_manager.dart';
 import 'package:pet_planet/presentation/resources/colors/color_manager.dart';
 import 'package:pet_planet/presentation/resources/fonts/font_manager.dart';

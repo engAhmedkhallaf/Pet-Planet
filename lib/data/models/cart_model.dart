@@ -24,7 +24,6 @@ class Cart extends Equatable {
       products.fold(0, (total, current) => total + current.price);
 
 // CALCUALTION THE DELIVERY FEE
-//TODO: Update Here what admin need
   double deliveryFee(subTotal) {
     if (subTotal >= 30) {
       return 0.0;

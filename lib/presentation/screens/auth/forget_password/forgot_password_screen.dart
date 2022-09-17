@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
-import 'package:pet_planet/presentation/bussiness_logic/forgot_password_cubit/forgot_password_cubit.dart';
+import 'package:pet_planet/presentation/business_logic/forgot_password_cubit/forgot_password_cubit.dart';
 import 'package:pet_planet/presentation/common/widgets/custom_loading_indicator.dart';
 import 'package:pet_planet/presentation/common/widgets/custom_snack_bar.dart';
 import 'package:pet_planet/presentation/resources/colors/color_manager.dart';

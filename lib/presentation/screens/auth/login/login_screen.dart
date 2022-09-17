@@ -5,7 +5,7 @@ import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:pet_planet/core/app/app_constants.dart';
 import 'package:pet_planet/core/network/local/cache_helper.dart';
 import 'package:pet_planet/core/routes/routes_names.dart';
-import 'package:pet_planet/presentation/bussiness_logic/login_cubit/login_cubit.dart';
+import 'package:pet_planet/presentation/business_logic/login_cubit/login_cubit.dart';
 import 'package:pet_planet/presentation/common/widgets/custom_loading_indicator.dart';
 import 'package:pet_planet/presentation/common/widgets/custom_snack_bar.dart';
 import 'package:pet_planet/presentation/resources/colors/color_manager.dart';

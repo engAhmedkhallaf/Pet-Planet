@@ -5,16 +5,16 @@ import 'package:pet_planet/core/network/local/cache_helper.dart';
 import 'package:pet_planet/core/routes/routes_manager.dart';
 import 'package:pet_planet/data/repositories/category/category_repository.dart';
 import 'package:pet_planet/data/repositories/product/product_repository.dart';
-import 'package:pet_planet/presentation/bussiness_logic/cart_bloc/cart_bloc.dart';
-import 'package:pet_planet/presentation/bussiness_logic/category_bloc/category_bloc.dart';
-import 'package:pet_planet/presentation/bussiness_logic/forgot_password_cubit/forgot_password_cubit.dart';
-import 'package:pet_planet/presentation/bussiness_logic/internet_cubit/internet_cubit.dart';
-import 'package:pet_planet/presentation/bussiness_logic/login_cubit/login_cubit.dart';
-import 'package:pet_planet/presentation/bussiness_logic/main_cubit/main_cubit.dart';
-import 'package:pet_planet/presentation/bussiness_logic/product_bloc/product_bloc.dart';
-import 'package:pet_planet/presentation/bussiness_logic/signup_cubit/signup_cubit.dart';
-import 'package:pet_planet/presentation/bussiness_logic/user_cubit/user_cubit.dart';
-import 'package:pet_planet/presentation/bussiness_logic/wishlist_bloc/wishlist_bloc.dart';
+import 'package:pet_planet/presentation/business_logic/cart_bloc/cart_bloc.dart';
+import 'package:pet_planet/presentation/business_logic/category_bloc/category_bloc.dart';
+import 'package:pet_planet/presentation/business_logic/forgot_password_cubit/forgot_password_cubit.dart';
+import 'package:pet_planet/presentation/business_logic/internet_cubit/internet_cubit.dart';
+import 'package:pet_planet/presentation/business_logic/login_cubit/login_cubit.dart';
+import 'package:pet_planet/presentation/business_logic/main_cubit/main_cubit.dart';
+import 'package:pet_planet/presentation/business_logic/product_bloc/product_bloc.dart';
+import 'package:pet_planet/presentation/business_logic/signup_cubit/signup_cubit.dart';
+import 'package:pet_planet/presentation/business_logic/user_cubit/user_cubit.dart';
+import 'package:pet_planet/presentation/business_logic/wishlist_bloc/wishlist_bloc.dart';
 import 'package:pet_planet/presentation/common/widgets/show_alert_dialog.dart';
 import 'package:pet_planet/presentation/resources/theme/theme_manager.dart';
 import 'package:pet_planet/presentation/screens/auth/auth_layout_screen.dart';
@@ -70,13 +70,17 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => CategoryBloc(
             categoryRepository: CategoryRepository(),
-          )..add(StartCategoriesEvent()),
+          )..add(
+              StartCategoriesEvent(),
+            ),
           lazy: false,
         ),
         BlocProvider(
           create: (context) => ProductBloc(
             productRepository: ProductRepository(),
-          )..add(StartProductEvent()),
+          )..add(
+              StartProductEvent(),
+            ),
           lazy: false,
         ),
       ],

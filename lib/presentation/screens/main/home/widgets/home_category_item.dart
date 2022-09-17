@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pet_planet/data/models/product_model.dart';
-import 'package:pet_planet/presentation/bussiness_logic/Product_bloc/product_bloc.dart';
+import 'package:pet_planet/presentation/business_logic/Product_bloc/product_bloc.dart';
 import 'package:pet_planet/presentation/resources/assets/assets_manager.dart';
 import 'package:pet_planet/presentation/resources/colors/color_manager.dart';
 import 'package:pet_planet/presentation/resources/fonts/font_manager.dart';
@@ -61,30 +61,30 @@ class HomeCategoryItem extends StatelessWidget {
                         color: ColorManager.lightGrey,
                       ),
                 ),
-                BlocBuilder<ProductBloc, ProductState>(
-                  builder: (context, state) {
-                    if (state is ProductLoadingState) {
-                      return const Center(
-                        child: CircularProgressIndicator(),
-                      );
-                    } else if (state is ProductSuccessState) {
-                      return Text(
-                        '${state.products.where((element) => (element.category == categoryModel.name)).toList().length} Items',
-                        style: getApplicationTheme()
-                            .textTheme
-                            .headlineSmall!
-                            .copyWith(
-                              fontSize: FontSizeManager.s12.sp,
-                              height: AppSize.s1_5.w,
-                            ),
-                      );
-                    } else {
-                      return const Center(
-                        child: Text(AppStrings.someThingWentWrong),
-                      );
-                    }
-                  },
-                ),
+                // BlocBuilder<ProductBloc, ProductState>(
+                //   builder: (context, state) {
+                //     if (state is ProductLoadingState) {
+                //       return const Center(
+                //         child: CircularProgressIndicator(),
+                //       );
+                //     } else if (state is ProductSuccessState) {
+                //       return Text(
+                //         '${state.products.where((element) => (element.category == categoryModel.name)).toList().length} Items',
+                //         style: getApplicationTheme()
+                //             .textTheme
+                //             .headlineSmall!
+                //             .copyWith(
+                //               fontSize: FontSizeManager.s12.sp,
+                //               height: AppSize.s1_5.w,
+                //             ),
+                //       );
+                //     } else {
+                //       return const Center(
+                //         child: Text(AppStrings.someThingWentWrong),
+                //       );
+                //     }
+                //   },
+                // ),
               ],
             ),
           ),

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pet_planet/data/models/product_model.dart';
@@ -14,7 +16,7 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
     on<RemoveProductFromWishlistEvent>(_onRemoveWishlistProduct);
   }
 
-  void _onStartWishlist(event, Emitter<WishlistState> emit) async {
+  FutureOr<void> _onStartWishlist(event, Emitter<WishlistState> emit) async {
     emit(WishlistLoadingState());
     try {
       await Future<void>.delayed(AppDuration.d1000);
@@ -24,33 +26,35 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
     }
   }
 
-  void _onAddWishlistProduct(event, Emitter<WishlistState> emit) async {
+  FutureOr<void> _onAddWishlistProduct(
+      event, Emitter<WishlistState> emit) async {
     final state = this.state;
     if (state is WishlistSuccessState) {
       try {
         emit(
           WishlistSuccessState(
-              wishlist: Wishlist(
-            products: List.from(state.wishlist.products)..add(event.products),
-          )),
+            wishlist: Wishlist(
+              products: List.from(state.wishlist.products)..add(event.product),
+            ),
+          ),
         );
-      } catch (_) {
+      } on Exception {
         emit(WishlistFailureState());
       }
     }
   }
 
-  void _onRemoveWishlistProduct(event, Emitter<WishlistState> emit) async {
+  FutureOr<void> _onRemoveWishlistProduct(
+      event, Emitter<WishlistState> emit) async {
     final state = this.state;
     if (state is WishlistSuccessState) {
       try {
-        // await Future<void>.delayed(AppDuration.d1000);
         emit(WishlistSuccessState(
           wishlist: Wishlist(
-            products: List.from(state.wishlist.products)..remove(event.products),
+            products: List.from(state.wishlist.products)..remove(event.product),
           ),
         ));
-      } catch (_) {
+      } on Exception {
         emit(WishlistFailureState());
       }
     }
