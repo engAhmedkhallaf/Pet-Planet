@@ -50,11 +50,20 @@ class CartScreen extends StatelessWidget {
                           flex: 7,
                           child: ListView.builder(
                             physics: const BouncingScrollPhysics(),
-                            itemCount: state.cart.productQuantity(state.cart.products).keys.length,
+                            itemCount: state.cart
+                                .productQuantity(state.cart.products)
+                                .keys
+                                .length,
                             itemBuilder: ((context, index) {
                               return CartProductCard(
-                                product: state.cart.productQuantity(state.cart.products).keys.elementAt(index),
-                                quantity: state.cart.productQuantity(state.cart.products).values.elementAt(index),
+                                product: state.cart
+                                    .productQuantity(state.cart.products)
+                                    .keys
+                                    .elementAt(index),
+                                quantity: state.cart
+                                    .productQuantity(state.cart.products)
+                                    .keys
+                                    .elementAt(index),
                               );
                             }),
                           ),

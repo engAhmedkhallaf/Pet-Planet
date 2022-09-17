@@ -3,12 +3,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pet_planet/core/network/local/cache_helper.dart';
 import 'package:pet_planet/core/routes/routes_manager.dart';
+import 'package:pet_planet/data/repositories/category/category_repository.dart';
+import 'package:pet_planet/data/repositories/product/product_repository.dart';
 import 'package:pet_planet/presentation/bussiness_logic/cart_bloc/cart_bloc.dart';
+import 'package:pet_planet/presentation/bussiness_logic/category_bloc/category_bloc.dart';
 import 'package:pet_planet/presentation/bussiness_logic/forgot_password_cubit/forgot_password_cubit.dart';
-import 'package:pet_planet/presentation/bussiness_logic/home_cubit/home_cubit.dart';
 import 'package:pet_planet/presentation/bussiness_logic/internet_cubit/internet_cubit.dart';
 import 'package:pet_planet/presentation/bussiness_logic/login_cubit/login_cubit.dart';
 import 'package:pet_planet/presentation/bussiness_logic/main_cubit/main_cubit.dart';
+import 'package:pet_planet/presentation/bussiness_logic/product_bloc/product_bloc.dart';
 import 'package:pet_planet/presentation/bussiness_logic/signup_cubit/signup_cubit.dart';
 import 'package:pet_planet/presentation/bussiness_logic/user_cubit/user_cubit.dart';
 import 'package:pet_planet/presentation/bussiness_logic/wishlist_bloc/wishlist_bloc.dart';
@@ -51,15 +54,29 @@ class MyApp extends StatelessWidget {
           lazy: false,
         ),
         BlocProvider(
-          create: (context) => HomeCubit(),
+          create: (context) => CartBloc()
+            ..add(
+              CartStartedEvent(),
+            ),
           lazy: false,
         ),
         BlocProvider(
-          create: (context) => CartBloc()..add(CartStartedEvent()),
+          create: (context) => WishlistBloc()
+            ..add(
+              WishlistStartedEvent(),
+            ),
           lazy: false,
         ),
         BlocProvider(
-          create: (context) => WishlistBloc()..add(WishlistStartedEvent()),
+          create: (context) => CategoryBloc(
+            categoryRepository: CategoryRepository(),
+          )..add(StartCategoriesEvent()),
+          lazy: false,
+        ),
+        BlocProvider(
+          create: (context) => ProductBloc(
+            productRepository: ProductRepository(),
+          )..add(StartProductEvent()),
           lazy: false,
         ),
       ],

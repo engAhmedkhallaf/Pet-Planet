@@ -24,7 +24,7 @@ class CartProductCard extends StatelessWidget {
     return BlocBuilder<CartBloc, CartState>(
       builder: (context, state) {
         return Dismissible(
-          key: Key(product.id),
+          key: Key(product.name),
           onDismissed: ((direction) {
             if (state is CartSuccessState) {
               context.read<CartBloc>().add(RemoveProductFromCartEvent(product));

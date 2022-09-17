@@ -1,10 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pet_planet/data/models/product_model.dart';
+import 'package:pet_planet/presentation/bussiness_logic/Product_bloc/product_bloc.dart';
 import 'package:pet_planet/presentation/resources/assets/assets_manager.dart';
 import 'package:pet_planet/presentation/resources/colors/color_manager.dart';
 import 'package:pet_planet/presentation/resources/fonts/font_manager.dart';
+import 'package:pet_planet/presentation/resources/strings_manager.dart';
 import 'package:pet_planet/presentation/resources/theme/theme_manager.dart';
 import 'package:pet_planet/presentation/resources/values_manager.dart';
 import 'package:pet_planet/data/models/category_model.dart';
@@ -52,21 +55,35 @@ class HomeCategoryItem extends StatelessWidget {
               children: [
                 Text(
                   categoryModel.name,
-                  /* TODO:Add name of category */
                   style: getApplicationTheme().textTheme.displayLarge!.copyWith(
                         fontSize: FontSizeManager.s22.sp,
                         height: AppSize.s1.w,
                         color: ColorManager.lightGrey,
                       ),
                 ),
-                Text(
-                  '${Product.productList.where((element) => (element.category == categoryModel.name)).toList().length} Items',
-                  /* TODO:Add length of category's items */
-                  style:
-                      getApplicationTheme().textTheme.headlineSmall!.copyWith(
-                            fontSize: FontSizeManager.s12.sp,
-                            height: AppSize.s1.w,
-                          ),
+                BlocBuilder<ProductBloc, ProductState>(
+                  builder: (context, state) {
+                    if (state is ProductLoadingState) {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    } else if (state is ProductSuccessState) {
+                      return Text(
+                        '${state.products.where((element) => (element.category == categoryModel.name)).toList().length} Items',
+                        style: getApplicationTheme()
+                            .textTheme
+                            .headlineSmall!
+                            .copyWith(
+                              fontSize: FontSizeManager.s12.sp,
+                              height: AppSize.s1_5.w,
+                            ),
+                      );
+                    } else {
+                      return const Center(
+                        child: Text(AppStrings.someThingWentWrong),
+                      );
+                    }
+                  },
                 ),
               ],
             ),
@@ -82,7 +99,6 @@ class HomeCategoryItem extends StatelessWidget {
                       ? const AssetImage(AssetsManager.noImage)
                       : CachedNetworkImageProvider(
                           categoryModel.imageUrl,
-                          /* TODO:Add imageUrl of category */
                         ) as ImageProvider,
                   fit: BoxFit.cover,
                 ),

@@ -15,12 +15,10 @@ class CartLoadingState extends CartState {
 class CartSuccessState extends CartState {
   final Cart cart;
 
-  const CartSuccessState({this.cart = const Cart()});
+ const CartSuccessState({this.cart = const Cart()});
 
   @override
-  List<Object> get props => [
-        cart,
-      ];
+  List<Object> get props => [cart,];
 }
 
 class CartFailureState extends CartState {

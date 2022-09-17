@@ -21,7 +21,6 @@ class MainCubit extends Cubit<MainState> {
 
   void changeBottomNav(int index) {
     currentIndex = index;
-    print(currentIndex);
     emit(ChangeBottomNavState());
   }
 }

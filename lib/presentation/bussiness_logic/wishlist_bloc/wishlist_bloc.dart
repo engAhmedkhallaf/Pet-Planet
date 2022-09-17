@@ -31,7 +31,7 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
         emit(
           WishlistSuccessState(
               wishlist: Wishlist(
-            products: List.from(state.wishlist.products)..add(event.product),
+            products: List.from(state.wishlist.products)..add(event.products),
           )),
         );
       } catch (_) {
@@ -47,7 +47,7 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
         // await Future<void>.delayed(AppDuration.d1000);
         emit(WishlistSuccessState(
           wishlist: Wishlist(
-            products: List.from(state.wishlist.products)..remove(event.product),
+            products: List.from(state.wishlist.products)..remove(event.products),
           ),
         ));
       } catch (_) {
