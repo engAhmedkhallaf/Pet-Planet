@@ -4,9 +4,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pet_planet/core/network/local/cache_helper.dart';
 import 'package:pet_planet/core/routes/routes_manager.dart';
 import 'package:pet_planet/data/repositories/category/category_repository.dart';
+import 'package:pet_planet/data/repositories/checkout/checkout_repository.dart';
 import 'package:pet_planet/data/repositories/product/product_repository.dart';
 import 'package:pet_planet/presentation/business_logic/cart_bloc/cart_bloc.dart';
 import 'package:pet_planet/presentation/business_logic/category_bloc/category_bloc.dart';
+import 'package:pet_planet/presentation/business_logic/checkout_bloc/checkout_bloc.dart';
 import 'package:pet_planet/presentation/business_logic/forgot_password_cubit/forgot_password_cubit.dart';
 import 'package:pet_planet/presentation/business_logic/internet_cubit/internet_cubit.dart';
 import 'package:pet_planet/presentation/business_logic/login_cubit/login_cubit.dart';
@@ -35,37 +37,37 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => SignupCubit(),
-          lazy: false,
+          lazy: true,
         ),
         BlocProvider(
           create: (context) => LoginCubit(),
-          lazy: false,
+          lazy: true,
         ),
         BlocProvider(
           create: (context) => ForgotPasswordCubit(),
-          lazy: false,
+          lazy: true,
         ),
         BlocProvider(
           create: (context) => MainCubit(),
-          lazy: false,
+          lazy: true,
         ),
         BlocProvider(
           create: (context) => UserCubit(),
-          lazy: false,
+          lazy: true,
         ),
         BlocProvider(
           create: (context) => CartBloc()
             ..add(
               CartStartedEvent(),
             ),
-          lazy: false,
+          lazy: true,
         ),
         BlocProvider(
           create: (context) => WishlistBloc()
             ..add(
               WishlistStartedEvent(),
             ),
-          lazy: false,
+          lazy: true,
         ),
         BlocProvider(
           create: (context) => CategoryBloc(
@@ -82,6 +84,13 @@ class MyApp extends StatelessWidget {
               StartProductEvent(),
             ),
           lazy: false,
+        ),
+        BlocProvider(
+          create: (context) => CheckoutBloc(
+            cartBloc: context.read<CartBloc>(),
+            checkoutRepository: CheckoutRepository(),
+          ),
+          lazy: true,
         ),
       ],
       child: ScreenUtilInit(

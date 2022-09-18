@@ -58,8 +58,10 @@ class AppStrings {
   static const String yourCartIsEmpty = 'Your Cart is Empty!';
   static const String addedToYourCart = 'Added To Your Cart';
   static const String removedFromYourCart = 'Removed From Your Cart';
-  static const String yourProductIsIncreasedByOne = 'Your Product Is Increased By One';
-  static const String yourProductIsDecreasedByOne = 'Your Product Is Decreased By One';
+  static const String yourProductIsIncreasedByOne =
+      'Your Product Is Increased By One';
+  static const String yourProductIsDecreasedByOne =
+      'Your Product Is Decreased By One';
 
   // Wishlist Screen
   static const String yourWishlistIsEmpty = 'Your Wishlist is Empty!';
@@ -67,15 +69,13 @@ class AppStrings {
   static const String addedToYourWishlist = 'Added To Your Wishlist';
   static const String removedFromYourWishlist = 'Removed From Your Wishlist';
 
-
-
-
-
-
-
-
-
-
+// Checkout Screen
+  static const String orderNow = 'ORDER NOW';
+  static const String customerInformation = 'CUSTOMER INFORMATION';
+  static const String deliveryInformation = 'DELIVERY INFORMATION';
+  static const String fullName = 'Full Name';
+  static const String city = 'City';
+  static const String orderSummary = 'ORDER SUMMARY';
 
   // Validation Phrases
   static const String emailAddressCanNotBeEmpty =

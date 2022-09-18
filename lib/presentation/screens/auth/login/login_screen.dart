@@ -45,7 +45,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
           navigateAndRemove(
             context,
-            Routes.homeRoute,
+            Routes.mainLayoutRoute,
           );
         } else if (state is LoginFailureState) {
           _isLoading = false;

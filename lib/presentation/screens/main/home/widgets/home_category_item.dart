@@ -1,13 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:pet_planet/data/models/product_model.dart';
-import 'package:pet_planet/presentation/business_logic/Product_bloc/product_bloc.dart';
 import 'package:pet_planet/presentation/resources/assets/assets_manager.dart';
 import 'package:pet_planet/presentation/resources/colors/color_manager.dart';
 import 'package:pet_planet/presentation/resources/fonts/font_manager.dart';
-import 'package:pet_planet/presentation/resources/strings_manager.dart';
 import 'package:pet_planet/presentation/resources/theme/theme_manager.dart';
 import 'package:pet_planet/presentation/resources/values_manager.dart';
 import 'package:pet_planet/data/models/category_model.dart';
@@ -61,30 +57,6 @@ class HomeCategoryItem extends StatelessWidget {
                         color: ColorManager.lightGrey,
                       ),
                 ),
-                // BlocBuilder<ProductBloc, ProductState>(
-                //   builder: (context, state) {
-                //     if (state is ProductLoadingState) {
-                //       return const Center(
-                //         child: CircularProgressIndicator(),
-                //       );
-                //     } else if (state is ProductSuccessState) {
-                //       return Text(
-                //         '${state.products.where((element) => (element.category == categoryModel.name)).toList().length} Items',
-                //         style: getApplicationTheme()
-                //             .textTheme
-                //             .headlineSmall!
-                //             .copyWith(
-                //               fontSize: FontSizeManager.s12.sp,
-                //               height: AppSize.s1_5.w,
-                //             ),
-                //       );
-                //     } else {
-                //       return const Center(
-                //         child: Text(AppStrings.someThingWentWrong),
-                //       );
-                //     }
-                //   },
-                // ),
               ],
             ),
           ),
@@ -143,25 +115,3 @@ class HomeCategoryItem extends StatelessWidget {
     );
   }
 }
-/*child: CircleAvatar(
-                radius: (AppSize.s65 / 2).w,
-                child: (itemModel.imagePath == null ||
-                        itemModel.imagePath!.isEmpty)
-                    ? Image.asset(
-                        AssetsManager.noImage,
-                        fit: BoxFit.cover,
-                        // width: AppSize.s65.w,
-                        // height: AppSize.s65.w,
-                      )
-                    : CachedNetworkImage(
-                        imageUrl: itemModel.imagePath!,
-                        placeholder: (context, url) =>
-                            const CircularProgressIndicator.adaptive(),
-                        errorWidget: (context, url, error) =>
-                            Image.asset(AssetsManager.noImage),
-                        fit: BoxFit.cover,
-                        // width: AppSize.s65.w,
-                        // height: AppSize.s65.w,
-                      ),
-              ),
-            */

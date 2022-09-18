@@ -46,7 +46,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
           navigateAndRemove(
             context,
-            Routes.homeRoute,
+            Routes.mainLayoutRoute,
           );
         } else if (state is SignupFailureState) {
           _isLoading = false;
@@ -157,7 +157,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           autofillHints: const [AutofillHints.password],
                         ),
                         SizedBox(
-                          height: AppSize.s30.h,
+                          height: AppSize.s20.h,
                         ),
                         ElevatedButton(
                           onPressed: _formValidate,
@@ -166,7 +166,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           ),
                         ),
                         SizedBox(
-                          height: AppSize.s18.h,
+                          height: AppSize.s10.h,
                         ),
                         LoginSignupFooter(
                           question: AppStrings.alreadyHavaAnAccount,

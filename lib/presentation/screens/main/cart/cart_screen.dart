@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pet_planet/core/routes/routes_names.dart';
 import 'package:pet_planet/presentation/business_logic/cart_bloc/cart_bloc.dart';
+import 'package:pet_planet/presentation/common/widgets/order_summary.dart';
 import 'package:pet_planet/presentation/resources/colors/color_manager.dart';
 import 'package:pet_planet/presentation/resources/fonts/font_manager.dart';
 import 'package:pet_planet/presentation/resources/navigation/navigation.dart';
@@ -70,146 +71,15 @@ class CartScreen extends StatelessWidget {
                         ),
                         Column(
                           children: [
-                            const Divider(
-                              thickness: AppSize.s2,
-                              color: ColorManager.grey,
-                            ),
-                            Padding(
-                              padding: EdgeInsets.symmetric(
-                                horizontal: AppPadding.p20.w,
-                                vertical: AppPadding.p10.h,
-                              ),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        AppStrings.subTotal,
-                                        style: getApplicationTheme()
-                                            .textTheme
-                                            .titleLarge!
-                                            .copyWith(
-                                              fontSize: FontSizeManager.s18.sm,
-                                              height: AppSize.s1,
-                                            ),
-                                        maxLines: 1,
-                                        overflow: TextOverflow.ellipsis,
-                                      ),
-                                      Text(
-                                        '\$${state.cart.subTotalString}',
-                                        style: getApplicationTheme()
-                                            .textTheme
-                                            .titleMedium!
-                                            .copyWith(
-                                              color: ColorManager.grey,
-                                              height: AppSize.s1,
-                                              fontSize: FontSizeManager.s16.sm,
-                                            ),
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: AppSize.s10.h,
-                                  ),
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        AppStrings.deliveryFee,
-                                        style: getApplicationTheme()
-                                            .textTheme
-                                            .titleLarge!
-                                            .copyWith(
-                                              fontSize: FontSizeManager.s18.sm,
-                                              height: AppSize.s1,
-                                            ),
-                                        maxLines: 1,
-                                        overflow: TextOverflow.ellipsis,
-                                      ),
-                                      Text(
-                                        '\$${state.cart.deliveryFeeString}',
-                                        style: getApplicationTheme()
-                                            .textTheme
-                                            .titleMedium!
-                                            .copyWith(
-                                              color: ColorManager.grey,
-                                              fontSize: FontSizeManager.s16.sm,
-                                            ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Container(
-                              width: MediaQuery.of(context).size.width,
-                              height: AppSize.s40.h,
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: AppPadding.p20.w),
-                              // margin: EdgeInsets.symmetric(horizontal: AppPadding.p5.w),
-                              decoration: BoxDecoration(
-                                color: ColorManager.backgroundColor
-                                    .withOpacity(0.9),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: ColorManager.lightGrey,
-                                    spreadRadius: AppSize.s1.r,
-                                    blurRadius: AppSize.s1.r,
-                                  ),
-                                ],
-                              ),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    AppStrings.total,
-                                    style: getApplicationTheme()
-                                        .textTheme
-                                        .titleLarge!
-                                        .copyWith(
-                                          fontSize: FontSizeManager.s18.sm,
-                                          height: AppSize.s1,
-                                        ),
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                  Text(
-                                    '\$${state.cart.totalString}',
-                                    style: getApplicationTheme()
-                                        .textTheme
-                                        .titleMedium!
-                                        .copyWith(
-                                          color: ColorManager.grey,
-                                          height: 1.0,
-                                          fontSize: FontSizeManager.s16.sm,
-                                        ),
-                                  ),
-                                ],
-                              ),
+                            const OrderSummary(),
+                            SizedBox(
+                              height: AppSize.s12.sm,
                             ),
                             SizedBox(
-                              height: AppSize.s8.h,
-                            ),
-                            Container(
-                              height: AppSize.s40.h,
-                              width: double.infinity,
-                              margin: EdgeInsets.only(bottom: AppMargin.m6.h),
-                              padding: EdgeInsets.symmetric(
-                                horizontal: AppPadding.p80.w,
-                                vertical: AppPadding.p5.h,
-                              ),
-                              decoration: BoxDecoration(
-                                  color: ColorManager.transparent,
-                                  // color: ColorManager.backgroundColor.withOpacity(0.85),
-                                  borderRadius: BorderRadius.circular(5)),
+                              height: AppSize.s40.sm,
                               child: ElevatedButton(
                                 onPressed: () {
-                                  navigateTo(context, Routes.checkRoute);
+                                  navigateTo(context, Routes.checkoutRoute);
                                 },
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: ColorManager.white,
@@ -218,10 +88,10 @@ class CartScreen extends StatelessWidget {
                                     borderRadius:
                                         BorderRadius.circular(AppSize.s5),
                                   ),
-                                  maximumSize:
-                                      Size(AppSize.s100.w, AppSize.s30.h),
-                                  minimumSize:
-                                      Size(AppSize.s80.w, AppSize.s15.h),
+                                  // maximumSize:
+                                  //     Size(double.infinity - 20, AppSize.s30.h),
+                                  // minimumSize:
+                                  //     Size(AppSize.s300.w, AppSize.s15.h),
                                 ),
                                 child: Text(
                                   AppStrings.goToWishlist,
@@ -230,9 +100,13 @@ class CartScreen extends StatelessWidget {
                                       .titleMedium!
                                       .copyWith(
                                         color: ColorManager.black,
+                                        fontSize: FontSizeManager.s18.sm,
                                       ),
                                 ),
                               ),
+                            ),
+                            const SizedBox(
+                              height: AppSize.s8,
                             ),
                           ],
                         ),
@@ -249,3 +123,46 @@ class CartScreen extends StatelessWidget {
     );
   }
 }
+
+/**
+  Container(
+                              height: AppSize.s40.h,
+                              width: double.infinity,
+                              margin: EdgeInsets.only(bottom: AppMargin.m6.h),
+                              padding: EdgeInsets.symmetric(
+                                horizontal: AppPadding.p80.w,
+                                vertical: AppPadding.p5.h,
+                              ),
+                              decoration: BoxDecoration(
+                                  color: ColorManager.transparent,
+                                  // color: ColorManager.backgroundColor.withOpacity(0.85),
+                                  borderRadius: BorderRadius.circular(5)),
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  navigateTo(context, Routes.checkoutRoute);
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: ColorManager.white,
+                                  foregroundColor: ColorManager.black,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius:
+                                        BorderRadius.circular(AppSize.s5),
+                                  ),
+                                  // maximumSize:
+                                  //     Size(AppSize.s100.w, AppSize.s30.h),
+                                  // minimumSize:
+                                  //     Size(AppSize.s80.w, AppSize.s15.h),
+                                ),
+                                child: Text(
+                                  AppStrings.goToWishlist,
+                                  style: getApplicationTheme()
+                                      .textTheme
+                                      .titleMedium!
+                                      .copyWith(
+                                        color: ColorManager.black,
+                                      ),
+                                ),
+                              ),
+                            ),
+                        
+ */

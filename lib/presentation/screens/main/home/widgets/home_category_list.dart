@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pet_planet/core/routes/routes_names.dart';
+import 'package:pet_planet/data/repositories/product/product_repository.dart';
+import 'package:pet_planet/presentation/business_logic/Product_bloc/product_bloc.dart';
 import 'package:pet_planet/presentation/business_logic/category_bloc/category_bloc.dart';
 import 'package:pet_planet/presentation/resources/colors/color_manager.dart';
 import 'package:pet_planet/presentation/resources/navigation/navigation.dart';
@@ -48,7 +50,7 @@ class HomeCategoryList extends StatelessWidget {
                         );
                       },
                       child: HomeCategoryItem(
-                          categoryModel: state.categories[index],),
+                          categoryModel: state.categories[index]),
                     );
                   }),
                   itemCount: state.categories.length,
