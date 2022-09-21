@@ -1,11 +1,14 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pet_planet/core/routes/routes_names.dart';
 import 'package:pet_planet/presentation/business_logic/checkout_bloc/checkout_bloc.dart';
 import 'package:pet_planet/presentation/common/widgets/custom_appbar_with_wishlist.dart';
 import 'package:pet_planet/presentation/common/widgets/order_summary.dart';
 import 'package:pet_planet/presentation/resources/colors/color_manager.dart';
 import 'package:pet_planet/presentation/resources/fonts/font_manager.dart';
+import 'package:pet_planet/presentation/resources/navigation/navigation.dart';
 import 'package:pet_planet/presentation/resources/strings_manager.dart';
 import 'package:pet_planet/presentation/resources/theme/theme_manager.dart';
 import 'package:pet_planet/presentation/resources/values_manager.dart';
@@ -18,139 +21,6 @@ class CheckoutScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white10,
       appBar: CustomAppBarWithWishlist(title: AppStrings.checkout),
-      body: Padding(
-        padding: const EdgeInsets.all(AppPadding.p16),
-        child: SingleChildScrollView(
-          child: BlocBuilder<CheckoutBloc, CheckoutState>(
-            builder: (context, state) {
-              if (state is CheckoutLoadingState) {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              } else if (state is CheckoutSuccessState) {
-                return Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: AppPadding.p10),
-                      child: Text(
-                        AppStrings.customerInformation,
-                        style: getApplicationTheme()
-                            .textTheme
-                            .headlineSmall!
-                            .copyWith(
-                              fontWeight: FontWeightManager.bold,
-                              color: ColorManager.lightGrey,
-                            ),
-                      ),
-                    ),
-                    _buildTextFormField(
-                      onChanged: (value) {
-                        context.read<CheckoutBloc>().add(
-                              UpdateCheckoutEvent(
-                                fullName: value,
-                              ),
-                            );
-                      },
-                      context: context,
-                      labelText: AppStrings.fullName,
-                      initialValue: 'Ahmed',
-                      textInputType: TextInputType.name,
-                    ),
-                    _buildTextFormField(
-                      onChanged: (value) {
-                        context.read<CheckoutBloc>().add(
-                              UpdateCheckoutEvent(
-                                email: value,
-                              ),
-                            );
-                      },
-                      context: context,
-                      labelText: AppStrings.email,
-                      textInputType: TextInputType.emailAddress,
-                    ),
-                    _buildTextFormField(
-                      onChanged: (value) {
-                        context.read<CheckoutBloc>().add(
-                              UpdateCheckoutEvent(
-                                mobileNumber: value,
-                              ),
-                            );
-                      },
-                      context: context,
-                      labelText: AppStrings.mobileNumber,
-                      textInputType: TextInputType.phone,
-                    ),
-                    SizedBox(
-                      height: AppSize.s20.w,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: AppPadding.p10),
-                      child: Text(
-                        AppStrings.deliveryInformation,
-                        style: getApplicationTheme()
-                            .textTheme
-                            .headlineSmall!
-                            .copyWith(
-                              fontWeight: FontWeightManager.bold,
-                              color: ColorManager.lightGrey,
-                            ),
-                      ),
-                    ),
-                    _buildTextFormField(
-                      onChanged: (value) {
-                        context.read<CheckoutBloc>().add(
-                              UpdateCheckoutEvent(
-                                address: value,
-                              ),
-                            );
-                      },
-                      context: context,
-                      labelText: AppStrings.address,
-                      textInputType: TextInputType.streetAddress,
-                    ),
-                    _buildTextFormField(
-                      onChanged: (value) {
-                        context.read<CheckoutBloc>().add(
-                              UpdateCheckoutEvent(
-                                city: value,
-                              ),
-                            );
-                      },
-                      context: context,
-                      labelText: AppStrings.city,
-                      textInputType: TextInputType.text,
-                    ),
-                    SizedBox(
-                      height: AppSize.s20.w,
-                    ),
-                    Padding(
-                      padding:
-                          const EdgeInsets.symmetric(vertical: AppPadding.p10),
-                      child: Text(
-                        AppStrings.orderSummary,
-                        style: getApplicationTheme()
-                            .textTheme
-                            .headlineSmall!
-                            .copyWith(
-                              fontWeight: FontWeightManager.bold,
-                              color: ColorManager.lightGrey,
-                            ),
-                      ),
-                    ),
-                    const OrderSummary(),
-                  ],
-                );
-              } else {
-                return const Center(
-                  child: Text(AppStrings.someThingWentWrong),
-                );
-              }
-            },
-          ),
-        ),
-      ),
       bottomNavigationBar: BlocBuilder<CheckoutBloc, CheckoutState>(
         builder: (context, state) {
           if (state is CheckoutLoadingState) {
@@ -172,6 +42,10 @@ class CheckoutScreen extends StatelessWidget {
                                 checkout: state.checkout,
                               ),
                             );
+                        navigateTo(
+                          context,
+                          Routes.orderConfirmationRoute,
+                        );
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: ColorManager.lightGrey,

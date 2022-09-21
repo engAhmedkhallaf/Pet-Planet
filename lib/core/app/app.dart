@@ -5,17 +5,18 @@ import 'package:pet_planet/core/network/local/cache_helper.dart';
 import 'package:pet_planet/core/routes/routes_manager.dart';
 import 'package:pet_planet/data/repositories/category/category_repository.dart';
 import 'package:pet_planet/data/repositories/checkout/checkout_repository.dart';
+import 'package:pet_planet/data/repositories/local_storage/local_storage_repository.dart';
 import 'package:pet_planet/data/repositories/product/product_repository.dart';
 import 'package:pet_planet/presentation/business_logic/cart_bloc/cart_bloc.dart';
 import 'package:pet_planet/presentation/business_logic/category_bloc/category_bloc.dart';
 import 'package:pet_planet/presentation/business_logic/checkout_bloc/checkout_bloc.dart';
+import 'package:pet_planet/presentation/business_logic/user_cubit/user_cubit.dart';
 import 'package:pet_planet/presentation/business_logic/forgot_password_cubit/forgot_password_cubit.dart';
 import 'package:pet_planet/presentation/business_logic/internet_cubit/internet_cubit.dart';
 import 'package:pet_planet/presentation/business_logic/login_cubit/login_cubit.dart';
 import 'package:pet_planet/presentation/business_logic/main_cubit/main_cubit.dart';
 import 'package:pet_planet/presentation/business_logic/product_bloc/product_bloc.dart';
 import 'package:pet_planet/presentation/business_logic/signup_cubit/signup_cubit.dart';
-import 'package:pet_planet/presentation/business_logic/user_cubit/user_cubit.dart';
 import 'package:pet_planet/presentation/business_logic/wishlist_bloc/wishlist_bloc.dart';
 import 'package:pet_planet/presentation/common/widgets/show_alert_dialog.dart';
 import 'package:pet_planet/presentation/resources/theme/theme_manager.dart';
@@ -37,23 +38,23 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => SignupCubit(),
-          lazy: true,
+          lazy: false,
         ),
         BlocProvider(
           create: (context) => LoginCubit(),
-          lazy: true,
+          lazy: false,
         ),
         BlocProvider(
           create: (context) => ForgotPasswordCubit(),
-          lazy: true,
+          lazy: false,
         ),
         BlocProvider(
           create: (context) => MainCubit(),
-          lazy: true,
+          lazy: false,
         ),
         BlocProvider(
-          create: (context) => UserCubit(),
-          lazy: true,
+          create: (context) => UserCubit()..getUserData(),
+          lazy: false,
         ),
         BlocProvider(
           create: (context) => CartBloc()
@@ -63,11 +64,12 @@ class MyApp extends StatelessWidget {
           lazy: true,
         ),
         BlocProvider(
-          create: (context) => WishlistBloc()
-            ..add(
+          create: (context) => WishlistBloc(
+            localStorageRepository: LocalStorageRepository(),
+          )..add(
               WishlistStartedEvent(),
             ),
-          lazy: true,
+          lazy: false,
         ),
         BlocProvider(
           create: (context) => CategoryBloc(
@@ -90,7 +92,7 @@ class MyApp extends StatelessWidget {
             cartBloc: context.read<CartBloc>(),
             checkoutRepository: CheckoutRepository(),
           ),
-          lazy: true,
+          lazy: false,
         ),
       ],
       child: ScreenUtilInit(

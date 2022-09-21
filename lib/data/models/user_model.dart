@@ -44,15 +44,15 @@ class UserModel extends Equatable {
     );
   }
 
-  factory UserModel.fromSnapShot(DocumentSnapshot snapshot) {
+  factory UserModel.fromSnapshot(DocumentSnapshot snapshot) {
     return UserModel(
-      id: snapshot.id,
+      id: snapshot['id'],
       displayName: snapshot['displayName'],
       email: snapshot['email'],
       phoneNumber: snapshot['phoneNumber'],
       address: snapshot['address'],
       photoUrl: snapshot['photoUrl'],
-      createdAt: snapshot['createdAt'],
+      createdAt: snapshot['createdAt'].toDate(),
       isEmailVerified: snapshot['isEmailVerified'],
     );
   }
@@ -63,7 +63,7 @@ class UserModel extends Equatable {
       'email': email,
       'phoneNumber': phoneNumber,
       'address': address,
-      'imageUrl': photoUrl,
+      'photoUrl': photoUrl,
       'createdAt': createdAt as Object,
       'isEmailVerified': isEmailVerified as Object,
     };

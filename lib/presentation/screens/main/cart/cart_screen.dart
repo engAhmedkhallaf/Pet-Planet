@@ -79,7 +79,8 @@ class CartScreen extends StatelessWidget {
                               height: AppSize.s40.sm,
                               child: ElevatedButton(
                                 onPressed: () {
-                                  navigateTo(context, Routes.checkoutRoute);
+                                  navigateTo(
+                                      context, Routes.orderConfirmationRoute);
                                 },
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: ColorManager.white,
@@ -123,46 +124,3 @@ class CartScreen extends StatelessWidget {
     );
   }
 }
-
-/**
-  Container(
-                              height: AppSize.s40.h,
-                              width: double.infinity,
-                              margin: EdgeInsets.only(bottom: AppMargin.m6.h),
-                              padding: EdgeInsets.symmetric(
-                                horizontal: AppPadding.p80.w,
-                                vertical: AppPadding.p5.h,
-                              ),
-                              decoration: BoxDecoration(
-                                  color: ColorManager.transparent,
-                                  // color: ColorManager.backgroundColor.withOpacity(0.85),
-                                  borderRadius: BorderRadius.circular(5)),
-                              child: ElevatedButton(
-                                onPressed: () {
-                                  navigateTo(context, Routes.checkoutRoute);
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: ColorManager.white,
-                                  foregroundColor: ColorManager.black,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius:
-                                        BorderRadius.circular(AppSize.s5),
-                                  ),
-                                  // maximumSize:
-                                  //     Size(AppSize.s100.w, AppSize.s30.h),
-                                  // minimumSize:
-                                  //     Size(AppSize.s80.w, AppSize.s15.h),
-                                ),
-                                child: Text(
-                                  AppStrings.goToWishlist,
-                                  style: getApplicationTheme()
-                                      .textTheme
-                                      .titleMedium!
-                                      .copyWith(
-                                        color: ColorManager.black,
-                                      ),
-                                ),
-                              ),
-                            ),
-                        
- */

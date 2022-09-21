@@ -1,15 +1,26 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
+import 'package:hive/hive.dart';
 import 'package:pet_planet/presentation/resources/assets/assets_manager.dart';
+part 'product_model.g.dart';
 
+@HiveType(typeId: 0)
 class Product extends Equatable {
+  @HiveField(0)
+  final String id;
+  @HiveField(1)
   final String name;
+  @HiveField(2)
   final String description;
+  @HiveField(3)
   final String category;
+  @HiveField(4)
   final String imageUrl;
+  @HiveField(5)
   final double price;
 
   const Product({
+    required this.id,
     required this.name,
     required this.description,
     required this.category,
@@ -19,6 +30,7 @@ class Product extends Equatable {
 
   static Product fromSnapshot(DocumentSnapshot snapshot) {
     Product product = Product(
+      id: snapshot.id ,
       name: snapshot['name'] ?? 'No name',
       description: snapshot['description'] ?? 'No Description',
       category: snapshot['category'] ?? 'No name',
@@ -123,6 +135,7 @@ class Product extends Equatable {
 
   @override
   List<Object?> get props => [
+        id,
         name,
         description,
         category,

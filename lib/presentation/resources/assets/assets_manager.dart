@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 const String imagePath = "assets/images";
 const String iconPath = "assets/icons";
+const String svgPath = "assets/svgs";
 
 class AssetsManager {
   static const String splashLogo = "$imagePath/pet-planet.png";
@@ -11,6 +12,7 @@ class AssetsManager {
   static const String noImageUrl =
       "'https://firebasestorage.googleapis.com/v0/b/petplanet-d7aa8.appspot.com/o/no-photo.png?alt=media&token=4e59300e-d2ac-4613-a788-ab2d198f6018'";
   static const String plus = "$iconPath/plus.png";
+  static const String garlands = "$svgPath/garlands.svg";
 }
 
 class IconBroken {

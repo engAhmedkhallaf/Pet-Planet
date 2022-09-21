@@ -95,6 +95,7 @@ class CartProductCard extends StatelessWidget {
                             const snackBar = SnackBar(
                               content: Text(
                                 AppStrings.yourProductIsDecreasedByOne,
+                                textAlign: TextAlign.center,
                               ),
                               duration: AppDuration.d500,
                             );
@@ -104,6 +105,7 @@ class CartProductCard extends StatelessWidget {
                             const snackBar = SnackBar(
                               content: Text(
                                 AppStrings.removedFromYourCart,
+                                textAlign: TextAlign.center,
                               ),
                               duration: AppDuration.d500,
                             );
@@ -135,6 +137,7 @@ class CartProductCard extends StatelessWidget {
                           const snackBar = SnackBar(
                             content: Text(
                               AppStrings.yourProductIsIncreasedByOne,
+                              textAlign: TextAlign.center,
                             ),
                             duration: AppDuration.d500,
                           );

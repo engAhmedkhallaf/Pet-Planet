@@ -42,7 +42,7 @@ class CategoryProductCard extends StatelessWidget {
                   child: CachedNetworkImage(
                     imageUrl: product.imageUrl,
                     placeholder: (context, url) =>
-                        const CircularProgressIndicator(),
+                        const Center(child: CircularProgressIndicator()),
                     errorWidget: (context, url, error) => Image.asset(
                       AssetsManager.noImage,
                       fit: BoxFit.cover,
@@ -80,7 +80,10 @@ class CategoryProductCard extends StatelessWidget {
                               .read<CartBloc>()
                               .add(AddProductToCartEvent(product));
                           const snackBar = SnackBar(
-                            content: Text(AppStrings.addedToYourCart),
+                            content: Text(
+                              AppStrings.addedToYourCart,
+                              textAlign: TextAlign.center,
+                            ),
                             duration: AppDuration.d500,
                           );
                           ScaffoldMessenger.of(context).showSnackBar(snackBar);

@@ -9,6 +9,7 @@ import 'package:pet_planet/presentation/screens/main/category_details/category_d
 import 'package:pet_planet/presentation/screens/main/checkout/checkout_screen.dart';
 import 'package:pet_planet/data/models/category_model.dart';
 import 'package:pet_planet/presentation/screens/main/main_layout.dart';
+import 'package:pet_planet/presentation/screens/main/order_confirmation/order_confirmation_screen.dart';
 import 'package:pet_planet/presentation/screens/main/product/product_screen.dart';
 import 'package:pet_planet/presentation/screens/main/wishlist/wishlist_screen.dart';
 // import 'package:pet_planet/presentation/screens/main/profile/profile.dart';
@@ -31,12 +32,6 @@ class RouteGenerator {
       // Main
       case Routes.mainLayoutRoute:
         return MaterialPageRoute(builder: (_) => const MainLayout());
-      // case Routes.homeRoute:
-      //   return MaterialPageRoute(builder: (_) => const HomeScreen());
-      // case Routes.cartRoute:
-      //   return MaterialPageRoute(builder: (_) => const CartScreen());
-      // case Routes.profileRoute:
-      //   return MaterialPageRoute(builder: (_) => const ProfileScreen());
       case Routes.categoryDetailsRoute:
         return MaterialPageRoute(
           builder: (_) => CategoryDetailsScreen(
@@ -53,6 +48,9 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const WishlistScreen());
       case Routes.checkoutRoute:
         return MaterialPageRoute(builder: (_) => const CheckoutScreen());
+      case Routes.orderConfirmationRoute:
+        return MaterialPageRoute(
+            builder: (_) => const OrderConfirmationScreen());
 
       default:
         return unDefinedRoute();

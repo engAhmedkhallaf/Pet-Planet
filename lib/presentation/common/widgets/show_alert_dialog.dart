@@ -12,6 +12,7 @@ showAlertDialog(
   // List<Widget>? widgetChilren,
 ) {
   showDialog(
+      barrierDismissible: true,
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
@@ -57,7 +58,10 @@ showAlertDialog(
           // actionsPadding: const EdgeInsets.all(AppPadding.p10),
           actionsAlignment: MainAxisAlignment.end,
           shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(AppSize.s32))),
+            borderRadius: BorderRadius.all(
+              Radius.circular(AppSize.s32),
+            ),
+          ),
         );
       });
 }

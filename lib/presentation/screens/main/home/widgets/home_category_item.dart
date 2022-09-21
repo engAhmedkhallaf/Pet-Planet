@@ -36,7 +36,7 @@ class HomeCategoryItem extends StatelessWidget {
                 topRight: Radius.circular(AppSize.s8),
                 bottomRight: Radius.circular(AppSize.s8),
               ),
-              color: ColorManager.backgroundColor.withOpacity(0.85),
+              color: ColorManager.backgroundColor,
               boxShadow: [
                 BoxShadow(
                   color: ColorManager.grey,

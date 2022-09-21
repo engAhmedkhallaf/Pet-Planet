@@ -77,6 +77,13 @@ class AppStrings {
   static const String city = 'City';
   static const String orderSummary = 'ORDER SUMMARY';
 
+  // Order Confirmation Scree
+  static const String orderConfirmation = 'Order Confirmation';
+  static const String backToShopping = 'BACK TO SHOPPING';
+  static const String thankYou = 'Thank You!';
+  static const String yourOrderIsBeingProcessing =
+      'Your order is now being processing.\n We will contact you soon.';
+
   // Validation Phrases
   static const String emailAddressCanNotBeEmpty =
       'Email Address Can\'t be Empty!';

@@ -132,7 +132,10 @@ class ProductScreen extends StatelessWidget {
                             .read<WishlistBloc>()
                             .add(AddProductToWishlistEvent(product));
                         const snackBar = SnackBar(
-                          content: Text(AppStrings.addedToYourWishlist),
+                          content: Text(
+                            AppStrings.addedToYourWishlist,
+                            textAlign: TextAlign.center,
+                          ),
                           duration: AppDuration.d500,
                         );
                         ScaffoldMessenger.of(context).showSnackBar(snackBar);
@@ -155,7 +158,10 @@ class ProductScreen extends StatelessWidget {
                           .read<CartBloc>()
                           .add(AddProductToCartEvent(product));
                       const snackBar = SnackBar(
-                        content: Text(AppStrings.addedToYourCart),
+                        content: Text(
+                          AppStrings.addedToYourCart,
+                          textAlign: TextAlign.center,
+                        ),
                         duration: AppDuration.d500,
                       );
                       ScaffoldMessenger.of(context).showSnackBar(snackBar);

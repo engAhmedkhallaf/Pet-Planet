@@ -38,7 +38,7 @@ class CheckoutBloc extends Bloc<CheckoutEvent, CheckoutState> {
     on<UpdateCheckoutEvent>(_onUpdateCheckout);
     on<ConfirmCheckoutEvent>(_onConfirmCheckout);
 
-    _cartSubscription = cartBloc.stream.listen((state) {
+    _cartSubscription = _cartBloc.stream.listen((state) {
       if (state is CartSuccessState) {
         add(
           UpdateCheckoutEvent(cart: state.cart),
@@ -73,8 +73,8 @@ class CheckoutBloc extends Bloc<CheckoutEvent, CheckoutState> {
     if (state is CheckoutSuccessState) {
       try {
         await _checkoutRepository.addCheckout(event.checkout);
-        print('DONE...');
-        emit(CheckoutLoadingState());
+        emit(CheckoutSuccessState());
+        _cartBloc.add( CartStartedEvent());
       } catch (_) {
         emit(CheckoutFailureState());
       }

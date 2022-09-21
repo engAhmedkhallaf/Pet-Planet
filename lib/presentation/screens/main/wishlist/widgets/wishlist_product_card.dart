@@ -86,6 +86,7 @@ class WishlistProductCard extends StatelessWidget {
                           const snackBar = SnackBar(
                             content: Text(
                               AppStrings.addedToYourCart,
+                              textAlign: TextAlign.center,
                             ),
                             duration: AppDuration.d500,
                           );
@@ -111,6 +112,7 @@ class WishlistProductCard extends StatelessWidget {
                           const snackBar = SnackBar(
                             content: Text(
                               AppStrings.removedFromYourWishlist,
+                              textAlign: TextAlign.center,
                             ),
                             duration: AppDuration.d500,
                           );
