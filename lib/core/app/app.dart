@@ -10,7 +10,6 @@ import 'package:pet_planet/data/repositories/product/product_repository.dart';
 import 'package:pet_planet/presentation/business_logic/cart_bloc/cart_bloc.dart';
 import 'package:pet_planet/presentation/business_logic/category_bloc/category_bloc.dart';
 import 'package:pet_planet/presentation/business_logic/checkout_bloc/checkout_bloc.dart';
-import 'package:pet_planet/presentation/business_logic/user_cubit/user_cubit.dart';
 import 'package:pet_planet/presentation/business_logic/forgot_password_cubit/forgot_password_cubit.dart';
 import 'package:pet_planet/presentation/business_logic/internet_cubit/internet_cubit.dart';
 import 'package:pet_planet/presentation/business_logic/login_cubit/login_cubit.dart';
@@ -52,10 +51,10 @@ class MyApp extends StatelessWidget {
           create: (context) => MainCubit(),
           lazy: false,
         ),
-        BlocProvider(
-          create: (context) => UserCubit()..getUserData(),
-          lazy: true,
-        ),
+        // BlocProvider(
+        //   create: (context) => UserCubit()..getUserData(),
+        //   lazy: true,
+        // ),
         BlocProvider(
           create: (context) => CartBloc()
             ..add(

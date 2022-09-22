@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pet_planet/presentation/business_logic/user_cubit/user_cubit.dart';
 import 'package:pet_planet/presentation/screens/main/cart/cart_screen.dart';
 import 'package:pet_planet/presentation/screens/main/home/home.dart';
 import 'package:pet_planet/presentation/screens/main/profile/profile_screen.dart';
@@ -13,10 +14,14 @@ class MainCubit extends Cubit<MainState> {
 
   int currentIndex = 0;
 
-  List<Widget> mainScreens = const [
-    HomeScreen(),
-    CartScreen(),
-    ProfileScreen(),
+  List<Widget> mainScreens = [
+    const HomeScreen(),
+    const CartScreen(),
+    BlocProvider(
+      create: (context) => UserCubit()..getUserData(),
+      lazy: true,
+      child: const ProfileScreen(),
+    ),
   ];
 
   void changeBottomNav(int index) {
