@@ -84,6 +84,16 @@ class AppStrings {
   static const String yourOrderIsBeingProcessing =
       'Your order is now being processing.\n We will contact you soon.';
 
+// Profile Scree
+  static const String editProfile = 'Edit Profile';
+  static const String yourWishlist = 'Your Wishlist';
+  static const String myInformation = 'MY INFORMATION';
+
+
+
+
+
+
   // Validation Phrases
   static const String emailAddressCanNotBeEmpty =
       'Email Address Can\'t be Empty!';

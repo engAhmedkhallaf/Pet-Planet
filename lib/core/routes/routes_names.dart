@@ -17,4 +17,5 @@ class Routes {
   static const String wishlistRoute = "wishlistRoute";
   static const String checkoutRoute = "checkRoute";
   static const String orderConfirmationRoute = "orderRoute";
+  static const String editProfileRoute = "editProfileRoute";
 }

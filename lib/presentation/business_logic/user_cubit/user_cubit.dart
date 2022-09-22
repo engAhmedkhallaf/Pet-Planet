@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pet_planet/core/app/app_constants.dart';
 import 'package:pet_planet/core/network/local/cache_helper.dart';
 import 'package:pet_planet/data/models/user_model.dart';
+import 'package:pet_planet/presentation/business_logic/login_cubit/login_cubit.dart';
 
 part 'user_state.dart';
 
@@ -21,7 +22,7 @@ class UserCubit extends Cubit<UserState> {
   void getUserData() async {
     emit(UserLoadingState());
     try {
-       _firebaseFirestore
+      _firebaseFirestore
           .collection('users')
           .doc(_firebaseAuth.currentUser!.uid)
           .snapshots()
@@ -29,10 +30,6 @@ class UserCubit extends Cubit<UserState> {
         UserModel.fromSnapshot(user);
         emit(UserSuccessState(user: UserModel.fromSnapshot(user)));
       });
-      //     .get()
-      //     .then((value) {
-      //
-      // });
     } catch (e) {
       emit(UserFailureState());
     }

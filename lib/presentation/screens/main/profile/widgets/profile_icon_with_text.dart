@@ -14,24 +14,27 @@ class ProfileIconWithText extends StatelessWidget {
 
   final IconData icon;
   final String text;
-  
+
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Icon(
-          icon,
-          color: ColorManager.grey,
-          size: FontSizeManager.s18.sp,
-        ),
-        SizedBox(
-          width: AppSize.s15.w,
-        ),
-        Text(
-          text,
-          style: getApplicationTheme().textTheme.bodyLarge,
-        ),
-      ],
+    return Padding(
+      padding: EdgeInsets.only(bottom: AppPadding.p10.w),
+      child: Row(
+        children: [
+          Icon(
+            icon,
+            color: ColorManager.grey,
+            size: FontSizeManager.s18.sp,
+          ),
+          SizedBox(
+            width: AppSize.s15.w,
+          ),
+          Text(
+            text,
+            style: getApplicationTheme().textTheme.bodyLarge,
+          ),
+        ],
+      ),
     );
   }
 }

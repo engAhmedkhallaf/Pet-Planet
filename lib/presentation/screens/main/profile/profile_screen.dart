@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pet_planet/core/network/local/cache_helper.dart';
 import 'package:pet_planet/core/routes/routes_names.dart';
-import 'package:pet_planet/data/models/user_model.dart';
 import 'package:pet_planet/presentation/business_logic/user_cubit/user_cubit.dart';
 import 'package:pet_planet/presentation/resources/assets/assets_manager.dart';
 import 'package:pet_planet/presentation/resources/colors/color_manager.dart';
@@ -14,7 +13,9 @@ import 'package:pet_planet/presentation/resources/strings_manager.dart';
 import 'package:pet_planet/presentation/resources/theme/theme_manager.dart';
 import 'package:pet_planet/presentation/resources/values_manager.dart';
 import 'package:pet_planet/presentation/screens/main/profile/widgets/profile_icon_with_text.dart';
+import 'package:pet_planet/presentation/screens/main/profile/widgets/profile_icon_with_text_button.dart';
 import 'package:pet_planet/presentation/screens/main/profile/widgets/profile_image.dart';
+import 'package:intl/intl.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -30,82 +31,150 @@ class ProfileScreen extends StatelessWidget {
             );
           } else if (state is UserSuccessState) {
             return Scaffold(
+              backgroundColor: ColorManager.backgroundColor.withOpacity(0.59),
               body: SafeArea(
-                child: Column(
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.all(AppPadding.p10),
-                      height: AppSize.s250.w,
-                      width: double.infinity,
-                      color: ColorManager.backgroundColor,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Expanded(
-                                child: Row(
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding: EdgeInsets.only(
+                      left: AppPadding.p16.w,
+                      right: AppPadding.p16.w,
+                      top: AppPadding.p50.w,
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Stack(
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
                                   children: [
-                                    ProfileImage(
-                                      photoUrl: state.user.photoUrl,
-                                    ),
-                                    SizedBox(
-                                      width: AppSize.s20.w,
-                                    ),
-                                    Text(
-                                      state.user.displayName,
-                                      style: getApplicationTheme()
-                                          .textTheme
-                                          .headlineSmall!
-                                          .copyWith(
-                                            color: ColorManager.grey,
-                                            fontSize: FontSizeManager.s22.sp,
-                                          ),
+                                    Column(
+                                      children: [
+                                        ProfileImage(
+                                          photoUrl: state.user.photoUrl,
+                                        ),
+                                        SizedBox(
+                                          height: AppSize.s15.w,
+                                        ),
+                                        Text(
+                                          state.user.displayName,
+                                          style: getApplicationTheme()
+                                              .textTheme
+                                              .headlineSmall!
+                                              .copyWith(
+                                                color: ColorManager.grey,
+                                                fontSize:
+                                                    FontSizeManager.s25.sp,
+                                              ),
+                                          maxLines: 1,
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                      ],
                                     ),
                                   ],
                                 ),
-                              ),
-                              IconButton(
-                                onPressed: () {
-                                  // TODO: navigate to edit profile
-                                },
-                                icon: Icon(IconBroken.Edit,
-                                    size: FontSizeManager.s20.sp,
-                                    color: ColorManager.primaryColor),
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            height: AppSize.s25.w,
-                          ),
-                          ProfileIconWithText(
-                            icon: IconBroken.Call,
-                            text: state.user.phoneNumber,
-                          ),
-                          ProfileIconWithText(
-                            icon: IconBroken.Message,
-                            text: state.user.email,
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(50.0),
-                      child: Center(
-                        child: ElevatedButton(
-                          onPressed: () async {
-                            await FirebaseAuth.instance.signOut();
-                            CacheHelper.removeData(key: 'uid');
+                                Positioned(
+                                  right: AppSize.s0,
+                                  top: AppSize.s0,
+                                  child: IconButton(
+                                    onPressed: () {
+                                      navigateTo(
+                                        context,
+                                        Routes.editProfileRoute,
+                                      );
+                                    },
+                                    icon: Icon(
+                                      IconBroken.Edit,
+                                      size: FontSizeManager.s25.sp,
+                                      color: ColorManager.primaryColor,
+                                    ),
+                                    tooltip: AppStrings.editProfile,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              height: AppSize.s20.w,
+                            ),
+                            ProfileIconWithText(
+                              icon: IconBroken.Call,
+                              text: state.user.phoneNumber,
+                            ),
+                            ProfileIconWithText(
+                              icon: IconBroken.Message,
+                              text: state.user.email,
+                            ),
+                            ProfileIconWithText(
+                              icon: IconBroken.Location,
+                              text: state.user.address,
+                            ),
+                            ProfileIconWithText(
+                              icon: IconBroken.Time_Circle,
+                              text:
+                                  'Joined at: ${DateFormat('dd-MM-yyyy').format(state.user.createdAt!)}',
+                            ),
+                            SizedBox(
+                              height: AppSize.s10.w,
+                            ),
+                            const Divider(
+                              color: ColorManager.grey,
+                            ),
+                            SizedBox(
+                              height: AppSize.s10.w,
+                            ),
+                            ProfileIconWithTextButton(
+                              onTap: () {
+                                navigateTo(
+                                  context,
+                                  Routes.editProfileRoute,
+                                );
+                              },
+                              text: AppStrings.editProfile,
+                              icon: IconBroken.Edit_Square,
+                            ),
+                            SizedBox(
+                              height: AppSize.s10.w,
+                            ),
+                            ProfileIconWithTextButton(
+                              onTap: () {
+                                navigateTo(
+                                  context,
+                                  Routes.wishlistRoute,
+                                );
+                              },
+                              text: AppStrings.yourWishlist,
+                              icon: IconBroken.Heart,
+                            ),
+                            const Divider(
+                              color: ColorManager.grey,
+                            ),
+                            SizedBox(
+                              height: AppSize.s10.w,
+                            ),
+                            ProfileIconWithTextButton(
+                              onTap: () async {
+                                await FirebaseAuth.instance.signOut();
+                                CacheHelper.clearData();
 
-                            // ignore: use_build_context_synchronously
-                            navigateAndRemove(context, Routes.authLayoutRoute);
-                          },
-                          child: const Text('SIGN OUT'),
+                                // ignore: use_build_context_synchronously
+                                navigateAndRemove(
+                                  context,
+                                  Routes.authLayoutRoute,
+                                );
+                              },
+                              text: AppStrings.logout,
+                              icon: IconBroken.Logout,
+                              color: ColorManager.mainColorSwatch.shade500,
+                            ),
+                          ],
                         ),
-                      ),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
               ),
             );

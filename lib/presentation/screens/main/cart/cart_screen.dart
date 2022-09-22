@@ -19,6 +19,7 @@ class CartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: ColorManager.backgroundColor.withOpacity(0.59),
       appBar: AppBar(
         centerTitle: true,
         title: Text(

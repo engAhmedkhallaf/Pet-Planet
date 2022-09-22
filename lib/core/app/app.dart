@@ -54,14 +54,14 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => UserCubit()..getUserData(),
-          lazy: false,
+          lazy: true,
         ),
         BlocProvider(
           create: (context) => CartBloc()
             ..add(
               CartStartedEvent(),
             ),
-          lazy: true,
+          lazy: false,
         ),
         BlocProvider(
           create: (context) => WishlistBloc(
@@ -77,7 +77,7 @@ class MyApp extends StatelessWidget {
           )..add(
               StartCategoriesEvent(),
             ),
-          lazy: false,
+          lazy: true,
         ),
         BlocProvider(
           create: (context) => ProductBloc(
@@ -85,14 +85,14 @@ class MyApp extends StatelessWidget {
           )..add(
               StartProductEvent(),
             ),
-          lazy: false,
+          lazy: true,
         ),
         BlocProvider(
           create: (context) => CheckoutBloc(
             cartBloc: context.read<CartBloc>(),
             checkoutRepository: CheckoutRepository(),
           ),
-          lazy: false,
+          lazy: true,
         ),
       ],
       child: ScreenUtilInit(
