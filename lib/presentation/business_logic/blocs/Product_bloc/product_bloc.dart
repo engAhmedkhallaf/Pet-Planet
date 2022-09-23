@@ -20,6 +20,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     on<UpdateProductsEvent>(_onUpdateProducts);
   }
 
+
   FutureOr<void> _onLoadingProducts(
       StartProductEvent event, Emitter<ProductState> emit) async {
     _productSubscription?.cancel();
@@ -32,6 +33,6 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
 
   FutureOr<void> _onUpdateProducts(
       UpdateProductsEvent event, Emitter<ProductState> emit) async {
-    emit(ProductSuccessState(products: event.products));
+    emit(ProductLoadedState(products: event.products));
   }
 }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pet_planet/core/routes/routes_names.dart';
-import 'package:pet_planet/presentation/business_logic/cart_bloc/cart_bloc.dart';
+import 'package:pet_planet/presentation/business_logic/blocs/cart_bloc/cart_bloc.dart';
 import 'package:pet_planet/presentation/common/widgets/order_summary.dart';
 import 'package:pet_planet/presentation/resources/colors/color_manager.dart';
 import 'package:pet_planet/presentation/resources/fonts/font_manager.dart';

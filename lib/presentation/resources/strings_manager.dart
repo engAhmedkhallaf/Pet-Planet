@@ -45,6 +45,7 @@ class AppStrings {
 
   // Home Screen
   static const String search = 'Search';
+  static const String searchForAProduct = 'Search for a Product';
   static const String addToCart = 'Add To Cart';
   static const String addToWishlist = 'Add To Wishlist';
   static const String openWishlist = 'Open Wishlist';

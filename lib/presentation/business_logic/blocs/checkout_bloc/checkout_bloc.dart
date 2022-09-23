@@ -6,7 +6,7 @@ import 'package:pet_planet/data/models/cart_model.dart';
 import 'package:pet_planet/data/models/checkout_model.dart';
 import 'package:pet_planet/data/models/product_model.dart';
 import 'package:pet_planet/data/repositories/checkout/checkout_repository.dart';
-import 'package:pet_planet/presentation/business_logic/cart_bloc/cart_bloc.dart';
+import 'package:pet_planet/presentation/business_logic/blocs/cart_bloc/cart_bloc.dart';
 
 part 'checkout_event.dart';
 part 'checkout_state.dart';

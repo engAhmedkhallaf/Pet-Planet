@@ -8,10 +8,11 @@ import 'package:pet_planet/presentation/screens/auth/signup/signup_screen.dart';
 import 'package:pet_planet/presentation/screens/main/category_details/category_details_screen.dart';
 import 'package:pet_planet/presentation/screens/main/checkout/checkout_screen.dart';
 import 'package:pet_planet/data/models/category_model.dart';
-import 'package:pet_planet/presentation/screens/main/edit_profile/edit_profile.dart';
+import 'package:pet_planet/presentation/screens/main/edit_profile/edit_profile_screen.dart';
 import 'package:pet_planet/presentation/screens/main/main_layout.dart';
 import 'package:pet_planet/presentation/screens/main/order_confirmation/order_confirmation_screen.dart';
 import 'package:pet_planet/presentation/screens/main/product/product_screen.dart';
+import 'package:pet_planet/presentation/screens/main/search/search_screen.dart';
 import 'package:pet_planet/presentation/screens/main/wishlist/wishlist_screen.dart';
 // import 'package:pet_planet/presentation/screens/main/profile/profile.dart';
 // import 'package:pet_planet/presentation/screens/main/home/home.dart';
@@ -53,7 +54,9 @@ class RouteGenerator {
         return MaterialPageRoute(
             builder: (_) => const OrderConfirmationScreen());
       case Routes.editProfileRoute:
-        return MaterialPageRoute(builder: (_) => const EditProfile());
+        return MaterialPageRoute(builder: (_) => const EditProfileScreen());
+      case Routes.searchRoute:
+        return MaterialPageRoute(builder: (_) => const SearchScreen());
 
       default:
         return unDefinedRoute();

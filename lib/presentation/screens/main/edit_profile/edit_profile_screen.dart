@@ -8,8 +8,8 @@ import 'package:pet_planet/presentation/resources/strings_manager.dart';
 import 'package:pet_planet/presentation/resources/styles/style_manager.dart';
 import 'package:pet_planet/presentation/resources/values_manager.dart';
 
-class EditProfile extends StatelessWidget {
-  const EditProfile({super.key});
+class EditProfileScreen extends StatelessWidget {
+  const EditProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

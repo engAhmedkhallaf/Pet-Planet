@@ -2,10 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pet_planet/core/app/app_constants.dart';
-import 'package:pet_planet/core/network/local/cache_helper.dart';
 import 'package:pet_planet/data/models/user_model.dart';
-import 'package:pet_planet/presentation/business_logic/login_cubit/login_cubit.dart';
 
 part 'user_state.dart';
 

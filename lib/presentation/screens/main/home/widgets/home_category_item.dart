@@ -1,6 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pet_planet/presentation/business_logic/blocs/Product_bloc/product_bloc.dart';
 import 'package:pet_planet/presentation/resources/assets/assets_manager.dart';
 import 'package:pet_planet/presentation/resources/colors/color_manager.dart';
 import 'package:pet_planet/presentation/resources/fonts/font_manager.dart';
@@ -46,7 +48,7 @@ class HomeCategoryItem extends StatelessWidget {
               ],
             ),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
@@ -56,6 +58,25 @@ class HomeCategoryItem extends StatelessWidget {
                         height: AppSize.s1.w,
                         color: ColorManager.lightGrey,
                       ),
+                ),
+                BlocBuilder<ProductBloc, ProductState>(
+                  bloc: context.read<ProductBloc>(),
+                  builder: (context, state) {
+                    if (state is ProductLoadedState) {
+                      return Text(
+                        '${state.products.where((element) => (element.category == categoryModel.name)).toList().length} Items',
+                        style: getApplicationTheme()
+                            .textTheme
+                            .headlineSmall!
+                            .copyWith(
+                              fontSize: FontSizeManager.s12.sp,
+                              height: AppSize.s1.w,
+                            ),
+                      );
+                    } else {
+                      return const SizedBox();
+                    }
+                  },
                 ),
               ],
             ),

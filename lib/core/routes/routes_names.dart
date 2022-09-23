@@ -18,4 +18,5 @@ class Routes {
   static const String checkoutRoute = "checkRoute";
   static const String orderConfirmationRoute = "orderRoute";
   static const String editProfileRoute = "editProfileRoute";
+  static const String searchRoute = "searchRoute";
 }
