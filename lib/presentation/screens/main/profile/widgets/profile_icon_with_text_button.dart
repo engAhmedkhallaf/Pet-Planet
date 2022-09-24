@@ -5,6 +5,7 @@ import 'package:pet_planet/presentation/resources/fonts/font_manager.dart';
 import 'package:pet_planet/presentation/resources/theme/theme_manager.dart';
 import 'package:pet_planet/presentation/resources/values_manager.dart';
 
+// ignore: must_be_immutable
 class ProfileIconWithTextButton extends StatelessWidget {
   ProfileIconWithTextButton({
     super.key,

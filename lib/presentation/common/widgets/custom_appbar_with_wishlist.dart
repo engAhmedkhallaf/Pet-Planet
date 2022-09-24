@@ -30,7 +30,7 @@ class CustomAppBarWithWishlist extends StatelessWidget
         splashColor: ColorManager.primaryColor,
         tooltip: AppStrings.back,
         icon: Icon(
-          IconBroken.Arrow___Left_2,
+          IconBroken.arrowleft_2,
           color: ColorManager.grey,
           size: AppSize.s25.w,
         ),
@@ -53,7 +53,7 @@ class CustomAppBarWithWishlist extends StatelessWidget
             splashColor: ColorManager.primaryColor,
             tooltip: AppStrings.openWishlist,
             icon: Icon(
-              IconBroken.Heart,
+              IconBroken.heart,
               color: ColorManager.grey,
               size: AppSize.s25.w,
             ),

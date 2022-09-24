@@ -6,7 +6,7 @@ void navigateAndRemove(context, String routeName) {
     routeName,
     (route) => false,
   );
-  print('REMOVE ALL ROUTES & MOVING TO: $routeName');
+  debugPrint('REMOVE ALL ROUTES & MOVING TO: $routeName');
 }
 
 void navigateTo(context, String routeName) {
@@ -14,7 +14,7 @@ void navigateTo(context, String routeName) {
     context,
     routeName,
   );
-  print('MOVING TO: $routeName');
+  debugPrint('MOVING TO: $routeName');
 }
 
 
@@ -28,7 +28,7 @@ void navigateToWithArguments(
     routeName,
     arguments: arguments,
   );
-  print('MOVING TO: $routeName');
+  debugPrint('MOVING TO: $routeName');
 }
 
 
@@ -36,5 +36,5 @@ void navigateBack(context) {
   Navigator.pop(
     context,
   );
-  print('CLOSE: $context');
+  debugPrint('CLOSE: $context');
 }

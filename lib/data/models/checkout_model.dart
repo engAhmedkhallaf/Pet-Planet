@@ -1,23 +1,16 @@
 import 'package:equatable/equatable.dart';
 import 'package:pet_planet/data/models/product_model.dart';
+import 'package:pet_planet/data/models/user_model.dart';
 
 class Checkout extends Equatable {
-  final String? fullName;
-  final String? email;
-  final String? mobileNumber;
-  final String? address;
-  final String? city;
+  final UserModel? user;
   final List<Product>? products;
   final String? subtotal;
   final String? deliveryFee;
   final String? total;
 
   const Checkout({
-    required this.fullName,
-    required this.email,
-    required this.mobileNumber,
-    required this.address,
-    required this.city,
+    required this.user,
     required this.products,
     required this.subtotal,
     required this.deliveryFee,
@@ -25,15 +18,10 @@ class Checkout extends Equatable {
   });
 
   Map<String, dynamic> toDocument() {
-    Map customerAddress = {};
-    customerAddress['address'] = address;
-    customerAddress['city'] = city;
+    
 
     return {
-      'customerAddress': customerAddress,
-      'customerName': fullName!,
-      'customerEmail': email!,
-      'customerPhone': mobileNumber!,
+      'user': user!.toDocument(),
       'products': products!.map((product) => product.name).toList(),
       'subtotal': subtotal!,
       'deliveryFee': deliveryFee!,
@@ -43,11 +31,7 @@ class Checkout extends Equatable {
 
   @override
   List<Object?> get props => [
-        fullName,
-        email,
-        address,
-        city,
-        mobileNumber,
+        user,
         products,
         subtotal,
         deliveryFee,

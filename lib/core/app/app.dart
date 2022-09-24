@@ -3,14 +3,17 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pet_planet/core/network/local/cache_helper.dart';
 import 'package:pet_planet/core/routes/routes_manager.dart';
+import 'package:pet_planet/data/repositories/auth/auth_repository.dart';
 import 'package:pet_planet/data/repositories/category/category_repository.dart';
 import 'package:pet_planet/data/repositories/checkout/checkout_repository.dart';
 import 'package:pet_planet/data/repositories/local_storage/local_storage_repository.dart';
 import 'package:pet_planet/data/repositories/product/product_repository.dart';
+import 'package:pet_planet/data/repositories/user/user_repository.dart';
 import 'package:pet_planet/presentation/business_logic/blocs/Product_bloc/product_bloc.dart';
 import 'package:pet_planet/presentation/business_logic/blocs/cart_bloc/cart_bloc.dart';
 import 'package:pet_planet/presentation/business_logic/blocs/category_bloc/category_bloc.dart';
 import 'package:pet_planet/presentation/business_logic/blocs/checkout_bloc/checkout_bloc.dart';
+import 'package:pet_planet/presentation/business_logic/blocs/profile_bloc/profile_bloc.dart';
 import 'package:pet_planet/presentation/business_logic/blocs/search_bloc/search_bloc.dart';
 import 'package:pet_planet/presentation/business_logic/blocs/wishlist_bloc/wishlist_bloc.dart';
 import 'package:pet_planet/presentation/business_logic/cubits/forgot_password_cubit/forgot_password_cubit.dart';
@@ -19,10 +22,10 @@ import 'package:pet_planet/presentation/business_logic/cubits/login_cubit/login_
 import 'package:pet_planet/presentation/business_logic/cubits/main_cubit/main_cubit.dart';
 import 'package:pet_planet/presentation/business_logic/cubits/signup_cubit/signup_cubit.dart';
 import 'package:pet_planet/presentation/common/widgets/show_alert_dialog.dart';
+import 'package:pet_planet/presentation/resources/strings_manager.dart';
 import 'package:pet_planet/presentation/resources/theme/theme_manager.dart';
 import 'package:pet_planet/presentation/screens/auth/auth_layout_screen.dart';
 import 'package:pet_planet/presentation/screens/main/main_layout.dart';
-
 import 'app_constants.dart';
 
 class MyApp extends StatelessWidget {
@@ -30,8 +33,20 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RepositoryProvider(
-      create: (context) => ProductRepository(),
+    return MultiRepositoryProvider(
+      providers: [
+        RepositoryProvider(
+          create: (context) => ProductRepository(),
+        ),
+        RepositoryProvider(
+          create: (context) => UserRepository(),
+          lazy: true,
+        ),
+        RepositoryProvider(
+          create: (context) => AuthRepository(),
+          lazy: true,
+        ),
+      ],
       child: MultiBlocProvider(
         providers: [
           BlocProvider(
@@ -100,10 +115,17 @@ class MyApp extends StatelessWidget {
                     LoadSearchEvent(),
                   )),
           ),
-          // BlocProvider(
-          //   create: (context) => UserCubit()..getUserData(),
-          //   lazy: true,
-          // ),
+          BlocProvider(
+            create: (context) => ProfileBloc(
+              authRepository: context.read<AuthRepository>(),
+              userRepository: context.read<UserRepository>(),
+            )..add(
+                LoadProfileEvent(
+                  uid: CacheHelper.get(key: AppConstants.uidKey),
+                ),
+              ),
+            lazy: true,
+          ),
         ],
         child: ScreenUtilInit(
           designSize: const Size(360, 690),
@@ -120,7 +142,7 @@ class MyApp extends StatelessWidget {
                     showAlertDialog(
                       context,
                       state.message,
-                      'Please check your internet',
+                      AppStrings.pleaseCheckYouInternet,
                     );
                   } else {
                     // navigateBack(context);

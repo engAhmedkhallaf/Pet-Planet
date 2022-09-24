@@ -1,10 +1,10 @@
 import 'dart:async';
-
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pet_planet/data/models/cart_model.dart';
 import 'package:pet_planet/data/models/checkout_model.dart';
 import 'package:pet_planet/data/models/product_model.dart';
+import 'package:pet_planet/data/models/user_model.dart';
 import 'package:pet_planet/data/repositories/checkout/checkout_repository.dart';
 import 'package:pet_planet/presentation/business_logic/blocs/cart_bloc/cart_bloc.dart';
 
@@ -53,15 +53,12 @@ class CheckoutBloc extends Bloc<CheckoutEvent, CheckoutState> {
     if (state is CheckoutSuccessState) {
       emit(
         CheckoutSuccessState(
-          fullName: event.fullName ?? state.fullName,
-          email: event.email ?? state.email,
-          mobileNumber: event.mobileNumber ?? state.mobileNumber,
+          user: event.user ?? state.user,
           products: event.cart?.products ?? state.products,
           deliveryFee: event.cart?.deliveryFeeString ?? state.deliveryFee,
           subTotal: event.cart?.subTotalString ?? state.subTotal,
           total: event.cart?.totalString ?? state.total,
-          address: event.address ?? state.address,
-          city: event.city ?? state.city,
+          
         ),
       );
     }
@@ -79,5 +76,12 @@ class CheckoutBloc extends Bloc<CheckoutEvent, CheckoutState> {
         emit(CheckoutFailureState());
       }
     }
+  }
+
+  
+  @override
+  Future<void> close() async {
+    _cartSubscription?.cancel();
+    super.close();
   }
 }

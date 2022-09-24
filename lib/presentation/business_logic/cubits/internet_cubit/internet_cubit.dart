@@ -2,6 +2,8 @@ import 'dart:async';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pet_planet/presentation/resources/strings_manager.dart';
+
 part 'internet_state.dart';
 
 class InternetCubit extends Cubit<InternetState> {
@@ -12,12 +14,19 @@ class InternetCubit extends Cubit<InternetState> {
   InternetCubit() : super(InternetLoadingState());
 
   void connected() {
-    emit(const InternetConnectedState(
-        message: 'Your internet connection was restored'));
+    emit(
+      const InternetConnectedState(
+        message: AppStrings.yourInternetConnectionWasRestored,
+      ),
+    );
   }
 
   void notConnected() {
-    emit(const InternetDisConnectedState(message: 'You are currently offline'));
+    emit(
+      const InternetDisConnectedState(
+        message: AppStrings.youAreCurrentlyOffline,
+      ),
+    );
   }
 
   void checkConnection() {

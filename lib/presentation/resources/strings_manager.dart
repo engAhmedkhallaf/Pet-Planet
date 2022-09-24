@@ -4,7 +4,7 @@ class AppStrings {
   static const String planet = 'Planet';
   static const String foodDelivery = 'FOOD DELIVERY';
   static const String desc =
-      'lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem ';
+      'lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem ';//TODO: change
   static const String login = 'Login';
   static const String signUp = 'Sign Up';
   static const String createAnAccount = 'Create An Account';
@@ -78,17 +78,22 @@ class AppStrings {
   static const String city = 'City';
   static const String orderSummary = 'ORDER SUMMARY';
 
-  // Order Confirmation Scree
+  // Order Confirmation Screen
   static const String orderConfirmation = 'Order Confirmation';
   static const String backToShopping = 'BACK TO SHOPPING';
   static const String thankYou = 'Thank You!';
   static const String yourOrderIsBeingProcessing =
       'Your order is now being processing.\n We will contact you soon.';
 
-// Profile Scree
+  // Profile Screen
   static const String editProfile = 'Edit Profile';
   static const String yourWishlist = 'Your Wishlist';
   static const String myInformation = 'MY INFORMATION';
+
+  // Internet Messages 
+  static const String pleaseCheckYouInternet = 'Please check your internet';
+  static const String yourInternetConnectionWasRestored = 'Your internet connection was restored';
+  static const String youAreCurrentlyOffline = 'You are currently offline';
 
 
 

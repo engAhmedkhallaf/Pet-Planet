@@ -182,7 +182,7 @@ class ProductScreen extends StatelessWidget {
                           AppStrings.addToCart,
                         ),
                         Icon(
-                          IconBroken.Cart,
+                          IconBroken.cart,
                           color: ColorManager.backgroundColor,
                           size: AppSize.s25.sm,
                         )

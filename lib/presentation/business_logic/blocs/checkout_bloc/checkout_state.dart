@@ -10,11 +10,7 @@ abstract class CheckoutState extends Equatable {
 class CheckoutLoadingState extends CheckoutState {}
 
 class CheckoutSuccessState extends CheckoutState {
-  final String? fullName;
-  final String? email;
-  final String? mobileNumber;
-  final String? address;
-  final String? city;
+  final UserModel? user;
   final List<Product>? products;
   final String? subTotal;
   final String? deliveryFee;
@@ -23,21 +19,14 @@ class CheckoutSuccessState extends CheckoutState {
   final Checkout checkout;
 
   CheckoutSuccessState({
-    this.fullName,
-    this.email,
-    this.mobileNumber,
-    this.address,
-    this.city,
+    
+    this.user,
     this.products,
     this.subTotal,
     this.deliveryFee,
     this.total,
   }) : checkout = Checkout(
-          fullName: fullName,
-          email: email,
-          mobileNumber: mobileNumber,
-          address: address,
-          city: city,
+          user: user,
           products: products,
           subtotal: subTotal,
           deliveryFee: deliveryFee,
@@ -45,11 +34,7 @@ class CheckoutSuccessState extends CheckoutState {
         );
   @override
   List<Object?> get props => [
-        fullName,
-        email,
-        mobileNumber,
-        address,
-        city,
+        user,
         products,
         subTotal,
         deliveryFee,

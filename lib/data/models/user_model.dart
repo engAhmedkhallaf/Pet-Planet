@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 
 class UserModel extends Equatable {
@@ -13,12 +12,12 @@ class UserModel extends Equatable {
 
   const UserModel({
     this.id,
-    required this.displayName,
-    required this.email,
-    required this.phoneNumber,
-    required this.address,
-    required this.photoUrl,
-    required this.createdAt,
+    this.displayName = '',
+    this.email = '',
+    this.phoneNumber = '',
+    this.address = '',
+    this.photoUrl = '',
+    this.createdAt,
     this.isEmailVerified = false,
   });
 
@@ -44,16 +43,16 @@ class UserModel extends Equatable {
     );
   }
 
-  factory UserModel.fromSnapshot(DocumentSnapshot snapshot) {
+  factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
-      id: snapshot['id'],
-      displayName: snapshot['displayName'],
-      email: snapshot['email'],
-      phoneNumber: snapshot['phoneNumber'],
-      address: snapshot['address'],
-      photoUrl: snapshot['photoUrl'],
-      createdAt: snapshot['createdAt'].toDate(),
-      isEmailVerified: snapshot['isEmailVerified'],
+      id: json['id'],
+      displayName: json['displayName'],
+      email: json['email'],
+      phoneNumber: json['phoneNumber'],
+      address: json['address'],
+      photoUrl: json['photoUrl'],
+      createdAt: json['createdAt'].toDate(),
+      isEmailVerified: json['isEmailVerified'],
     );
   }
 

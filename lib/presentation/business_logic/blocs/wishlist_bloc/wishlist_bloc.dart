@@ -36,7 +36,6 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
         ),
       );
     } catch (e) {
-      print(e);
       emit(WishlistFailureState());
     }
   }
@@ -56,7 +55,6 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
           ),
         );
       } catch (e) {
-        print(e);
         emit(WishlistFailureState());
       }
     }
@@ -76,7 +74,6 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
           ),
         ));
       } catch (e) {
-        print(e);
         emit(WishlistFailureState());
       }
     }

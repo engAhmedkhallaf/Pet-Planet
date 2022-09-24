@@ -24,17 +24,17 @@ class MainLayout extends StatelessWidget {
             items: const [
               BottomNavigationBarItem(
                 label: AppStrings.home,
-                icon: Icon(IconBroken.Home),
+                icon: Icon(IconBroken.home),
                 tooltip: AppStrings.home,
               ),
               BottomNavigationBarItem(
                 label: AppStrings.cart,
-                icon: Icon(IconBroken.Cart),
+                icon: Icon(IconBroken.cart),
                 tooltip: AppStrings.cart,
               ),
               BottomNavigationBarItem(
                 label: AppStrings.profile,
-                icon: Icon(IconBroken.Profile),
+                icon: Icon(IconBroken.profile),
                 tooltip: AppStrings.profile,
               ),
             ],

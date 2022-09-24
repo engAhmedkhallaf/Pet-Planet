@@ -1,10 +1,9 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pet_planet/core/network/local/cache_helper.dart';
 import 'package:pet_planet/core/routes/routes_names.dart';
-import 'package:pet_planet/presentation/business_logic/cubits/user_cubit/user_cubit.dart';
+import 'package:pet_planet/presentation/business_logic/blocs/profile_bloc/profile_bloc.dart';
 import 'package:pet_planet/presentation/resources/assets/assets_manager.dart';
 import 'package:pet_planet/presentation/resources/colors/color_manager.dart';
 import 'package:pet_planet/presentation/resources/fonts/font_manager.dart';
@@ -23,13 +22,13 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocBuilder<UserCubit, UserState>(
+      body: BlocBuilder<ProfileBloc, ProfileState>(
         builder: (context, state) {
-          if (state is UserLoadingState) {
+          if (state is ProfileLoadingState) {
             return const Center(
               child: CircularProgressIndicator(),
             );
-          } else if (state is UserSuccessState) {
+          } else if (state is ProfileLoadedState) {
             return Scaffold(
               backgroundColor: ColorManager.backgroundColor.withOpacity(0.59),
               body: SafeArea(
@@ -88,7 +87,7 @@ class ProfileScreen extends StatelessWidget {
                                       );
                                     },
                                     icon: Icon(
-                                      IconBroken.Edit,
+                                      IconBroken.edit,
                                       size: FontSizeManager.s25.sp,
                                       color: ColorManager.primaryColor,
                                     ),
@@ -101,19 +100,19 @@ class ProfileScreen extends StatelessWidget {
                               height: AppSize.s20.w,
                             ),
                             ProfileIconWithText(
-                              icon: IconBroken.Call,
+                              icon: IconBroken.call,
                               text: state.user.phoneNumber,
                             ),
                             ProfileIconWithText(
-                              icon: IconBroken.Message,
+                              icon: IconBroken.message,
                               text: state.user.email,
                             ),
                             ProfileIconWithText(
-                              icon: IconBroken.Location,
+                              icon: IconBroken.location,
                               text: state.user.address,
                             ),
                             ProfileIconWithText(
-                              icon: IconBroken.Time_Circle,
+                              icon: IconBroken.timeCircle,
                               text:
                                   'Joined at: ${DateFormat('dd-MM-yyyy').format(state.user.createdAt!)}',
                             ),
@@ -134,7 +133,7 @@ class ProfileScreen extends StatelessWidget {
                                 );
                               },
                               text: AppStrings.editProfile,
-                              icon: IconBroken.Edit_Square,
+                              icon: IconBroken.editSquare,
                             ),
                             SizedBox(
                               height: AppSize.s10.w,
@@ -147,7 +146,7 @@ class ProfileScreen extends StatelessWidget {
                                 );
                               },
                               text: AppStrings.yourWishlist,
-                              icon: IconBroken.Heart,
+                              icon: IconBroken.heart,
                             ),
                             const Divider(
                               color: ColorManager.grey,
@@ -157,7 +156,7 @@ class ProfileScreen extends StatelessWidget {
                             ),
                             ProfileIconWithTextButton(
                               onTap: () async {
-                                await FirebaseAuth.instance.signOut();
+                                await context.read<ProfileBloc>().logout();
                                 CacheHelper.clearData();
 
                                 // ignore: use_build_context_synchronously
@@ -167,7 +166,7 @@ class ProfileScreen extends StatelessWidget {
                                 );
                               },
                               text: AppStrings.logout,
-                              icon: IconBroken.Logout,
+                              icon: IconBroken.logout,
                               color: ColorManager.mainColorSwatch.shade500,
                             ),
                           ],

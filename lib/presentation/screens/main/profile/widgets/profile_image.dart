@@ -1,9 +1,9 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pet_planet/presentation/resources/colors/color_manager.dart';
 import 'package:pet_planet/presentation/resources/values_manager.dart';
 
+// ignore: must_be_immutable
 class ProfileImage extends StatelessWidget {
   ProfileImage({
     super.key,
@@ -23,20 +23,7 @@ class ProfileImage extends StatelessWidget {
       child: CircleAvatar(
         backgroundColor: ColorManager.grey,
         radius: radius_2.w,
-        backgroundImage: CachedNetworkImageProvider(photoUrl),
-        // child: CachedNetworkImage(
-        //   imageUrl: photoUrl,
-        //   placeholder: (context, url) =>
-        //       const Center(child: CircularProgressIndicator()),
-        //   errorWidget: (context, url, error) => Image.asset(
-        //     AssetsManager.noImage,
-        //     fit: BoxFit.cover,
-        //   ),
-        //   color: ColorManager.lightGrey,
-        //   fit: BoxFit.cover,
-        //   width: radius_2.r,
-        //   height: radius_2.r,
-        // ),
+        backgroundImage: NetworkImage(photoUrl),
       ),
     );
   }
