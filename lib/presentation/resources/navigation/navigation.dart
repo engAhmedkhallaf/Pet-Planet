@@ -17,6 +17,13 @@ void navigateTo(context, String routeName) {
   debugPrint('MOVING TO: $routeName');
 }
 
+void navigateToAndReplacement(context, String routeName) {
+  Navigator.pushReplacementNamed(
+    context,
+    routeName,
+  );
+  debugPrint('MOVING TO: $routeName');
+}
 
 void navigateToWithArguments(
   context,

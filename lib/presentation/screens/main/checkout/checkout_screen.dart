@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pet_planet/core/routes/routes_names.dart';
+import 'package:pet_planet/data/models/user_model.dart';
 import 'package:pet_planet/presentation/business_logic/blocs/checkout_bloc/checkout_bloc.dart';
 import 'package:pet_planet/presentation/common/widgets/custom_appbar_with_wishlist.dart';
 import 'package:pet_planet/presentation/common/widgets/order_summary.dart';
@@ -30,7 +31,7 @@ class CheckoutScreen extends StatelessWidget {
                   child: CircularProgressIndicator(),
                 );
               } else if (state is CheckoutSuccessState) {
-            //  UserModel  userModel ;
+                UserModel user = state.user ?? UserModel.empty;
                 return Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -52,7 +53,7 @@ class CheckoutScreen extends StatelessWidget {
                       onChanged: (value) {
                         context.read<CheckoutBloc>().add(
                               UpdateCheckoutEvent(
-                                user: state.checkout.user!.copyWith(
+                                user: state.checkout.user?.copyWith(
                                   displayName: value,
                                 ),
                               ),
@@ -60,14 +61,14 @@ class CheckoutScreen extends StatelessWidget {
                       },
                       context: context,
                       labelText: AppStrings.fullName,
-                      initialValue:' userModel.displayName',
+                      initialValue: user.displayName,
                       textInputType: TextInputType.name,
                     ),
                     _buildTextFormField(
                       onChanged: (value) {
                         context.read<CheckoutBloc>().add(
                               UpdateCheckoutEvent(
-                                user: state.checkout.user!.copyWith(
+                                user: state.checkout.user?.copyWith(
                                   email: value,
                                 ),
                               ),
@@ -75,25 +76,26 @@ class CheckoutScreen extends StatelessWidget {
                       },
                       context: context,
                       labelText: AppStrings.email,
+                      initialValue: user.email,
                       textInputType: TextInputType.emailAddress,
                     ),
                     _buildTextFormField(
                       onChanged: (value) {
                         context.read<CheckoutBloc>().add(
                               UpdateCheckoutEvent(
-                                user: state.checkout.user!.copyWith(
+                                user: state.checkout.user?.copyWith(
                                   phoneNumber: value,
                                 ),
                               ),
                             );
                       },
-                      initialValue: 'userModel.displayName',
                       context: context,
                       labelText: AppStrings.mobileNumber,
+                      initialValue: user.phoneNumber,
                       textInputType: TextInputType.phone,
                     ),
                     SizedBox(
-                      height: AppSize.s20.w,
+                      height: AppSize.s30.w,
                     ),
                     Padding(
                       padding: const EdgeInsets.only(bottom: AppPadding.p10),
@@ -112,7 +114,7 @@ class CheckoutScreen extends StatelessWidget {
                       onChanged: (value) {
                         context.read<CheckoutBloc>().add(
                               UpdateCheckoutEvent(
-                                user: state.checkout.user!.copyWith(
+                                user: state.checkout.user?.copyWith(
                                   address: value,
                                 ),
                               ),
@@ -120,24 +122,11 @@ class CheckoutScreen extends StatelessWidget {
                       },
                       context: context,
                       labelText: AppStrings.address,
+                      initialValue: user.address,
                       textInputType: TextInputType.streetAddress,
                     ),
-                    _buildTextFormField(
-                      onChanged: (value) {
-                        context.read<CheckoutBloc>().add(
-                              UpdateCheckoutEvent(
-                                user: state.checkout.user!.copyWith(
-                                  address: value,
-                                ),
-                              ),
-                            );
-                      },
-                      context: context,
-                      labelText: AppStrings.city,
-                      textInputType: TextInputType.text,
-                    ),
                     SizedBox(
-                      height: AppSize.s20.w,
+                      height: AppSize.s30.w,
                     ),
                     Padding(
                       padding:
@@ -186,7 +175,7 @@ class CheckoutScreen extends StatelessWidget {
                                 checkout: state.checkout,
                               ),
                             );
-                        navigateTo(
+                        navigateToAndReplacement(
                           context,
                           Routes.orderConfirmationRoute,
                         );
@@ -222,7 +211,10 @@ class CheckoutScreen extends StatelessWidget {
             );
           } else {
             return const Center(
-              child: Text(AppStrings.someThingWentWrong),
+              child: Text(
+                '${AppStrings.someThingWentWrong} \n Please restart the Application',
+                textAlign: TextAlign.center,
+              ),
             );
           }
         },

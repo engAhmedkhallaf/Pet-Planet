@@ -10,6 +10,7 @@ import 'package:pet_planet/data/repositories/local_storage/local_storage_reposit
 import 'package:pet_planet/data/repositories/product/product_repository.dart';
 import 'package:pet_planet/data/repositories/user/user_repository.dart';
 import 'package:pet_planet/presentation/business_logic/blocs/Product_bloc/product_bloc.dart';
+import 'package:pet_planet/presentation/business_logic/blocs/auth_bloc/auth_bloc.dart';
 import 'package:pet_planet/presentation/business_logic/blocs/cart_bloc/cart_bloc.dart';
 import 'package:pet_planet/presentation/business_logic/blocs/category_bloc/category_bloc.dart';
 import 'package:pet_planet/presentation/business_logic/blocs/checkout_bloc/checkout_bloc.dart';
@@ -102,12 +103,13 @@ class MyApp extends StatelessWidget {
             lazy: true,
           ),
           BlocProvider(
-            create: (context) => CheckoutBloc(
-              cartBloc: context.read<CartBloc>(),
-              checkoutRepository: CheckoutRepository(),
+            create: (context) => AuthBloc(
+              authRepository: context.read<AuthRepository>(),
+              userRepository: context.read<UserRepository>(),
             ),
-            lazy: true,
+            lazy: false,
           ),
+
           BlocProvider(
             create: ((context) => SearchBloc(
                   productRepository: context.read<ProductRepository>(),

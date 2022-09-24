@@ -6,25 +6,31 @@ import 'package:pet_planet/data/models/checkout_model.dart';
 import 'package:pet_planet/data/models/product_model.dart';
 import 'package:pet_planet/data/models/user_model.dart';
 import 'package:pet_planet/data/repositories/checkout/checkout_repository.dart';
+import 'package:pet_planet/presentation/business_logic/blocs/auth_bloc/auth_bloc.dart';
 import 'package:pet_planet/presentation/business_logic/blocs/cart_bloc/cart_bloc.dart';
 
 part 'checkout_event.dart';
 part 'checkout_state.dart';
 
 class CheckoutBloc extends Bloc<CheckoutEvent, CheckoutState> {
+  final AuthBloc _authBloc;
   final CartBloc _cartBloc;
   final CheckoutRepository _checkoutRepository;
+  StreamSubscription? _authSubscription;
   StreamSubscription? _cartSubscription;
   StreamSubscription? _checkoutSubscription;
 
   CheckoutBloc({
+    required AuthBloc authBloc,
     required CartBloc cartBloc,
     required CheckoutRepository checkoutRepository,
-  })  : _cartBloc = cartBloc,
+  })  : _authBloc = authBloc,
+        _cartBloc = cartBloc,
         _checkoutRepository = checkoutRepository,
         super(
           cartBloc.state is CartSuccessState
               ? CheckoutSuccessState(
+                  user: authBloc.state.user,
                   products: (cartBloc.state as CartSuccessState).cart.products,
                   subTotal:
                       (cartBloc.state as CartSuccessState).cart.subTotalString,
@@ -37,6 +43,15 @@ class CheckoutBloc extends Bloc<CheckoutEvent, CheckoutState> {
         ) {
     on<UpdateCheckoutEvent>(_onUpdateCheckout);
     on<ConfirmCheckoutEvent>(_onConfirmCheckout);
+
+    _authSubscription = _authBloc.stream.listen((state) {
+      // ignore: unrelated_type_equality_checks
+      if (state.status == AuthState.unauthenticated) {
+        add(const UpdateCheckoutEvent(user: UserModel.empty));
+      } else {
+        add(UpdateCheckoutEvent(user: state.user));
+      }
+    });
 
     _cartSubscription = _cartBloc.stream.listen((state) {
       if (state is CartSuccessState) {
@@ -58,7 +73,6 @@ class CheckoutBloc extends Bloc<CheckoutEvent, CheckoutState> {
           deliveryFee: event.cart?.deliveryFeeString ?? state.deliveryFee,
           subTotal: event.cart?.subTotalString ?? state.subTotal,
           total: event.cart?.totalString ?? state.total,
-          
         ),
       );
     }
@@ -71,17 +85,17 @@ class CheckoutBloc extends Bloc<CheckoutEvent, CheckoutState> {
       try {
         await _checkoutRepository.addCheckout(event.checkout);
         emit(CheckoutSuccessState());
-        _cartBloc.add( CartStartedEvent());
+        _cartBloc.add(CartStartedEvent());
       } catch (_) {
         emit(CheckoutFailureState());
       }
     }
   }
 
-  
   @override
   Future<void> close() async {
     _cartSubscription?.cancel();
+    _authSubscription?.cancel();
     super.close();
   }
 }

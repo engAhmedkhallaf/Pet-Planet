@@ -48,6 +48,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
 
   FutureOr<void> _onUpdateProfile(
       UpdateProfileEvent event, Emitter<ProfileState> emit) {
+        _userRepository.updateUser(event.user);
     emit(ProfileLoadedState(user: event.user));
   }
 

@@ -85,8 +85,7 @@ class OrderConfirmationScreen extends StatelessWidget {
             return const Center(
               child: CircularProgressIndicator(),
             );
-          } else if (state is CheckoutFailureState ||
-              state is CheckoutSuccessState) {
+          } else if (state is CheckoutSuccessState) {
             return BottomAppBar(
               color: ColorManager.backgroundColor,
               child: SizedBox(
@@ -135,7 +134,7 @@ class OrderConfirmationScreen extends StatelessWidget {
           }
         },
       ),
-      // extendBodyBehindAppBar: true,
+      // extendBody: true,
     );
   }
 }

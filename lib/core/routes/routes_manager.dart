@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pet_planet/core/routes/routes_names.dart';
 import 'package:pet_planet/data/models/product_model.dart';
+import 'package:pet_planet/data/repositories/checkout/checkout_repository.dart';
+import 'package:pet_planet/presentation/business_logic/blocs/auth_bloc/auth_bloc.dart';
+import 'package:pet_planet/presentation/business_logic/blocs/cart_bloc/cart_bloc.dart';
+import 'package:pet_planet/presentation/business_logic/blocs/checkout_bloc/checkout_bloc.dart';
 import 'package:pet_planet/presentation/screens/auth/auth_layout_screen.dart';
 import 'package:pet_planet/presentation/screens/auth/forget_password/forgot_password_screen.dart';
 import 'package:pet_planet/presentation/screens/auth/login/login_screen.dart';
@@ -14,9 +19,6 @@ import 'package:pet_planet/presentation/screens/main/order_confirmation/order_co
 import 'package:pet_planet/presentation/screens/main/product/product_screen.dart';
 import 'package:pet_planet/presentation/screens/main/search/search_screen.dart';
 import 'package:pet_planet/presentation/screens/main/wishlist/wishlist_screen.dart';
-// import 'package:pet_planet/presentation/screens/main/profile/profile.dart';
-// import 'package:pet_planet/presentation/screens/main/home/home.dart';
-// import 'package:pet_planet/presentation/screens/main/cart/cart_screen.dart';
 
 class RouteGenerator {
   static Route<dynamic> getRoute(RouteSettings routeSettings) {
@@ -49,10 +51,29 @@ class RouteGenerator {
       case Routes.wishlistRoute:
         return MaterialPageRoute(builder: (_) => const WishlistScreen());
       case Routes.checkoutRoute:
-        return MaterialPageRoute(builder: (_) => const CheckoutScreen());
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => CheckoutBloc(
+              authBloc: context.read<AuthBloc>(),
+              cartBloc: context.read<CartBloc>(),
+              checkoutRepository: CheckoutRepository(),
+            ),
+            lazy: true,
+            child: const CheckoutScreen(),
+          ),
+        );
       case Routes.orderConfirmationRoute:
         return MaterialPageRoute(
-            builder: (_) => const OrderConfirmationScreen());
+          builder: (_) => BlocProvider(
+            create: (context) => CheckoutBloc(
+              authBloc: context.read<AuthBloc>(),
+              cartBloc: context.read<CartBloc>(),
+              checkoutRepository: CheckoutRepository(),
+            ),
+            lazy: true,
+            child: const OrderConfirmationScreen(),
+          ),
+        );
       case Routes.editProfileRoute:
         return MaterialPageRoute(builder: (_) => const EditProfileScreen());
       case Routes.searchRoute:

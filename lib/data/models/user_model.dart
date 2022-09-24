@@ -68,6 +68,7 @@ class UserModel extends Equatable {
     };
   }
 
+  static const empty = UserModel(id: '');
   @override
   List<Object?> get props => [
         id,

@@ -16,4 +16,3 @@ class CheckoutRepository extends BaseCheckoutRepository {
         .add(checkout.toDocument());
   }
 }
-
