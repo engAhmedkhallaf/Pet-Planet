@@ -8,6 +8,10 @@ class Checkout extends Equatable {
   final String? subtotal;
   final String? deliveryFee;
   final String? total;
+  final DateTime? createdAt;
+  final bool? isAccepted;
+  final bool? isCancelled;
+  final bool? isDelivered;
 
   const Checkout({
     required this.user,
@@ -15,17 +19,23 @@ class Checkout extends Equatable {
     required this.subtotal,
     required this.deliveryFee,
     required this.total,
+    this.createdAt,
+    this.isAccepted,
+    this.isCancelled,
+    this.isDelivered,
   });
 
   Map<String, dynamic> toDocument() {
-    
-
     return {
       'user': user!.toDocument(),
-      'products': products!.map((product) => product.name).toList(),
+      'products': products!.map((product) => product.id).toList(),
       'subtotal': subtotal!,
       'deliveryFee': deliveryFee!,
       'total': total!,
+      'createdAt': DateTime.now(),
+      'isAccepted': false,
+      'isCancelled': false,
+      'isDelivered': false,
     };
   }
 
@@ -36,5 +46,9 @@ class Checkout extends Equatable {
         subtotal,
         deliveryFee,
         total,
+        createdAt,
+        isAccepted,
+        isCancelled,
+        isDelivered,
       ];
 }

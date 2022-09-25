@@ -29,7 +29,8 @@ class CategoryDetailsScreen extends StatelessWidget {
             );
           } else if (state is ProductLoadedState) {
             final List<Product> categoryProducts = state.products
-                .where((product) => (product.category == categoryModel.name))
+                .where((product) => (product.category.toLowerCase() ==
+                    categoryModel.name.toLowerCase()))
                 .toList();
             return GridView.builder(
               padding: EdgeInsets.symmetric(

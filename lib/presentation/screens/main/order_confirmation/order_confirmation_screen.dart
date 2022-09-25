@@ -53,7 +53,10 @@ class OrderConfirmationScreen extends StatelessWidget {
                 SvgPicture.asset(
                   AssetsManager.orderSuccess,
                   color: ColorManager.lightGrey,
-                  width: AppSize.s90.w,
+                  width: AppSize.s100.w,
+                ),
+                SizedBox(
+                  height: AppSize.s15.w,
                 ),
                 Text(
                   AppStrings.thankYou,
@@ -75,7 +78,7 @@ class OrderConfirmationScreen extends StatelessWidget {
             SizedBox(
               height: AppSize.s25.w,
             ),
-            const OrderSummary(),
+            // const OrderSummary(),
           ],
         ),
       ),
@@ -134,7 +137,6 @@ class OrderConfirmationScreen extends StatelessWidget {
           }
         },
       ),
-      // extendBody: true,
     );
   }
 }

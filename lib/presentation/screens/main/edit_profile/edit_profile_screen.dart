@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pet_planet/presentation/common/widgets/custom_snack_bar.dart';
 import 'package:pet_planet/presentation/resources/assets/assets_manager.dart';
 import 'package:pet_planet/presentation/resources/colors/color_manager.dart';
 import 'package:pet_planet/presentation/resources/fonts/font_manager.dart';
@@ -18,6 +19,7 @@ class EditProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: ColorManager.white.withOpacity(0.05),
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {
@@ -49,126 +51,156 @@ class EditProfileScreen extends StatelessWidget {
               child: CircularProgressIndicator(),
             );
           } else if (state is ProfileLoadedState) {
-            return Scaffold(
-              backgroundColor: ColorManager.backgroundColor.withOpacity(0.59),
-              body: SingleChildScrollView(
-                child: Padding(
-                  padding: EdgeInsets.only(
-                    left: AppPadding.p16.w,
-                    right: AppPadding.p16.w,
-                    top: AppPadding.p20.w,
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Column(
-                                children: [
-                                  ProfileImage(
-                                    photoUrl: state.user.photoUrl,
-                                    radius_1: AppSize.s60.w,
-                                    radius_2: AppSize.s59.w,
-                                  ),
-                                  SizedBox(
-                                    height: AppSize.s15.w,
-                                  ),
-                                  Text(
-                                    'Hello, ${(state.user.displayName).split(' ')[0]}!',
-                                    style: getApplicationTheme()
-                                        .textTheme
-                                        .headlineSmall!
-                                        .copyWith(
-                                          color: ColorManager.grey,
-                                          fontSize: FontSizeManager.s22.sp,
+            TextEditingController displayNameController =
+                TextEditingController(text: state.user.displayName);
+            TextEditingController emailController =
+                TextEditingController(text: state.user.email);
+            TextEditingController phoneNumberController =
+                TextEditingController(text: state.user.phoneNumber);
+            TextEditingController addressController =
+                TextEditingController(text: state.user.address);
+
+            return SingleChildScrollView(
+              keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+              child: Padding(
+                padding: EdgeInsets.only(
+                  left: AppPadding.p16.w,
+                  right: AppPadding.p16.w,
+                  top: AppPadding.p20.w,
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Column(
+                              children: [
+                                ProfileImage(
+                                  photoUrl: state.user.photoUrl,
+                                  radius_1: AppSize.s60.w,
+                                  radius_2: AppSize.s59.w,
+                                ),
+                                SizedBox(
+                                  height: AppSize.s15.w,
+                                ),
+                                Text(
+                                  'Hi, ${(state.user.displayName).split(' ')[0]}!',
+                                  style: getApplicationTheme()
+                                      .textTheme
+                                      .headlineSmall!
+                                      .copyWith(
+                                        color: ColorManager.grey,
+                                        fontSize: FontSizeManager.s22.sp,
+                                      ),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: AppSize.s40.w,
+                        ),
+                        _buildTextFormField(
+                          controller: displayNameController,
+                          onEditingComplete: () {},
+                          context: context,
+                          labelText: AppStrings.fullName,
+                          textInputType: TextInputType.name,
+                        ),
+                        SizedBox(
+                          height: AppSize.s15.w,
+                        ),
+                        _buildTextFormField(
+                          controller: emailController,
+                          onEditingComplete: () {},
+                          context: context,
+                          labelText: AppStrings.email,
+                          textInputType: TextInputType.emailAddress,
+                        ),
+                        SizedBox(
+                          height: AppSize.s15.w,
+                        ),
+                        _buildTextFormField(
+                          controller: phoneNumberController,
+                          onEditingComplete: () {},
+                          context: context,
+                          labelText: AppStrings.mobileNumber,
+                          textInputType: TextInputType.number,
+                        ),
+                        SizedBox(
+                          height: AppSize.s15.w,
+                        ),
+                        _buildTextFormField(
+                          controller: addressController,
+                          onEditingComplete: () {},
+                          context: context,
+                          labelText: AppStrings.address,
+                          textInputType: TextInputType.streetAddress,
+                        ),
+                        SizedBox(
+                          height: AppSize.s30.w,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SizedBox(
+                              width: 0.5.sw,
+                              height: 40.0.w,
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  context.read<ProfileBloc>().add(
+                                        UpdateProfileEvent(
+                                          user: state.user.copyWith(
+                                            displayName:
+                                                displayNameController.text,
+                                            email: emailController.text
+                                                .toLowerCase(),
+                                            phoneNumber:
+                                                phoneNumberController.text,
+                                            address: addressController.text,
+                                          ),
                                         ),
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
+                                      );
+
+                                  successSnackBar(
+                                    context: context,
+                                    message: AppStrings.dataSuccessfullySaved,
+                                  );
+
+                                  navigateBack(context);
+                                },
+                                style: getApplicationTheme()
+                                    .elevatedButtonTheme
+                                    .style!
+                                    .copyWith(
+                                      shape: MaterialStatePropertyAll(
+                                        RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(
+                                            AppSize.s25,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                child: Text(
+                                  AppStrings.save,
+                                  style: TextStyle(
+                                    color: ColorManager.lightGrey,
+                                    fontSize: FontSizeManager.s16.sp,
                                   ),
-                                ],
+                                ),
                               ),
-                            ],
-                          ),
-                          SizedBox(
-                            height: AppSize.s40.w,
-                          ),
-                          _buildTextFormField(
-                            onChanged: (value) {
-                              context.read<ProfileBloc>().add(
-                                    UpdateProfileEvent(
-                                      user: state.user.copyWith(
-                                        displayName: value,
-                                      ),
-                                    ),
-                                  );
-                            },
-                            context: context,
-                            labelText: AppStrings.fullName,
-                            initialValue: state.user.displayName,
-                            textInputType: TextInputType.name,
-                          ),
-                          SizedBox(
-                            height: AppSize.s15.w,
-                          ),
-                          _buildTextFormField(
-                            onChanged: (value) {
-                              context.read<ProfileBloc>().add(
-                                    UpdateProfileEvent(
-                                      user: state.user.copyWith(
-                                        email: value,
-                                      ),
-                                    ),
-                                  );
-                            },
-                            context: context,
-                            labelText: AppStrings.email,
-                            initialValue: state.user.email,
-                            textInputType: TextInputType.emailAddress,
-                          ),
-                          SizedBox(
-                            height: AppSize.s15.w,
-                          ),
-                          _buildTextFormField(
-                            onChanged: (value) {
-                              context.read<ProfileBloc>().add(
-                                    UpdateProfileEvent(
-                                      user: state.user.copyWith(
-                                        phoneNumber: value,
-                                      ),
-                                    ),
-                                  );
-                            },
-                            context: context,
-                            labelText: AppStrings.mobileNumber,
-                            initialValue: state.user.phoneNumber,
-                            textInputType: TextInputType.number,
-                          ),
-                          SizedBox(
-                            height: AppSize.s15.w,
-                          ),
-                          _buildTextFormField(
-                            onChanged: (value) {
-                              context.read<ProfileBloc>().add(
-                                    UpdateProfileEvent(
-                                      user: state.user.copyWith(
-                                        address: value,
-                                      ),
-                                    ),
-                                  );
-                            },
-                            context: context,
-                            labelText: AppStrings.address,
-                            initialValue: state.user.address,
-                            textInputType: TextInputType.number,
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
               ),
             );
@@ -184,10 +216,10 @@ class EditProfileScreen extends StatelessWidget {
 }
 
 Padding _buildTextFormField({
-  required Function(String)? onChanged,
+  required void Function()? onEditingComplete,
+  required TextEditingController? controller,
   required BuildContext context,
   required String labelText,
-  String? initialValue,
   TextInputType? textInputType,
 }) {
   return Padding(
@@ -206,7 +238,8 @@ Padding _buildTextFormField({
         ),
         Expanded(
           child: TextFormField(
-            onChanged: onChanged,
+            controller: controller,
+            onEditingComplete: onEditingComplete,
             decoration: InputDecoration(
               isDense: true,
               contentPadding: EdgeInsets.only(
@@ -235,7 +268,6 @@ Padding _buildTextFormField({
               focusedErrorBorder: null,
               border: null,
             ),
-            initialValue: initialValue,
             cursorColor: ColorManager.primaryColor,
             keyboardType: textInputType,
           ),

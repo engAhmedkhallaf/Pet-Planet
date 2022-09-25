@@ -31,7 +31,7 @@ class ProfileIconWithTextButton extends StatelessWidget {
             Icon(
               icon,
               color: color,
-              size: FontSizeManager.s25.sp,
+              size: FontSizeManager.s22.sp,
             ),
             SizedBox(
               width: AppSize.s18.w,
@@ -39,7 +39,7 @@ class ProfileIconWithTextButton extends StatelessWidget {
             Text(
               text,
               style: getApplicationTheme().textTheme.bodyLarge!.copyWith(
-                    fontSize: FontSizeManager.s18.sp,
+                    fontSize: FontSizeManager.s17.sp,
                     color: color,
                   ),
             ),

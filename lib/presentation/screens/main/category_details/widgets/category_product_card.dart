@@ -31,7 +31,7 @@ class CategoryProductCard extends StatelessWidget {
         height: AppSize.s220.h,
         width: MediaQuery.of(context).size.width * 0.4,
         decoration: BoxDecoration(
-          color: ColorManager.backgroundColor.withRed(20),
+          color: ColorManager.backgroundColor.withOpacity(0.59),
           borderRadius: BorderRadius.circular(AppSize.s10.r),
         ),
         child: Stack(

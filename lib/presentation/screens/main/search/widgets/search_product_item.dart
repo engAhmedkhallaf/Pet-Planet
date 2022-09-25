@@ -26,7 +26,7 @@ class SearchProductItem extends StatelessWidget {
       child: Container(
         margin: EdgeInsets.symmetric(
           vertical: AppMargin.m6.w,
-          horizontal: AppMargin.m6.w,
+          horizontal: AppMargin.m10.w,
         ),
         padding: const EdgeInsets.symmetric(
           horizontal: AppPadding.p5,
@@ -40,7 +40,7 @@ class SearchProductItem extends StatelessWidget {
                 blurRadius: AppSize.s1.r,
               ),
             ],
-            borderRadius: BorderRadius.circular(25)),
+            borderRadius: BorderRadius.circular(50)),
         child: Row(
           children: [
             SizedBox(
@@ -77,18 +77,6 @@ class SearchProductItem extends StatelessWidget {
             CircleAvatar(
               radius: AppSize.s32.w,
               backgroundImage: CachedNetworkImageProvider(product.imageUrl),
-              // child: CachedNetworkImage(
-              //   imageUrl: product.imageUrl,
-              //   placeholder: (context, url) =>
-              //       const CircularProgressIndicator(),
-              //   errorWidget: (context, url, error) => Image.asset(
-              //     AssetsManager.noImage,
-              //     fit: BoxFit.cover,
-              //   ),
-              //   fit: BoxFit.cover,
-              //   width: AppSize.s100.w,
-              //   height: AppSize.s100.w,
-              // ),
             ),
           ],
         ),

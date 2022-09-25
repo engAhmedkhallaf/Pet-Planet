@@ -64,7 +64,7 @@ class HomeCategoryItem extends StatelessWidget {
                   builder: (context, state) {
                     if (state is ProductLoadedState) {
                       return Text(
-                        '${state.products.where((element) => (element.category == categoryModel.name)).toList().length} Items',
+                        '${state.products.where((element) => (element.category.toLowerCase() == categoryModel.name.toLowerCase())).toList().length} Items',
                         style: getApplicationTheme()
                             .textTheme
                             .headlineSmall!

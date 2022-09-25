@@ -47,7 +47,6 @@ class CartScreen extends StatelessWidget {
                 : Padding(
                     padding: EdgeInsets.symmetric(horizontal: AppPadding.p12.w),
                     child: Column(
-                      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Expanded(
                           flex: 7,
@@ -82,7 +81,10 @@ class CartScreen extends StatelessWidget {
                               child: ElevatedButton(
                                 onPressed: () {
                                   navigateToWithArguments(
-                                      context, Routes.checkoutRoute, {UserModel},);
+                                    context,
+                                    Routes.checkoutRoute,
+                                    {UserModel},
+                                  );
                                 },
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: ColorManager.white,
@@ -91,10 +93,6 @@ class CartScreen extends StatelessWidget {
                                     borderRadius:
                                         BorderRadius.circular(AppSize.s5),
                                   ),
-                                  // maximumSize:
-                                  //     Size(double.infinity - 20, AppSize.s30.h),
-                                  // minimumSize:
-                                  //     Size(AppSize.s300.w, AppSize.s15.h),
                                 ),
                                 child: Text(
                                   AppStrings.goToWishlist,

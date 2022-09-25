@@ -4,7 +4,7 @@ class AppStrings {
   static const String planet = 'Planet';
   static const String foodDelivery = 'FOOD DELIVERY';
   static const String desc =
-      'lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem ';//TODO: change
+      'Welcome to pets planet Pet Shop. \n Here at pets planet we sell nearly everything you can think'; //TODO: change
   static const String login = 'Login';
   static const String signUp = 'Sign Up';
   static const String createAnAccount = 'Create An Account';
@@ -90,15 +90,15 @@ class AppStrings {
   static const String yourWishlist = 'Your Wishlist';
   static const String myInformation = 'MY INFORMATION';
 
-  // Internet Messages 
+  // Internet Messages
   static const String pleaseCheckYouInternet = 'Please check your internet';
-  static const String yourInternetConnectionWasRestored = 'Your internet connection was restored';
+  static const String yourInternetConnectionWasRestored =
+      'Your internet connection was restored';
   static const String youAreCurrentlyOffline = 'You are currently offline';
 
-
-
-
-
+// Edit Profile Screen
+  static const String save = 'Save';
+  static const String dataSuccessfullySaved = 'Data successfully saved';
 
   // Validation Phrases
   static const String emailAddressCanNotBeEmpty =

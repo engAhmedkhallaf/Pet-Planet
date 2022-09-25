@@ -129,6 +129,19 @@ class ProfileScreen extends StatelessWidget {
                               onTap: () {
                                 navigateTo(
                                   context,
+                                  Routes.searchRoute,
+                                );
+                              },
+                              text: AppStrings.search,
+                              icon: IconBroken.search,
+                            ),
+                            SizedBox(
+                              height: AppSize.s10.w,
+                            ),
+                            ProfileIconWithTextButton(
+                              onTap: () {
+                                navigateTo(
+                                  context,
                                   Routes.editProfileRoute,
                                 );
                               },
