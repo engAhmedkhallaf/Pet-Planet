@@ -51,7 +51,7 @@ class OrderConfirmationScreen extends StatelessWidget {
             Column(
               children: [
                 SvgPicture.asset(
-                  AssetsManager.garlands,
+                  AssetsManager.orderSuccess,
                   color: ColorManager.lightGrey,
                   width: AppSize.s90.w,
                 ),
