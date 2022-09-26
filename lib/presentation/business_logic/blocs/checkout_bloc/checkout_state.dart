@@ -11,6 +11,7 @@ class CheckoutLoadingState extends CheckoutState {}
 
 class CheckoutSuccessState extends CheckoutState {
   final UserModel? user;
+  final String? customerId;
   final List<Product>? products;
   final String? subTotal;
   final String? deliveryFee;
@@ -19,14 +20,15 @@ class CheckoutSuccessState extends CheckoutState {
   final Checkout checkout;
 
   CheckoutSuccessState({
-    
-    this.user,
+     this.user,
+    this.customerId,
     this.products,
     this.subTotal,
     this.deliveryFee,
     this.total,
   }) : checkout = Checkout(
           user: user,
+          customerId: customerId,
           products: products,
           subtotal: subTotal,
           deliveryFee: deliveryFee,
@@ -35,6 +37,7 @@ class CheckoutSuccessState extends CheckoutState {
   @override
   List<Object?> get props => [
         user,
+        customerId,
         products,
         subTotal,
         deliveryFee,

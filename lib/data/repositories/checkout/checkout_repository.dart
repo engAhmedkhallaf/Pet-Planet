@@ -13,6 +13,9 @@ class CheckoutRepository extends BaseCheckoutRepository {
   Future<void> addCheckout(Checkout checkout) {
     return _firebaseFirestore
         .collection(CollectionManager.ordersCollection)
-        .add(checkout.toDocument());
+        .add(checkout.toDocument())
+        .then((value) {
+      value.update({'id': value.id});
+    });
   }
 }

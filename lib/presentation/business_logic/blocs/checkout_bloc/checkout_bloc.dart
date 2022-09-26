@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pet_planet/core/app/app_constants.dart';
+import 'package:pet_planet/core/network/local/cache_helper.dart';
 import 'package:pet_planet/data/models/cart_model.dart';
 import 'package:pet_planet/data/models/checkout_model.dart';
 import 'package:pet_planet/data/models/product_model.dart';
@@ -31,6 +33,7 @@ class CheckoutBloc extends Bloc<CheckoutEvent, CheckoutState> {
           cartBloc.state is CartSuccessState
               ? CheckoutSuccessState(
                   user: authBloc.state.user,
+                  customerId: authBloc.state.authUser!.uid,
                   products: (cartBloc.state as CartSuccessState).cart.products,
                   subTotal:
                       (cartBloc.state as CartSuccessState).cart.subTotalString,
@@ -69,6 +72,8 @@ class CheckoutBloc extends Bloc<CheckoutEvent, CheckoutState> {
       emit(
         CheckoutSuccessState(
           user: event.user ?? state.user,
+          customerId:
+              CacheHelper.get(key: AppConstants.uidKey) ?? state.customerId,
           products: event.cart?.products ?? state.products,
           deliveryFee: event.cart?.deliveryFeeString ?? state.deliveryFee,
           subTotal: event.cart?.subTotalString ?? state.subTotal,
