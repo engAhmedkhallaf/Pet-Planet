@@ -18,7 +18,7 @@ class ProfileIconWithText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(bottom: AppPadding.p10.w),
+      padding: EdgeInsets.only(bottom: AppPadding.p8.w),
       child: Row(
         children: [
           Icon(

@@ -27,11 +27,11 @@ class _AuthCustomPainter extends CustomPainter {
     Path path = Path();
 
     double maxHeight = 0.48.sh;
-    double maxWidth = (size.width.abs() / 360).sw;
+    double maxWidth = (1.0).sw;
     double radius = 0.44.sw;
     double borderRadius = 0.04.sw;
     double sideOffset =
-        (((maxWidth - radius - (AppSize.s4 * borderRadius)) / 2) / 360).sw;
+        (((maxWidth - radius - (AppSize.s4 * borderRadius)) / 2) / maxWidth).sw;
 
     path.moveTo(AppSize.s0, AppSize.s0);
     path.relativeLineTo(AppSize.s0, maxHeight - borderRadius);

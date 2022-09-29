@@ -25,11 +25,7 @@ class Cart extends Equatable {
 
 // CALCUALTION THE DELIVERY FEE
   double deliveryFee(subTotal) {
-    if (subTotal >= 30) {
-      return 0.0;
-    } else {
-      return 10.0;
-    }
+    return 50.0;
   }
 
 // Return Phrase to client based on whole Subtotal Price

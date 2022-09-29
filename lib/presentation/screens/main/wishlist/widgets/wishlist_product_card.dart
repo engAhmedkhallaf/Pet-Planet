@@ -32,7 +32,8 @@ class WishlistProductCard extends StatelessWidget {
         children: [
           CachedNetworkImage(
             imageUrl: product.imageUrl,
-            placeholder: (context, url) => const CircularProgressIndicator(),
+            placeholder: (context, url) =>
+                const Center(child: CircularProgressIndicator()),
             errorWidget: (context, url, error) => Image.asset(
               AssetsManager.noImage,
               fit: BoxFit.cover,
@@ -48,22 +49,39 @@ class WishlistProductCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  product.name,
-                  style: getApplicationTheme().textTheme.titleLarge!.copyWith(
-                        fontSize: FontSizeManager.s20.sp,
-                        height: AppSize.s1_5,
-                      ),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
+                SizedBox(
+                  width: 0.5.sw,
+                  child: Text(
+                    product.name,
+                    style: getApplicationTheme().textTheme.titleLarge!.copyWith(
+                          fontSize: FontSizeManager.s20.sp,
+                          height: AppSize.s1_5,
+                        ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
                 ),
-                Text(
-                  '\$${product.price}',
-                  style: getApplicationTheme().textTheme.titleMedium!.copyWith(
-                        color: ColorManager.grey,
-                        height: AppSize.s1_5,
-                        fontSize: FontSizeManager.s14.sp,
-                      ),
+                Row(
+                  children: [
+                    Text(
+                      'EGP ',
+                      style:
+                          getApplicationTheme().textTheme.titleMedium!.copyWith(
+                                color: ColorManager.grey,
+                                height: AppSize.s1_5,
+                                fontSize: FontSizeManager.s12.sp,
+                              ),
+                    ),
+                    Text(
+                      '${product.price}',
+                      style:
+                          getApplicationTheme().textTheme.titleMedium!.copyWith(
+                                color: ColorManager.grey,
+                                height: AppSize.s1_5,
+                                fontSize: FontSizeManager.s14.sp,
+                              ),
+                    ),
+                  ],
                 ),
               ],
             ),

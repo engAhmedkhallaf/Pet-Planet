@@ -20,8 +20,7 @@ class AuthLogoWithName extends StatelessWidget {
         Image.asset(
           AssetsManager.petLogo,
           fit: BoxFit.fill,
-          width: 0.25.sw,
-          // height: 90.w,
+          width: 0.20.sw,
         ),
         SizedBox(
           height: AppSize.s10.h,
@@ -30,7 +29,6 @@ class AuthLogoWithName extends StatelessWidget {
           TextSpan(
             text: AppStrings.pets,
             style: getApplicationTheme().textTheme.headlineLarge!.copyWith(
-                  // fontWeight: FontWeightManager.bold,
                   color: ColorManager.primaryColor,
                 ),
             children: const [

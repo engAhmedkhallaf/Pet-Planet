@@ -37,6 +37,7 @@ class CategoryProductCard extends StatelessWidget {
         child: Stack(
           children: [
             Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Expanded(
                   child: CachedNetworkImage(
@@ -56,12 +57,26 @@ class CategoryProductCard extends StatelessWidget {
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),
-                Text(
-                  '\$${product.price}',
-                  style: getApplicationTheme().textTheme.titleMedium!.copyWith(
-                        color: ColorManager.grey,
-                        height: 1.0,
-                      ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'EGP ',
+                      style:
+                          getApplicationTheme().textTheme.titleMedium!.copyWith(
+                                color: ColorManager.grey,
+                                height: 1.0,
+                              ),
+                    ),
+                    Text(
+                      '${product.price}',
+                      style:
+                          getApplicationTheme().textTheme.titleMedium!.copyWith(
+                                color: ColorManager.grey,
+                                height: 1.0,
+                              ),
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -106,101 +121,3 @@ class CategoryProductCard extends StatelessWidget {
     );
   }
 }
-
-// لو الصور متفرغه 
-/*
-Container(
-      padding: const EdgeInsets.all(AppPadding.p8),
-      decoration: BoxDecoration(
-        color: ColorManager.backgroundColor.withOpacity(0.85),
-        boxShadow: [
-          BoxShadow(
-            color: ColorManager.grey,
-            blurRadius: AppSize.s5.r,
-            offset: const Offset(AppSize.s5, AppSize.s5),
-          ),
-        ],
-        borderRadius: BorderRadius.circular(AppSize.s30.r),
-        border: Border.all(
-          color: ColorManager.primaryColor,
-          width: AppSize.s2,
-        ),
-      ),
-      child: Stack(
-        children: [
-          Container(
-            padding: const EdgeInsets.all(AppPadding.p50),
-            decoration: BoxDecoration(
-              color: ColorManager.backgroundColor.withOpacity(0.85),
-              boxShadow: [
-                BoxShadow(
-                  color: ColorManager.grey,
-                  blurRadius: AppSize.s10.r,
-                  // offset: const Offset(AppSize.s5, AppSize.s5),
-                ),
-              ],
-              borderRadius: BorderRadius.circular(AppSize.s25.r),
-              // image: DecorationImage(
-              //   image: (product.imageUrl.isEmpty)
-              //       ? const AssetImage(AssetsManager.noImage)
-              //       : CachedNetworkImageProvider(
-              //           product.imageUrl,
-              //           /* TODO:Add imageUrl of category */
-              //         ) as ImageProvider,
-              //   fit: BoxFit.none,
-              // ),
-              image: const DecorationImage(
-                image: AssetImage('assets/icons/palm-trees.png'),
-                fit: BoxFit.contain,
-              ),
-            ),
-          ),
-          Positioned(
-            right: AppPadding.p8.w,
-            top: AppPadding.p8.w,
-            child: InkWell(
-              onTap: () {},
-              child: CircleAvatar(
-                backgroundColor: ColorManager.primaryColor,
-                radius: AppSize.s20.r,
-                child: Image.asset(
-                  AssetsManager.plus,
-                  color: ColorManager.white,
-                  height: AppSize.s15.w,
-                ),
-              ),
-            ),
-          ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Padding(
-              padding: EdgeInsets.only(bottom: AppPadding.p5.w),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    product.name,
-                    style:
-                        getApplicationTheme().textTheme.displayLarge!.copyWith(
-                              color: ColorManager.lightGrey,
-                              fontSize: FontSizeManager.s25.sp,
-                              height: 1.0,
-                            ),
-                  ),
-                  Text(
-                    '\$${product.price.toString()}',
-                    style:
-                        getApplicationTheme().textTheme.headlineSmall!.copyWith(
-                              color: ColorManager.grey,
-                              fontSize: FontSizeManager.s20.sp,
-                              height: 1.0,
-                            ),
-                  ),
-                ],
-              ),
-            ),
-          )
-        ],
-      ),
-    );
- */

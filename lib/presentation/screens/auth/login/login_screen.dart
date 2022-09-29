@@ -75,79 +75,79 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Form(
                   key: _formKey,
                   child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const LoginSignupForgotHeader(
-                          title: AppStrings.login,
-                          subTitle: AppStrings.addYourDetailsToLogin,
-                          titleTextStyle: null,
-                          subTitleTextStyle: null,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const LoginSignupForgotHeader(
+                        title: AppStrings.login,
+                        subTitle: AppStrings.addYourDetailsToLogin,
+                        titleTextStyle: null,
+                        subTitleTextStyle: null,
+                      ),
+                      CustomTextFormField(
+                        onEditingComplete: () => FocusScope.of(context)
+                            .requestFocus(_passwordFocusNode),
+                        textInputAction: TextInputAction.next,
+                        focusNode: _emailFocusNode,
+                        labelText: AppStrings.yourEmail,
+                        keyboardType: TextInputType.emailAddress,
+                        controller: _emailController,
+                        validator: emailValidator,
+                        autofillHints: const [AutofillHints.email],
+                      ),
+                      SizedBox(
+                        height: AppSize.s20.h,
+                      ),
+                      CustomTextFormField(
+                        onEditingComplete: _formValidate,
+                        textInputAction: TextInputAction.done,
+                        focusNode: _passwordFocusNode,
+                        labelText: AppStrings.password,
+                        keyboardType: TextInputType.visiblePassword,
+                        controller: _passwordController,
+                        validator: passwordValidator,
+                        obscureText: _passwordVisiblityOff,
+                        suffixIcon: _passwordVisiblityOff
+                            ? Icons.visibility_off_outlined
+                            : Icons.visibility_outlined,
+                        onSuffixIconButtonPressed: _showPassword,
+                        autofillHints: const [AutofillHints.password],
+                      ),
+                      SizedBox(
+                        height: AppSize.s25.h,
+                      ),
+                      ElevatedButton(
+                        onPressed: _formValidate,
+                        child: const Text(
+                          AppStrings.login,
                         ),
-                        CustomTextFormField(
-                          onEditingComplete: () => FocusScope.of(context)
-                              .requestFocus(_passwordFocusNode),
-                          textInputAction: TextInputAction.next,
-                          focusNode: _emailFocusNode,
-                          labelText: AppStrings.yourEmail,
-                          keyboardType: TextInputType.emailAddress,
-                          controller: _emailController,
-                          validator: emailValidator,
-                          autofillHints: const [AutofillHints.email],
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          navigateTo(context, Routes.forgotPasswordRoute);
+                        },
+                        child: const Text(
+                          AppStrings.forgotYourPassword,
                         ),
-                        SizedBox(
-                          height: AppSize.s20.h,
-                        ),
-                        CustomTextFormField(
-                          onEditingComplete: _formValidate,
-                          textInputAction: TextInputAction.done,
-                          focusNode: _passwordFocusNode,
-                          labelText: AppStrings.password,
-                          keyboardType: TextInputType.visiblePassword,
-                          controller: _passwordController,
-                          validator: passwordValidator,
-                          obscureText: _passwordVisiblityOff,
-                          suffixIcon: _passwordVisiblityOff
-                              ? Icons.visibility_off_outlined
-                              : Icons.visibility_outlined,
-                          onSuffixIconButtonPressed: _showPassword,
-                          autofillHints: const [AutofillHints.password],
-                        ),
-                        SizedBox(
-                          height: AppSize.s30.h,
-                        ),
-                        ElevatedButton(
-                          onPressed: _formValidate,
-                          child: const Text(
-                            AppStrings.login,
-                          ),
-                        ),
-                        TextButton(
-                          onPressed: () {
-                            navigateTo(context, Routes.forgotPasswordRoute);
-                          },
-                          child: const Text(
-                            AppStrings.forgotYourPassword,
-                          ),
-                        ),
-                        SizedBox(
-                          height: 0.25.sh,
-                        ),
-                        LoginSignupFooter(
-                          question: AppStrings.doNotHavaAnAccount,
-                          actionText: AppStrings.signUp,
-                          onTap: () {
-                            navigateBack(context);
-                            navigateTo(
-                              context,
-                              Routes.signUpRoute,
-                            );
-                          },
-                        ),
-                        SizedBox(
-                          height: AppSize.s10.h,
-                        ),
-                      ]),
+                      ),
+                      SizedBox(
+                        height: 0.20.sh,
+                      ),
+                      LoginSignupFooter(
+                        question: AppStrings.doNotHavaAnAccount,
+                        actionText: AppStrings.signUp,
+                        onTap: () {
+                          navigateToAndReplacement(
+                            context,
+                            Routes.signUpRoute,
+                          );
+                        },
+                      ),
+                      SizedBox(
+                        height: AppSize.s10.h,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

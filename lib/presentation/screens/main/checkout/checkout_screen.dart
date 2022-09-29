@@ -126,7 +126,7 @@ class CheckoutScreen extends StatelessWidget {
                       textInputType: TextInputType.streetAddress,
                     ),
                     SizedBox(
-                      height: AppSize.s30.w,
+                      height: AppSize.s20.w,
                     ),
                     Padding(
                       padding:
@@ -191,7 +191,7 @@ class CheckoutScreen extends StatelessWidget {
                       ),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
-                          horizontal: AppPadding.p20,
+                          horizontal: AppPadding.p10,
                         ),
                         child: Text(
                           AppStrings.orderNow,
@@ -199,7 +199,7 @@ class CheckoutScreen extends StatelessWidget {
                               .textTheme
                               .displayLarge!
                               .copyWith(
-                                fontSize: FontSizeManager.s16.sp,
+                                fontSize: FontSizeManager.s14.sp,
                                 color: ColorManager.black,
                               ),
                         ),

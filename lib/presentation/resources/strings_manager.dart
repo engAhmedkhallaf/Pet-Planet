@@ -4,7 +4,7 @@ class AppStrings {
   static const String planet = 'Planet';
   static const String foodDelivery = 'FOOD DELIVERY';
   static const String desc =
-      'Welcome to pets planet Pet Shop. \n Here at pets planet we sell nearly everything you can think'; //TODO: change
+      'Caring for Pet has never been easy, with Pet Planet you can get your pet supplier and services';
   static const String login = 'Login';
   static const String signUp = 'Sign Up';
   static const String createAnAccount = 'Create An Account';

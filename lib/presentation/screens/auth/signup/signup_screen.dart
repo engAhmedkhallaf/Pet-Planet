@@ -97,7 +97,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           autofillHints: const [AutofillHints.name],
                         ),
                         SizedBox(
-                          height: AppSize.s20.h,
+                          height: AppSize.s15.h,
                         ),
                         CustomTextFormField(
                           onEditingComplete: () => FocusScope.of(context)
@@ -111,7 +111,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           autofillHints: const [AutofillHints.email],
                         ),
                         SizedBox(
-                          height: AppSize.s20.h,
+                          height: AppSize.s15.h,
                         ),
                         CustomTextFormField(
                           onEditingComplete: () => FocusScope.of(context)
@@ -127,7 +127,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           ],
                         ),
                         SizedBox(
-                          height: AppSize.s20.h,
+                          height: AppSize.s15.h,
                         ),
                         CustomTextFormField(
                           onEditingComplete: () => FocusScope.of(context)
@@ -141,7 +141,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           autofillHints: const [AutofillHints.addressCity],
                         ),
                         SizedBox(
-                          height: AppSize.s20.h,
+                          height: AppSize.s15.h,
                         ),
                         CustomTextFormField(
                           onEditingComplete: _formValidate,
@@ -172,8 +172,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           question: AppStrings.alreadyHavaAnAccount,
                           actionText: AppStrings.login,
                           onTap: () {
-                            navigateBack(context);
-                            navigateTo(context, Routes.loginRoute);
+                            navigateToAndReplacement(context, Routes.loginRoute);
                           },
                         ),
                         SizedBox(

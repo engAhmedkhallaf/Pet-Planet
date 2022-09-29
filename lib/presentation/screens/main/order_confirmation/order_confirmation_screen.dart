@@ -112,7 +112,7 @@ class OrderConfirmationScreen extends StatelessWidget {
                       ),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
-                          horizontal: AppPadding.p20,
+                          horizontal: AppPadding.p10,
                         ),
                         child: Text(
                           AppStrings.backToShopping,
@@ -120,7 +120,7 @@ class OrderConfirmationScreen extends StatelessWidget {
                               .textTheme
                               .displayLarge!
                               .copyWith(
-                                fontSize: FontSizeManager.s16.sp,
+                                fontSize: FontSizeManager.s14.sp,
                                 color: ColorManager.black,
                               ),
                         ),

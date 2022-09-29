@@ -61,28 +61,46 @@ class ProductScreen extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
-                            product.name,
-                            style: getApplicationTheme()
-                                .textTheme
-                                .titleLarge!
-                                .copyWith(
-                                  fontSize: FontSizeManager.s18.sp,
-                                  height: AppSize.s1,
-                                ),
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
+                          SizedBox(
+                            width: 0.5.sw,
+                            child: Text(
+                              product.name,
+                              style: getApplicationTheme()
+                                  .textTheme
+                                  .titleLarge!
+                                  .copyWith(
+                                    fontSize: FontSizeManager.s18.sp,
+                                    height: AppSize.s1,
+                                  ),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
                           ),
-                          Text(
-                            '\$${product.price}',
-                            style: getApplicationTheme()
-                                .textTheme
-                                .titleMedium!
-                                .copyWith(
-                                  color: ColorManager.grey,
-                                  height: 1.0,
-                                  fontSize: FontSizeManager.s16.sp,
-                                ),
+                          Row(
+                            children: [
+                              Text(
+                                'EGP ',
+                                style: getApplicationTheme()
+                                    .textTheme
+                                    .titleMedium!
+                                    .copyWith(
+                                      color: ColorManager.grey,
+                                      height: 1.0,
+                                      fontSize: FontSizeManager.s14.sp,
+                                    ),
+                              ),
+                              Text(
+                                '${product.price}',
+                                style: getApplicationTheme()
+                                    .textTheme
+                                    .titleMedium!
+                                    .copyWith(
+                                      color: ColorManager.grey,
+                                      height: 1.0,
+                                      fontSize: FontSizeManager.s16.sp,
+                                    ),
+                              ),
+                            ],
                           ),
                         ],
                       ),

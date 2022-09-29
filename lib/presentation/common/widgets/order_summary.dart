@@ -37,28 +37,46 @@ class OrderSummary extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
-                            AppStrings.subTotal,
-                            style: getApplicationTheme()
-                                .textTheme
-                                .titleLarge!
-                                .copyWith(
-                                  fontSize: FontSizeManager.s18.sm,
-                                  height: AppSize.s1,
-                                ),
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
+                          SizedBox(
+                            width: 0.5.sw,
+                            child: Text(
+                              AppStrings.subTotal,
+                              style: getApplicationTheme()
+                                  .textTheme
+                                  .titleLarge!
+                                  .copyWith(
+                                    fontSize: FontSizeManager.s18.sm,
+                                    height: AppSize.s1,
+                                  ),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
                           ),
-                          Text(
-                            '\$${state.cart.subTotalString}',
-                            style: getApplicationTheme()
-                                .textTheme
-                                .titleMedium!
-                                .copyWith(
-                                  color: ColorManager.grey,
-                                  height: AppSize.s1,
-                                  fontSize: FontSizeManager.s16.sm,
-                                ),
+                          Row(
+                            children: [
+                              Text(
+                                'EGP ',
+                                style: getApplicationTheme()
+                                    .textTheme
+                                    .titleMedium!
+                                    .copyWith(
+                                      color: ColorManager.grey,
+                                      height: AppSize.s1,
+                                      fontSize: FontSizeManager.s14.sm,
+                                    ),
+                              ),
+                              Text(
+                                state.cart.subTotalString,
+                                style: getApplicationTheme()
+                                    .textTheme
+                                    .titleMedium!
+                                    .copyWith(
+                                      color: ColorManager.grey,
+                                      height: AppSize.s1,
+                                      fontSize: FontSizeManager.s16.sm,
+                                    ),
+                              ),
+                            ],
                           ),
                         ],
                       ),
@@ -68,27 +86,44 @@ class OrderSummary extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
-                            AppStrings.deliveryFee,
-                            style: getApplicationTheme()
-                                .textTheme
-                                .titleLarge!
-                                .copyWith(
-                                  fontSize: FontSizeManager.s18.sm,
-                                  height: AppSize.s1,
-                                ),
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
+                          SizedBox(
+                            width: 0.5.sw,
+                            child: Text(
+                              AppStrings.deliveryFee,
+                              style: getApplicationTheme()
+                                  .textTheme
+                                  .titleLarge!
+                                  .copyWith(
+                                    fontSize: FontSizeManager.s18.sm,
+                                    height: AppSize.s1,
+                                  ),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
                           ),
-                          Text(
-                            '\$${state.cart.deliveryFeeString}',
-                            style: getApplicationTheme()
-                                .textTheme
-                                .titleMedium!
-                                .copyWith(
-                                  color: ColorManager.grey,
-                                  fontSize: FontSizeManager.s16.sm,
-                                ),
+                          Row(
+                            children: [
+                              Text(
+                                'EGP ',
+                                style: getApplicationTheme()
+                                    .textTheme
+                                    .titleMedium!
+                                    .copyWith(
+                                      color: ColorManager.grey,
+                                      fontSize: FontSizeManager.s16.sm,
+                                    ),
+                              ),
+                              Text(
+                                state.cart.deliveryFeeString,
+                                style: getApplicationTheme()
+                                    .textTheme
+                                    .titleMedium!
+                                    .copyWith(
+                                      color: ColorManager.grey,
+                                      fontSize: FontSizeManager.s16.sm,
+                                    ),
+                              ),
+                            ],
                           ),
                         ],
                       ),
@@ -115,28 +150,46 @@ class OrderSummary extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        AppStrings.total,
-                        style: getApplicationTheme()
-                            .textTheme
-                            .titleLarge!
-                            .copyWith(
-                              fontSize: FontSizeManager.s18.sm,
-                              height: AppSize.s1,
-                            ),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
+                      SizedBox(
+                        width: 0.5.sw,
+                        child: Text(
+                          AppStrings.total,
+                          style: getApplicationTheme()
+                              .textTheme
+                              .titleLarge!
+                              .copyWith(
+                                fontSize: FontSizeManager.s18.sm,
+                                height: AppSize.s1,
+                              ),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
                       ),
-                      Text(
-                        '\$${state.cart.totalString}',
-                        style: getApplicationTheme()
-                            .textTheme
-                            .titleMedium!
-                            .copyWith(
-                              color: ColorManager.grey,
-                              height: 1.0,
-                              fontSize: FontSizeManager.s16.sm,
-                            ),
+                      Row(
+                        children: [
+                          Text(
+                            'EGP ',
+                            style: getApplicationTheme()
+                                .textTheme
+                                .titleMedium!
+                                .copyWith(
+                                  color: ColorManager.grey,
+                                  height: 1.0,
+                                  fontSize: FontSizeManager.s16.sm,
+                                ),
+                          ),
+                          Text(
+                            state.cart.totalString,
+                            style: getApplicationTheme()
+                                .textTheme
+                                .titleMedium!
+                                .copyWith(
+                                  color: ColorManager.grey,
+                                  height: 1.0,
+                                  fontSize: FontSizeManager.s16.sm,
+                                ),
+                          ),
+                        ],
                       ),
                     ],
                   ),

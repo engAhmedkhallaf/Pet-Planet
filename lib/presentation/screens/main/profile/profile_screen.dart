@@ -97,7 +97,7 @@ class ProfileScreen extends StatelessWidget {
                               ],
                             ),
                             SizedBox(
-                              height: AppSize.s20.w,
+                              height: AppSize.s15.w,
                             ),
                             ProfileIconWithText(
                               icon: IconBroken.call,
@@ -117,13 +117,13 @@ class ProfileScreen extends StatelessWidget {
                                   'Joined at: ${DateFormat('dd-MM-yyyy').format(state.user.createdAt!)}',
                             ),
                             SizedBox(
-                              height: AppSize.s10.w,
+                              height: AppSize.s5.w,
                             ),
                             const Divider(
                               color: ColorManager.grey,
                             ),
                             SizedBox(
-                              height: AppSize.s10.w,
+                              height: AppSize.s5.w,
                             ),
                             ProfileIconWithTextButton(
                               onTap: () {
@@ -135,9 +135,6 @@ class ProfileScreen extends StatelessWidget {
                               text: AppStrings.search,
                               icon: IconBroken.search,
                             ),
-                            SizedBox(
-                              height: AppSize.s10.w,
-                            ),
                             ProfileIconWithTextButton(
                               onTap: () {
                                 navigateTo(
@@ -147,9 +144,6 @@ class ProfileScreen extends StatelessWidget {
                               },
                               text: AppStrings.editProfile,
                               icon: IconBroken.editSquare,
-                            ),
-                            SizedBox(
-                              height: AppSize.s10.w,
                             ),
                             ProfileIconWithTextButton(
                               onTap: () {
@@ -165,7 +159,7 @@ class ProfileScreen extends StatelessWidget {
                               color: ColorManager.grey,
                             ),
                             SizedBox(
-                              height: AppSize.s10.w,
+                              height: AppSize.s5.w,
                             ),
                             ProfileIconWithTextButton(
                               onTap: () async {
