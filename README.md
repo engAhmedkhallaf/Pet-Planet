@@ -20,7 +20,7 @@ E-Commerce Application.
 # Aplication Screens
 ### Splash Screen 
 <p float="left">
-  <img src="https://user-images.githubusercontent.com/54222207/194763038-58806025-bce7-4f19-b619-f2eb02f563d7.jpg" width="90%" />
+  <img src="https://user-images.githubusercontent.com/54222207/194763038-58806025-bce7-4f19-b619-f2eb02f563d7.jpg" width="50%" />
 </p>
 
 ### Authentication Screens
