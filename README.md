@@ -47,7 +47,7 @@ E-Commerce Application.
 <p float="left">
   <img src="https://user-images.githubusercontent.com/54222207/194763290-aa573dd2-df9f-44c1-833e-1d7e83037699.jpg" width="32.5%" />
   <img src="https://user-images.githubusercontent.com/54222207/194763291-6f82ee27-f5e4-4c0c-944c-d63e25050d75.jpg" width="32.5%" />
-  <img src="https://user-images.githubusercontent.com/54222207/194763294-b9a92487-184e-41a8-b1e4-68fbb319f1e5.jpg.jpg" width="32.5%" />
+  <img src="https://user-images.githubusercontent.com/54222207/194763527-837ae551-a954-4b85-8028-617fd5deda43.jpg" width="32.5%" />
 </p>
 
 ### Search Screen 
