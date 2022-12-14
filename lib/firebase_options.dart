@@ -55,7 +55,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyDNQiJ0suyFa0efumCaS4Vl8r6GQrKkT1U',
-    appId: '1:912458352386:android:8971a7179a251cb156e41b',
+    appId: '1:912458352386:android:0bd3a5d1fda03a8856e41b',
     messagingSenderId: '912458352386',
     projectId: 'petplanet-d7aa8',
     storageBucket: 'petplanet-d7aa8.appspot.com',
@@ -63,21 +63,21 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyARLVsxLXPYON93kOUW9fUQvjDtqg-4iME',
-    appId: '1:912458352386:ios:c46d09c78835fff456e41b',
+    appId: '1:912458352386:ios:9999be0a7b6d321656e41b',
     messagingSenderId: '912458352386',
     projectId: 'petplanet-d7aa8',
     storageBucket: 'petplanet-d7aa8.appspot.com',
-    iosClientId: '912458352386-oe9e78hqp96vns4nfhtmk7ef958r79km.apps.googleusercontent.com',
-    iosBundleId: 'com.example.petPlanet',
+    iosClientId: '912458352386-c3a063bqqstcruqq5jtkm9ptt5e80apb.apps.googleusercontent.com',
+    iosBundleId: 'com.khalafawy.petsplanet',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
     apiKey: 'AIzaSyARLVsxLXPYON93kOUW9fUQvjDtqg-4iME',
-    appId: '1:912458352386:ios:c46d09c78835fff456e41b',
+    appId: '1:912458352386:ios:9999be0a7b6d321656e41b',
     messagingSenderId: '912458352386',
     projectId: 'petplanet-d7aa8',
     storageBucket: 'petplanet-d7aa8.appspot.com',
-    iosClientId: '912458352386-oe9e78hqp96vns4nfhtmk7ef958r79km.apps.googleusercontent.com',
-    iosBundleId: 'com.example.petPlanet',
+    iosClientId: '912458352386-c3a063bqqstcruqq5jtkm9ptt5e80apb.apps.googleusercontent.com',
+    iosBundleId: 'com.khalafawy.petsplanet',
   );
 }
