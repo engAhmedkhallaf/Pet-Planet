@@ -13,19 +13,21 @@ class ProfileIconWithTextButton extends StatelessWidget {
     required this.text,
     required this.onTap,
     this.color = ColorManager.grey,
+    this.padding =AppPadding.p10,
   });
 
   final IconData icon;
   final String text;
   void Function() onTap;
   final Color color;
+ final double padding;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
       child: Padding(
-        padding: EdgeInsets.only(bottom: AppPadding.p10.w),
+        padding: EdgeInsets.only(bottom: padding.w),
         child: Row(
           children: [
             Icon(

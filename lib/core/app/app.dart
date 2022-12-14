@@ -5,7 +5,6 @@ import 'package:pet_planet/core/network/local/cache_helper.dart';
 import 'package:pet_planet/core/routes/routes_manager.dart';
 import 'package:pet_planet/data/repositories/auth/auth_repository.dart';
 import 'package:pet_planet/data/repositories/category/category_repository.dart';
-import 'package:pet_planet/data/repositories/checkout/checkout_repository.dart';
 import 'package:pet_planet/data/repositories/local_storage/local_storage_repository.dart';
 import 'package:pet_planet/data/repositories/product/product_repository.dart';
 import 'package:pet_planet/data/repositories/user/user_repository.dart';
@@ -13,7 +12,6 @@ import 'package:pet_planet/presentation/business_logic/blocs/Product_bloc/produc
 import 'package:pet_planet/presentation/business_logic/blocs/auth_bloc/auth_bloc.dart';
 import 'package:pet_planet/presentation/business_logic/blocs/cart_bloc/cart_bloc.dart';
 import 'package:pet_planet/presentation/business_logic/blocs/category_bloc/category_bloc.dart';
-import 'package:pet_planet/presentation/business_logic/blocs/checkout_bloc/checkout_bloc.dart';
 import 'package:pet_planet/presentation/business_logic/blocs/profile_bloc/profile_bloc.dart';
 import 'package:pet_planet/presentation/business_logic/blocs/search_bloc/search_bloc.dart';
 import 'package:pet_planet/presentation/business_logic/blocs/wishlist_bloc/wishlist_bloc.dart';
@@ -23,8 +21,11 @@ import 'package:pet_planet/presentation/business_logic/cubits/login_cubit/login_
 import 'package:pet_planet/presentation/business_logic/cubits/main_cubit/main_cubit.dart';
 import 'package:pet_planet/presentation/business_logic/cubits/signup_cubit/signup_cubit.dart';
 import 'package:pet_planet/presentation/common/widgets/show_alert_dialog.dart';
+import 'package:pet_planet/presentation/resources/colors/color_manager.dart';
+import 'package:pet_planet/presentation/resources/navigation/navigation.dart';
 import 'package:pet_planet/presentation/resources/strings_manager.dart';
 import 'package:pet_planet/presentation/resources/theme/theme_manager.dart';
+import 'package:pet_planet/presentation/resources/values_manager.dart';
 import 'package:pet_planet/presentation/screens/auth/auth_layout_screen.dart';
 import 'package:pet_planet/presentation/screens/main/main_layout.dart';
 import 'app_constants.dart';
@@ -143,8 +144,41 @@ class MyApp extends StatelessWidget {
                   if (state is InternetDisConnectedState) {
                     showAlertDialog(
                       context,
-                      state.message,
-                      AppStrings.pleaseCheckYouInternet,
+                      Center(
+                        child: Text(state.message),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: const [
+                          Text(
+                            AppStrings.pleaseCheckYouInternet,
+                          ),
+                        ],
+                      ),
+                      [
+                        TextButton(
+                          style: getApplicationTheme()
+                              .textButtonTheme
+                              .style!
+                              .copyWith(
+                                shape: const MaterialStatePropertyAll(
+                                  RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(AppSize.s32),
+                                    ),
+                                  ),
+                                ),
+                                backgroundColor: const MaterialStatePropertyAll(
+                                    Colors.white),
+                                foregroundColor: const MaterialStatePropertyAll(
+                                    ColorManager.primaryColor),
+                              ),
+                          onPressed: () {
+                            navigateBack(context);
+                          },
+                          child: const Text("OK"),
+                        ),
+                      ],
                     );
                   } else {
                     // navigateBack(context);

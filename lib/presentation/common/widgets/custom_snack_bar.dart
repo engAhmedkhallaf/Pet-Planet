@@ -9,7 +9,7 @@ void errorSnackBar({
   required String message,
 }) {
   return showTopSnackBar(
-    context,
+    Overlay.of(context)!,
     CustomSnackBar.info(
       message: message,
       backgroundColor: ColorManager.primaryColor,
@@ -22,7 +22,7 @@ void successSnackBar({
   required String message,
 }) {
   return showTopSnackBar(
-    context,
+    Overlay.of(context)!,
     CustomSnackBar.info(
       message: message,
       backgroundColor: ColorManager.white,
@@ -33,6 +33,6 @@ void successSnackBar({
       ),
     ),
     padding: const EdgeInsets.all(AppPadding.p10),
-    dismissDirection: DismissDirection.horizontal,
+    dismissDirection: [DismissDirection.horizontal],
   );
 }
